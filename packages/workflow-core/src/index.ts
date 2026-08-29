@@ -66,3 +66,24 @@ export {
   builtInCredentialTypes,
 } from './credential-system/credential-types';
 export { IntegrationRegistry } from './credential-system/integration-registry';
+
+// OAuth System
+export type {
+  OAuthProviderMetadata,
+  OAuthFlow,
+  PkceChallengeMethod,
+  OAuthAuthorizationParams,
+  OAuthAuthorizationUrl,
+  OAuthTokenExchangeParams,
+  OAuthTokenResult,
+  OAuthRefreshParams,
+  OAuthProvider,
+} from './oauth-system/oauth-provider.interface';
+export { OAuthError } from './oauth-system/oauth-provider.interface';
+export { PkceHelper } from './oauth-system/pkce-helper';
+export type { PkceChallenge } from './oauth-system/pkce-helper';
+export { OAuthProviderRegistry } from './oauth-system/oauth-provider-registry';
+export { OAuthStateManager } from './oauth-system/oauth-state';
+export type { OAuthStateData } from './oauth-system/oauth-state';
+export { OAuthTokenManager } from './oauth-system/token-manager';
+export { GoogleOAuthProvider } from './oauth-system/providers/google-oauth.provider';

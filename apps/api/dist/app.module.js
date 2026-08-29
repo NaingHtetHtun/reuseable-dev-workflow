@@ -17,6 +17,7 @@ const health_module_1 = require("./modules/health/health.module");
 const projects_module_1 = require("./modules/projects/projects.module");
 const workflows_module_1 = require("./modules/workflows/workflows.module");
 const credentials_module_1 = require("./modules/credentials/credentials.module");
+const oauth_module_1 = require("./modules/oauth/oauth.module");
 const app_config_1 = __importDefault(require("./config/app.config"));
 const database_config_1 = __importDefault(require("./config/database.config"));
 let AppModule = class AppModule {
@@ -35,6 +36,7 @@ exports.AppModule = AppModule = __decorate([
             projects_module_1.ProjectsModule,
             workflows_module_1.WorkflowsModule,
             credentials_module_1.CredentialsModule,
+            oauth_module_1.OAuthModule,
         ],
     })
 ], AppModule);

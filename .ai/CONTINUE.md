@@ -12,9 +12,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Current phase** | Phase 7 — OAuth / Authentication Integrations |
-| **Current feature** | 007-oauth-integrations.md (PLAN CREATED) |
-| **Current status** | OAuth plan created. Awaiting human approval. |
+| **Current phase** | Phase 7 — OAuth / Authentication Integrations ✅ COMPLETED |
+| **Next phase** | Phase 6 — Reusable Component System |
+| **Current feature** | None (between features) |
+| **Current status** | OAuth module complete. Awaiting next task from human. |
 
 ---
 
@@ -27,17 +28,13 @@
 - [x] Phase 4 — Node System (registry, validator, 5 built-in nodes)
 - [x] Monorepo Migration (pnpm workspaces, Turborepo, workflow-core extraction, React scaffold)
 - [x] Phase 5 — Credentials / Integrations (encrypted storage, credential types, node integration)
+- [x] Phase 7 — OAuth / Authentication Integrations (provider abstraction, PKCE, Google OAuth)
 
 ---
 
 ## Work In Progress
 
-- **007-oauth-integrations.md** — Plan created, awaiting approval.
-  - OAuth provider abstraction (framework-independent)
-  - Google OAuth provider implementation
-  - State parameter CSRF protection
-  - Token exchange and refresh
-  - Credential integration with Phase 5
+None. Waiting for human instruction.
 
 ---
 
@@ -46,7 +43,7 @@
 | Priority | Task | Phase |
 |----------|------|-------|
 | Next | Reusable component system | Phase 6 |
-| After | Google Login component | Phase 7 |
+| After | Resource / CRUD Builder | Phase 8 |
 | Later | Preview system | Phase 9 |
 | Later | Code generation engine | Phase 10 |
 
@@ -62,12 +59,12 @@ None.
 
 | Decision | Rationale |
 |----------|-----------|
-| AES-256-GCM encryption | Authenticated encryption, no dependencies, standard |
-| Credentials scoped to projects | Same as workflows, consistent architecture |
-| 6 built-in credential types | Minimal set for testing + Google OAuth2 for Phase 7 |
-| Secrets never in API responses | Security-first design |
-| resolveCredential in context | Lazy credential resolution, executor handles it |
-| Framework-independent credential system | Reusable by code generator |
+| PKCE implemented now | OAuth 2.1 requires it for all auth code flows |
+| OpenID Connect deferred | Architecture supports it, not needed for Phase 7 |
+| HMAC-signed state tokens | CSRF protection without external dependencies |
+| On-demand token refresh | No background jobs, nodes refresh when needed |
+| Framework-independent OAuth | Reusable by code generator |
+| Google as first provider | Well-documented, validates the abstraction |
 
 ---
 
@@ -75,11 +72,11 @@ None.
 
 ```
 apps/
-├── api/        # NestJS backend (62 tests)
+├── api/        # NestJS backend (71 tests)
 └── web/        # React frontend (scaffold)
 
 packages/
-└── workflow-core/  # Framework-independent workflow/node/credential logic (100 tests)
+└── workflow-core/  # Framework-independent workflow/node/credential/oauth logic (150 tests)
 ```
 
 ---
@@ -88,22 +85,22 @@ packages/
 
 ```bash
 # From root
-pnpm test      # 162 tests passing ✅
+pnpm test      # 221 tests passing ✅
 pnpm typecheck # passes ✅
 pnpm lint      # passes ✅
 
 # From apps/api
-pnpm test      # 62 tests passing ✅
+pnpm test      # 71 tests passing ✅
 
 # From packages/workflow-core
-pnpm test      # 100 tests passing ✅
+pnpm test      # 150 tests passing ✅
 ```
 
 ---
 
 ## Exact Next Steps
 
-1. If starting Phase 6 (Reusable Component System), create feature plan in `docs/features/007-reusable-components.md`.
+1. If starting Phase 6 (Reusable Component System), create feature plan in `docs/features/008-reusable-components.md`.
 2. Follow the development lifecycle: PLAN → APPROVE → IMPLEMENT → TEST.
 3. The component system will define how reusable development components are stored and managed.
 

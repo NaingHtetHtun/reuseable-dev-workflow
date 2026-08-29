@@ -1,22 +1,21 @@
 # Current Work
 
-> **Last updated**: 2026-08-29 (credentials module implemented)
+> **Last updated**: 2026-08-29 (OAuth module implemented)
 
 ## Active Task
 
-**007-oauth-integrations** — Plan created, awaiting human approval.
-
-Phase 7 — OAuth / Authentication Integrations: Reusable OAuth provider abstraction with Google as first implementation.
+**None** — OAuth module is complete. No feature work is currently in progress.
 
 ## Session Context
 
 If you are an AI agent starting a new session, this is what you need to know:
 
-1. Phases 0-5 are complete (Dev System, Foundation, Projects, Workflow Engine, Node System, Credentials).
-2. The credentials module provides secure AES-256-GCM encryption for credential storage.
-3. 6 built-in credential types: api-key, bearer-token, basic-auth, google-oauth2, github-token, smtp.
-4. Node execution context now has `resolveCredential(id)` for nodes to access credentials.
-5. The next step is to implement the Reusable Component System (Phase 6).
+1. Phases 0-5 and 7 are complete (Dev System, Foundation, Projects, Workflow Engine, Node System, Credentials, OAuth).
+2. The OAuth module provides a framework-independent provider abstraction with Google as first implementation.
+3. PKCE is supported for providers that implement it (Google does).
+4. State parameter with HMAC-SHA256 provides CSRF protection.
+5. OAuth tokens are stored via the existing credential system (Phase 5).
+6. The next step is to implement the Reusable Component System (Phase 6).
 
 ## How to Resume Work
 

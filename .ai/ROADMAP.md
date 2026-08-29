@@ -360,7 +360,7 @@
 
 ## Phase 7 — OAuth / Authentication Integrations
 
-**Status**: PLAN CREATED — Awaiting approval.
+**Status**: ✅ COMPLETED
 
 **Feature plan**: `docs/features/007-oauth-integrations.md`
 
@@ -398,14 +398,14 @@
 - Test CSRF protection
 
 **Completion criteria**:
-- [ ] OAuthProvider interface defined
-- [ ] GoogleOAuthProvider implemented
-- [ ] State parameter CSRF protection works
-- [ ] Token exchange works with mock provider
-- [ ] Token refresh works correctly
-- [ ] Credentials stored after OAuth flow
-- [ ] API endpoints work
-- [ ] All tests pass
+- [x] OAuthProvider interface defined
+- [x] GoogleOAuthProvider implemented (with PKCE)
+- [x] State parameter CSRF protection works
+- [x] Token exchange works with mock provider
+- [x] Token refresh works correctly
+- [x] Credentials stored after OAuth flow
+- [x] API endpoints work
+- [x] All tests pass (221 total)
 
 **Intentionally out of scope**:
 - Complete Google Login feature (UI, session management)

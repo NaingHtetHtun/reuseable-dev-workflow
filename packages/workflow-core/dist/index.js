@@ -11,4 +11,10 @@ export { logDefinition, LogNodeHandler, setVariableDefinition, SetVariableNodeHa
 export { EncryptionService } from './credential-system/encryption';
 export { validateCredentialData, apiKeyCredentialType, bearerTokenCredentialType, basicAuthCredentialType, googleOAuth2CredentialType, githubTokenCredentialType, smtpCredentialType, builtInCredentialTypes, } from './credential-system/credential-types';
 export { IntegrationRegistry } from './credential-system/integration-registry';
+export { OAuthError } from './oauth-system/oauth-provider.interface';
+export { PkceHelper } from './oauth-system/pkce-helper';
+export { OAuthProviderRegistry } from './oauth-system/oauth-provider-registry';
+export { OAuthStateManager } from './oauth-system/oauth-state';
+export { OAuthTokenManager } from './oauth-system/token-manager';
+export { GoogleOAuthProvider } from './oauth-system/providers/google-oauth.provider';
 //# sourceMappingURL=index.js.map

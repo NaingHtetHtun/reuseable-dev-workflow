@@ -2,6 +2,32 @@
 
 > Chronological record of completed work. Most recent entry first.
 
+## 2026-08-29 — OAuth / Authentication Integrations Implemented
+
+**What**: Implemented framework-independent OAuth provider abstraction with Google as first implementation. Added PKCE support, state parameter CSRF protection, token management, and API endpoints.
+
+**Files created/modified**:
+- `packages/workflow-core/src/oauth-system/` — OAuth provider interface, registry, PKCE helper, state manager, token manager
+- `packages/workflow-core/src/oauth-system/providers/google-oauth.provider.ts` — Google OAuth implementation
+- `packages/workflow-core/src/oauth-system/*.spec.ts` — 50 new tests
+- `apps/api/src/modules/oauth/` — NestJS OAuth module, service, controller, DTOs
+- `apps/api/src/modules/oauth/*.spec.ts` — 3 new tests
+
+**Key design decisions**:
+- Framework-independent OAuth interface (reusable by code generator)
+- PKCE (S256) for providers that support it (Google does)
+- HMAC-SHA256 signed state tokens for CSRF protection
+- OAuth tokens stored via existing credential system (Phase 5)
+- On-demand token refresh (no background jobs)
+- OpenID Connect designed for future extension (not implemented now)
+
+**Verification**:
+- `pnpm test` — 221 tests passing (150 in workflow-core, 71 in API)
+- `pnpm typecheck` — passes
+- `pnpm lint` — passes
+
+---
+
 ## 2026-08-29 — Credentials / Integrations Implemented
 
 **What**: Implemented secure credential storage with AES-256-GCM encryption. Added credential types, integration registry, and node execution context with `resolveCredential`.
