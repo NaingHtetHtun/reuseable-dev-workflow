@@ -12,10 +12,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Current phase** | Phase 2 — Projects Module ✅ COMPLETED |
-| **Next phase** | Phase 3 — Workflow Engine |
+| **Current phase** | Monorepo Migration ✅ COMPLETED |
+| **Next phase** | Phase 5 — Credentials / Integrations |
 | **Current feature** | None (between features) |
-| **Current status** | Projects module complete. Awaiting next task from human. |
+| **Current status** | Monorepo migration complete. Awaiting next task from human. |
 
 ---
 
@@ -23,9 +23,10 @@
 
 - [x] Phase 0 — Development System (AGENTS.md, skills, prompts, docs)
 - [x] Phase 1 — Platform Foundation (Prisma, config, logging, error handling, health)
-- [x] Phase 2 — Projects Module (CRUD API, pagination, search, 28 tests)
-- [x] Session continuity system (PROJECT-STATE, CURRENT-WORK, CHANGELOG)
-- [x] AI roadmap (`.ai/ROADMAP.md`)
+- [x] Phase 2 — Projects Module (CRUD API, pagination, search)
+- [x] Phase 3 — Workflow Engine (definition format, validation, execution, history)
+- [x] Phase 4 — Node System (registry, validator, 5 built-in nodes)
+- [x] Monorepo Migration (pnpm workspaces, Turborepo, workflow-core extraction, React scaffold)
 
 ---
 
@@ -39,10 +40,10 @@ None. Waiting for human instruction.
 
 | Priority | Task | Phase |
 |----------|------|-------|
-| Next | Workflow engine | Phase 3 |
-| After | Node system | Phase 4 |
-| Later | Credentials module | Phase 5 |
-| Later | Reusable component system | Phase 6 |
+| Next | Credentials module | Phase 5 |
+| After | Reusable component system | Phase 6 |
+| Later | Preview system | Phase 9 |
+| Later | Code generation engine | Phase 10 |
 
 ---
 
@@ -56,44 +57,50 @@ None.
 
 | Decision | Rationale |
 |----------|-----------|
-| Prisma 6.x (not 8.x) | Prisma 8 is RC with redesigned CLI. 6.x is stable with traditional workflow. |
-| PostgreSQL only initially | Primary target. Other databases can be added via Prisma later. |
-| URI-based API versioning (`/api/v1/`) | Simple, clear, RESTful. |
-| `@nestjs/config` v3.x | Compatible with NestJS 10. v12 is ESM-only. |
-| Global database module | All modules import shared `DatabaseModule`. |
-| Domain module pattern | module → controller → service → dto (established by Projects). |
+| Turborepo over Nx | Lightweight, standard in 2026, no vendor lock-in |
+| Vite over Next.js | No SSR needed, faster dev, standard for React |
+| Vitest for workflow-core | Native ESM, fast, compatible with Vite |
+| Jest for API | NestJS ecosystem uses Jest |
+| workflow-core has zero runtime deps | Pure TypeScript, reusable everywhere |
+| Abstract Logger interface | Executor becomes framework-independent |
 
 ---
 
-## Files Currently Relevant
+## Monorepo Structure
 
-| File | Purpose |
-|------|---------|
-| `AGENTS.md` | Development contract |
-| `.ai/ROADMAP.md` | Long-term roadmap |
-| `.ai/CONTINUE.md` | This file |
-| `docs/state/PROJECT-STATE.md` | Full project state snapshot |
-| `docs/state/CURRENT-WORK.md` | Active work tracking |
-| `docs/state/CHANGELOG.md` | Completed work history |
-| `docs/features/002-projects-module.md` | Projects module (IMPLEMENTED) |
+```
+apps/
+├── api/        # NestJS backend (48 tests)
+└── web/        # React frontend (scaffold)
+
+packages/
+└── workflow-core/  # Framework-independent workflow/node logic (65 tests)
+```
 
 ---
 
 ## Tests Status
 
 ```bash
-pnpm test      # 28 tests passing ✅
+# From root
+pnpm test      # 113 tests passing ✅
 pnpm typecheck # passes ✅
 pnpm lint      # passes ✅
+
+# From apps/api
+pnpm test      # 48 tests passing ✅
+
+# From packages/workflow-core
+pnpm test      # 65 tests passing ✅
 ```
 
 ---
 
 ## Exact Next Steps
 
-1. If starting Phase 3 (Workflows), create feature plan in `docs/features/003-workflow-engine.md`.
+1. If starting Phase 5 (Credentials), create feature plan in `docs/features/006-credentials.md`.
 2. Follow the development lifecycle: PLAN → APPROVE → IMPLEMENT → TEST.
-3. Workflows will reference Projects via foreign key.
+3. The credentials module will enable nodes to use authenticated API calls.
 
 ---
 
@@ -104,3 +111,4 @@ pnpm lint      # passes ✅
 - **Do not implement anything** without a plan and human approval.
 - **Trust the repository**, not this file, if there's a conflict.
 - **Update this file** when meaningful work is completed or interrupted.
+- **Run from the correct directory** — tests are in `apps/api` and `packages/workflow-core`.

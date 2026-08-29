@@ -1,19 +1,23 @@
 # Current Work
 
-> **Last updated**: 2026-08-29 (projects module implemented)
+> **Last updated**: 2026-08-29 (monorepo migration implemented)
 
 ## Active Task
 
-**None** — Projects module is complete. No feature work is currently in progress.
+**None** — Monorepo migration is complete. No feature work is currently in progress.
 
 ## Session Context
 
 If you are an AI agent starting a new session, this is what you need to know:
 
-1. Phase 0 (Dev System), Phase 1 (Foundation), and Phase 2 (Projects) are complete.
-2. Prisma 6.x is configured with PostgreSQL.
-3. The Projects module is the first domain module and establishes the pattern.
-4. The next step is to implement the Workflows module (Phase 3).
+1. Phases 0-4 are complete (Dev System, Foundation, Projects, Workflow Engine, Node System).
+2. Monorepo migration is complete (pnpm workspaces + Turborepo).
+3. The repository now has 3 packages:
+   - `apps/api/` — NestJS backend
+   - `apps/web/` — React frontend (scaffold)
+   - `packages/workflow-core/` — Framework-independent workflow/node logic
+4. All 113 tests pass (65 in workflow-core, 48 in API).
+5. The next step is to implement the Credentials module (Phase 5).
 
 ## How to Resume Work
 
@@ -31,14 +35,6 @@ If you are an AI agent starting a new session, this is what you need to know:
 ## Blockers
 
 None.
-
-## Notes for Next Session
-
-When a feature is started:
-- Update this file to reflect the active task.
-- Create a feature doc in `docs/features/`.
-- Update `PROJECT-STATE.md` when the feature is complete.
-- Add an entry to `CHANGELOG.md`.
 
 ## Source of Truth
 

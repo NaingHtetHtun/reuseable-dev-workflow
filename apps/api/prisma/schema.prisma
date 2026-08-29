@@ -1,0 +1,63 @@
+// DevFlow Platform — Prisma Schema
+// Docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// Base fields shared by all models:
+/// - id: UUID
+/// - createdAt: auto-set on creation
+/// - updatedAt: auto-updated on modification
+
+model Project {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  workflows Workflow[]
+
+  @@map("projects")
+}
+
+model Workflow {
+  id          String   @id @default(uuid())
+  projectId   String   @map("project_id")
+  name        String
+  description String?
+  status      String   @default("draft")
+  version     Int      @default(1)
+  definition  Json
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  project    Project           @relation(fields: [projectId], references: [id])
+  executions WorkflowExecution[]
+
+  @@index([projectId])
+  @@map("workflows")
+}
+
+model WorkflowExecution {
+  id          String    @id @default(uuid())
+  workflowId  String    @map("workflow_id")
+  status      String    @default("running")
+  input       Json?
+  output      Json?
+  error       String?
+  nodeResults Json?     @map("node_results")
+  startedAt   DateTime  @default(now()) @map("started_at")
+  completedAt DateTime? @map("completed_at")
+
+  workflow Workflow @relation(fields: [workflowId], references: [id])
+
+  @@index([workflowId])
+  @@map("workflow_executions")
+}

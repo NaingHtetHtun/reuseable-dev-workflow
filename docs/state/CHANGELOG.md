@@ -2,30 +2,73 @@
 
 > Chronological record of completed work. Most recent entry first.
 
-## 2026-08-29 — Projects Module Implemented
+## 2026-08-29 — Monorepo Migration Implemented
 
-**What**: Implemented the Projects module — first domain module with full CRUD API, establishing the standard pattern for all future modules.
+**What**: Converted single-package repository to pnpm workspaces + Turborepo monorepo. Extracted framework-independent workflow/node logic into `@devflow/workflow-core`. Scaffolded React frontend with Vite.
 
 **Files created/modified**:
-- `prisma/schema.prisma` — Added `description` field to Project model
-- `src/modules/projects/projects.module.ts` — Created
-- `src/modules/projects/projects.controller.ts` — Created (5 endpoints)
-- `src/modules/projects/projects.service.ts` — Created (CRUD + search)
-- `src/modules/projects/dto/create-project.dto.ts` — Created
-- `src/modules/projects/dto/update-project.dto.ts` — Created
-- `src/modules/projects/dto/project-response.dto.ts` — Created
-- `src/modules/projects/dto/project-query.dto.ts` — Created
-- `src/modules/projects/dto/index.ts` — Created
-- `src/modules/projects/projects.service.spec.ts` — Created (11 tests)
-- `src/modules/projects/projects.controller.spec.ts` — Created (17 tests)
-- `src/app.module.ts` — Added ProjectsModule import
-- `docs/features/002-projects-module.md` — Feature plan (MARKED IMPLEMENTED)
+- `pnpm-workspace.yaml` — Workspace configuration
+- `turbo.json` — Turborepo build orchestration
+- `package.json` — Root workspace package
+- `apps/api/` — NestJS backend (moved from root)
+- `apps/web/` — React frontend (Vite scaffold)
+- `packages/workflow-core/` — Framework-independent workflow/node logic
+- `docs/features/005-monorepo-migration.md` — Migration plan
 
-**Dependencies added**:
-- `@types/supertest` (devDependency)
+**Key design decisions**:
+- Turborepo for build orchestration (lightweight, standard)
+- Vite + React for frontend (fast, modern)
+- Vitest for workflow-core tests (native ESM)
+- Jest for API tests (NestJS ecosystem)
+- Abstract Logger interface in workflow-core (replaces NestJS Logger)
+- Zero runtime dependencies in workflow-core
 
 **Verification**:
-- `pnpm test` — 28 tests passing (5 suites)
+- `pnpm test` — 113 tests passing (65 in workflow-core, 48 in API)
+- `pnpm typecheck` — passes
+- `pnpm lint` — passes
+
+---
+
+## 2026-08-29 — Node System Implemented
+
+**What**: Implemented the node type system — framework-independent node interfaces, registry, validator, and 5 built-in nodes. Refactored workflow executor to use registry.
+
+**Files created/modified**:
+- `src/modules/workflows/engine/node-system/` — Full node system (18 files)
+- `src/modules/workflows/engine/workflow-executor.ts` — Refactored to use registry
+- `src/modules/workflows/workflows.service.ts` — Updated for async executor
+
+**Key design decisions**:
+- Framework-independent interfaces (no NestJS/Prisma)
+- NodeRegistry for pluggable node types
+- Schema-driven parameter validation
+- 5 built-in nodes: log, set-variable, no-op, http-request, delay
+
+**Verification**:
+- `pnpm test` — 96 tests passing (16 suites)
+- `pnpm typecheck` — passes
+- `pnpm lint` — passes
+
+---
+
+## 2026-08-29 — Workflow Engine Implemented
+
+**What**: Implemented the workflow engine — definition format, validation, execution, and CRUD API.
+
+**Verification**:
+- `pnpm test` — 65 tests passing
+- `pnpm typecheck` — passes
+- `pnpm lint` — passes
+
+---
+
+## 2026-08-29 — Projects Module Implemented
+
+**What**: Implemented the Projects module — first domain module with full CRUD API.
+
+**Verification**:
+- `pnpm test` — 28 tests passing
 - `pnpm typecheck` — passes
 - `pnpm lint` — passes
 
@@ -33,29 +76,15 @@
 
 ## 2026-08-29 — AI Roadmap and Session Handoff System
 
-**What**: Created `.ai/ROADMAP.md` (14-phase long-term roadmap) and `.ai/CONTINUE.md` (session handoff file). Updated AGENTS.md with new session workflows.
+**What**: Created `.ai/ROADMAP.md` and `.ai/CONTINUE.md`.
 
-**Files created/modified**:
-- `.ai/ROADMAP.md` — Created
-- `.ai/CONTINUE.md` — Created
-- `AGENTS.md` — Updated session workflows
-
-**Verification**: Documentation only — no code changes.
+**Verification**: Documentation only.
 
 ---
 
 ## 2026-08-29 — Project Foundation Implemented
 
-**What**: Implemented core project foundation: Prisma ORM, configuration management, logging, error handling, API versioning, health checks.
-
-**Files created**:
-- `prisma/schema.prisma`, `prisma/seed.ts`
-- `src/config/app.config.ts`, `src/config/database.config.ts`
-- `src/shared/database/database.module.ts`, `src/shared/database/prisma.service.ts`
-- `src/shared/filters/http-exception.filter.ts`
-- `src/shared/interceptors/logging.interceptor.ts`
-- `src/shared/dto/pagination.dto.ts`
-- `src/modules/health/` (module, controller, service, specs)
+**What**: Implemented core project foundation: Prisma ORM, configuration, logging, error handling, health checks.
 
 **Verification**:
 - `pnpm test` — 5 tests passing
@@ -68,10 +97,6 @@
 
 **What**: Added persistent project memory and session continuity system.
 
-**Files created/modified**:
-- `docs/state/PROJECT-STATE.md`, `docs/state/CURRENT-WORK.md`, `docs/state/CHANGELOG.md`
-- `AGENTS.md` — Updated with session workflows
-
 **Verification**: Documentation only.
 
 ---
@@ -79,9 +104,6 @@
 ## 2026-08-29 — Project Bootstrap Complete
 
 **What**: Established the complete development system for DevFlow Platform.
-
-**Files created**:
-- Root config files, source skeleton, AGENTS.md, `.ai/`, `docs/`
 
 **Verification**:
 - `pnpm test` — 1 test passing

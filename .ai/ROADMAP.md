@@ -160,7 +160,7 @@
 
 ## Phase 3 — Workflow Engine
 
-**Status**: NOT STARTED
+**Status**: ✅ COMPLETED
 
 **Goal**: Define, store, and execute workflows as directed graphs of nodes.
 
@@ -192,16 +192,15 @@
 - Unit tests for execution engine
 - Integration tests for workflow API
 - Test workflows with multiple nodes
-- Test error handling in workflows
+- Test error handling in workflows**Completion criteria**:
 
-**Completion criteria**:
-- [ ] Workflow definition format is defined and documented
-- [ ] Workflow CRUD works
-- [ ] Workflow validation catches invalid definitions
-- [ ] Basic execution engine runs sequential workflows
-- [ ] Execution history is recorded
-- [ ] Error handling works within workflows
-- [ ] All tests pass
+- [x] Workflow definition format is defined and documented
+- [x] Workflow CRUD works
+- [x] Workflow validation catches invalid definitions (8 rules)
+- [x] Basic execution engine runs sequential workflows
+- [x] Execution history is recorded
+- [x] Error handling works within workflows
+- [x] All tests pass (65 tests)
 
 **Intentionally out of scope**:
 - Visual workflow builder (UI)
@@ -214,7 +213,7 @@
 
 ## Phase 4 — Node System
 
-**Status**: NOT STARTED
+**Status**: ✅ COMPLETED
 
 **Goal**: Pluggable node registry that workflows use to execute individual steps.
 
@@ -244,16 +243,15 @@
 - Unit tests for each built-in node type
 - Unit tests for node registry
 - Integration tests for node execution within workflows
-- Test node input/output passing
+- Test node input/output passing**Completion criteria**:
 
-**Completion criteria**:
-- [ ] Node interface is defined
-- [ ] Node registry allows registration and lookup
-- [ ] At least 3 built-in nodes work (HTTP, delay, log)
-- [ ] Node configuration is validated
-- [ ] Nodes execute within workflow context
-- [ ] Input/output passes between nodes correctly
-- [ ] All tests pass
+- [x] Node interface is defined (framework-independent)
+- [x] Node registry allows registration and lookup
+- [x] 5 built-in nodes work (log, set-variable, no-op, http-request, delay)
+- [x] Node configuration is validated (schema + custom)
+- [x] Nodes execute within workflow context
+- [x] Input/output passes between nodes correctly
+- [x] All tests pass (96 tests)
 
 **Intentionally out of scope**:
 - Custom node creation UI
@@ -742,6 +740,37 @@
 
 ---
 
+## Monorepo Migration
+
+**Status**: ✅ COMPLETED
+
+**Purpose**: Convert the current single-package repository into a pnpm workspaces + Turborepo monorepo.
+
+**Target structure**:
+```
+apps/
+  api/        # NestJS backend (48 tests)
+  web/        # React frontend (scaffold)
+packages/
+  workflow-core/  # Framework-independent workflow/node logic (65 tests)
+```
+
+**Feature plan**: `docs/features/005-monorepo-migration.md`
+
+**Completion criteria**:
+- [x] pnpm-workspace.yaml configured
+- [x] turbo.json configured
+- [x] Root package.json updated
+- [x] API code moved to apps/api/
+- [x] workflow-core extracted as separate package
+- [x] React frontend scaffolded with Vite
+- [x] All import paths updated
+- [x] All tests pass (113 total)
+- [x] Typecheck passes
+- [x] Lint passes
+
+---
+
 ## Phase Dependency Graph
 
 ```
@@ -761,6 +790,8 @@ Phase 0 (Dev System)
 
 Phase 13 (AI) — depends on Phases 3-12
 Phase 14 (Production) — depends on all phases
+
+Monorepo Migration — after Phase 4, before Phase 5
 ```
 
 ---

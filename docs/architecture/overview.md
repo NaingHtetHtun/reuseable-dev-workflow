@@ -27,10 +27,10 @@ The DevFlow Platform is a NestJS-based backend that will eventually support:
 
 ## Current State
 
-The project foundation is implemented:
+The project foundation and core modules are implemented:
 
-- **Implemented**: NestJS application with Prisma ORM, configuration, logging, error handling, API versioning, health checks
-- **Planned**: Projects module, workflows, nodes, credentials, runtime, compiler
+- **Implemented**: NestJS application, Prisma ORM, configuration, logging, error handling, API versioning, health checks, Projects module, Workflow Engine, Node System
+- **Planned**: Credentials, Reusable Components, Preview, Code Generation
 - **Future**: Full platform with visual builder, runtime, and exporters
 
 ## Module Structure (Current)
