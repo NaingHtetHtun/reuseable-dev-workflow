@@ -1,0 +1,46 @@
+# compiled output
+/dist
+/node_modules
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+/coverage
+
+# IDE
+/.idea
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# dotenv environment variables file
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+
+# Temporary
+tmp/
+temp/
+
+# Test results
+/test-results/
+
+# Build artifacts
+*.tsbuildinfo
