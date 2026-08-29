@@ -47,7 +47,11 @@ This project uses an AI-assisted development model. See `AGENTS.md` for the full
 │   ├── features/                # Feature documentation
 │   ├── testing/                 # Testing strategy
 │   ├── dependencies/            # Dependency policy
-│   └── decisions/               # Architecture decision records
+│   ├── decisions/               # Architecture decision records
+│   └── state/                   # Project state & session continuity
+│       ├── PROJECT-STATE.md     # Current project state snapshot
+│       ├── CURRENT-WORK.md      # Active work tracking
+│       └── CHANGELOG.md         # Completed work history
 ├── src/                         # Application source code
 │   ├── main.ts
 │   ├── app.module.ts
@@ -69,9 +73,13 @@ This project uses an AI-assisted development model. See `AGENTS.md` for the full
 - [Architecture Principles](docs/architecture/principles.md)
 - [Feature Lifecycle](docs/development/feature-lifecycle.md)
 - [AI Development Model](docs/development/ai-development.md)
+- [Session Continuity](docs/development/session-continuity.md)
 - [Testing Strategy](docs/testing/testing-strategy.md)
 - [Dependency Policy](docs/dependencies/dependency-policy.md)
 - [Definition of Done](docs/development/definition-of-done.md)
+- [Project State](docs/state/PROJECT-STATE.md)
+- [Current Work](docs/state/CURRENT-WORK.md)
+- [Changelog](docs/state/CHANGELOG.md)
 
 ## License
 

@@ -27,20 +27,36 @@ The DevFlow Platform is a NestJS-based backend that will eventually support:
 
 ## Current State
 
-The project is at the bootstrap stage. Only the foundation is established:
+The project foundation is implemented:
 
-- **Implemented**: NestJS application skeleton with health endpoint
-- **Planned**: Workflow engine, node system, code generation, UI builder
+- **Implemented**: NestJS application with Prisma ORM, configuration, logging, error handling, API versioning, health checks
+- **Planned**: Projects module, workflows, nodes, credentials, runtime, compiler
 - **Future**: Full platform with visual builder, runtime, and exporters
 
 ## Module Structure (Current)
 
 ```
 src/
-├── main.ts                    # Application entry point
-├── app.module.ts              # Root module
-├── app.controller.ts          # Health endpoint
-└── app.controller.spec.ts     # Health endpoint test
+├── main.ts                              # Application entry point
+├── app.module.ts                        # Root module
+├── config/
+│   ├── app.config.ts                    # App configuration
+│   └── database.config.ts               # Database configuration
+├── shared/
+│   ├── database/
+│   │   ├── database.module.ts           # Global database module
+│   │   └── prisma.service.ts            # Prisma service
+│   ├── filters/
+│   │   └── http-exception.filter.ts     # Global exception filter
+│   ├── interceptors/
+│   │   └── logging.interceptor.ts       # Request logging
+│   └── dto/
+│       └── pagination.dto.ts            # Shared pagination DTO
+└── modules/
+    └── health/
+        ├── health.module.ts
+        ├── health.controller.ts
+        └── health.service.ts
 ```
 
 ## Planned Module Structure (Future)

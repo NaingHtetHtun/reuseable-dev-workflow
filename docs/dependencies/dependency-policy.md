@@ -42,8 +42,10 @@ Before installing any new dependency, the following steps are required:
 | Package | Version | Purpose |
 |---------|---------|---------|
 | @nestjs/common | ^10.4.0 | NestJS core utilities |
+| @nestjs/config | ^3.3.0 | Configuration management |
 | @nestjs/core | ^10.4.0 | NestJS framework core |
 | @nestjs/platform-express | ^10.4.0 | Express adapter |
+| @prisma/client | ^6.19.3 | Prisma database client |
 | class-transformer | ^0.5.1 | Data transformation |
 | class-validator | ^0.14.1 | Input validation |
 | reflect-metadata | ^0.2.2 | Decorator metadata |
@@ -56,6 +58,8 @@ Before installing any new dependency, the following steps are required:
 | @nestjs/schematics | ^10.1.0 | NestJS code generation |
 | @nestjs/testing | ^10.4.0 | Testing utilities |
 | jest | ^29.7.0 | Test framework |
+| prisma | ^6.19.3 | Prisma CLI and migrations |
+| @types/supertest | ^7.2.1 | Supertest type definitions |
 | typescript | ^5.5.0 | TypeScript compiler |
 | eslint | ^8.57.0 | Linting |
 | prettier | ^3.3.0 | Formatting |

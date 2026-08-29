@@ -61,6 +61,69 @@ Verify: tests pass, typecheck passes, lint passes, formatting passes, no dead co
 ### Phase 9 — Documentation
 Create or update dedicated feature documentation.
 
+## Session Continuity
+
+Every AI session MUST follow these workflows to recover project context.
+
+### Session-Start Workflow
+
+When a new AI session begins, execute these steps IN ORDER before doing any work:
+
+1. **Read `AGENTS.md`** — Understand the development contract.
+2. **Read `.ai/ROADMAP.md`** — Understand long-term project direction.
+3. **Read `.ai/CONTINUE.md`** — Understand exact session handoff state.
+4. **Read `docs/state/PROJECT-STATE.md`** — Understand current project state, what's completed, pending, and blocked.
+5. **Read `docs/state/CURRENT-WORK.md`** — Understand what's actively being worked on.
+6. **Read relevant feature documentation** — Check `docs/features/` for any IN PROGRESS features.
+7. **Read relevant ADRs** — Check `docs/decisions/` for architectural decisions.
+8. **Inspect git status** — Run `git status` and `git log` to see actual repository state.
+9. **Run verification** — Run `pnpm test` and `pnpm typecheck` to confirm everything works.
+10. **Understand current state** — Only now begin work or wait for human instructions.
+
+Do NOT skip these steps. The goal is that every session starts with full context.
+The AI must not rely on previous conversation history when these files and the repository provide the necessary context.
+
+### Session-End Workflow
+
+When completing work in a session, execute these steps:
+
+1. **Summarize completed work** — What was done and verified.
+2. **Record pending work** — What's left to do.
+3. **Record blockers** — Anything preventing progress.
+4. **Record next recommended task** — What should happen next.
+5. **Update `.ai/CONTINUE.md`** — Reflect exact session handoff state.
+6. **Update `docs/state/CURRENT-WORK.md`** — Reflect current session status.
+7. **Update `docs/state/PROJECT-STATE.md`** — Reflect any state changes.
+8. **Add entry to `docs/state/CHANGELOG.md`** — Record what was completed.
+9. **Update feature docs** — If a feature was worked on, update its doc status.
+
+### Source of Truth Rule
+
+The repository (code + tests) is the source of truth. If `docs/state/` files conflict with reality:
+- The repository wins.
+- Update the documentation to match reality.
+- Never claim work is completed when it has not been verified.
+
+### State File Maintenance
+
+- `.ai/ROADMAP.md` — Long-term direction. Updated when major decisions change.
+- `.ai/CONTINUE.md` — Session handoff. Updated at end of each session.
+- `docs/state/PROJECT-STATE.md` — Current state. Updated when features complete.
+- `docs/state/CURRENT-WORK.md` — Active work. Updated at start/end of sessions.
+- `docs/state/CHANGELOG.md` — History. Updated with each completed piece of work.
+
+### Context File Relationships
+
+| File | Purpose |
+|------|---------|
+| `.ai/ROADMAP.md` | Long-term direction: where the entire project is going |
+| `docs/state/PROJECT-STATE.md` | Current overall state: what has actually been completed |
+| `docs/state/CURRENT-WORK.md` | Current active feature/task |
+| `.ai/CONTINUE.md` | Exact session handoff: where the previous AI stopped and what to do next |
+| `docs/state/CHANGELOG.md` | Historical record of meaningful completed changes |
+
+These files complement each other. The repository and tests are the ultimate source of truth if any file conflicts with reality.
+
 ## Approval Requirements
 
 - **DO NOT CODE BEFORE PLAN APPROVAL.**
@@ -164,7 +227,13 @@ A feature is DONE when:
 
 ## Files to Reference
 
+- `.ai/ROADMAP.md` — Long-term development roadmap
+- `.ai/CONTINUE.md` — Session handoff file
 - `.ai/skills/` — Engineering discipline skills
 - `.ai/prompts/` — Feature and workflow prompts
 - `docs/` — All project documentation
 - `docs/features/` — Feature documentation and templates
+- `docs/state/` — Project state, current work, and changelog
+  - `docs/state/PROJECT-STATE.md` — Project state snapshot
+  - `docs/state/CURRENT-WORK.md` — Active work tracking
+  - `docs/state/CHANGELOG.md` — Completed work history
