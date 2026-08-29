@@ -17,7 +17,7 @@ export type { ValidationResult } from './validator';
 
 // Executor
 export { WorkflowExecutor } from './executor';
-export type { ExecutionResult } from './executor';
+export type { ExecutionResult, CredentialResolver } from './executor';
 
 // Node System
 export type {
@@ -47,3 +47,22 @@ export {
   delayDefinition,
   DelayNodeHandler,
 } from './node-system/builtin';
+
+// Credential System
+export { EncryptionService } from './credential-system/encryption';
+export type {
+  CredentialField,
+  CredentialTypeDefinition,
+  CredentialValidationResult,
+} from './credential-system/credential-types';
+export {
+  validateCredentialData,
+  apiKeyCredentialType,
+  bearerTokenCredentialType,
+  basicAuthCredentialType,
+  googleOAuth2CredentialType,
+  githubTokenCredentialType,
+  smtpCredentialType,
+  builtInCredentialTypes,
+} from './credential-system/credential-types';
+export { IntegrationRegistry } from './credential-system/integration-registry';

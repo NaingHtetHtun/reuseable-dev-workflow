@@ -2,6 +2,33 @@
 
 > Chronological record of completed work. Most recent entry first.
 
+## 2026-08-29 — Credentials / Integrations Implemented
+
+**What**: Implemented secure credential storage with AES-256-GCM encryption. Added credential types, integration registry, and node execution context with `resolveCredential`.
+
+**Files created/modified**:
+- `packages/workflow-core/src/credential-system/` — Encryption, credential types, integration registry
+- `packages/workflow-core/src/node-system/interfaces.ts` — Added `resolveCredential` to `NodeExecutionContext`
+- `packages/workflow-core/src/executor.ts` — Added `CredentialResolver` type
+- `apps/api/prisma/schema.prisma` — Added `Credential` model
+- `apps/api/src/modules/credentials/` — NestJS module, service, controller, DTOs
+- `apps/api/.env.example` — Added `ENCRYPTION_KEY`
+
+**Key design decisions**:
+- AES-256-GCM encryption (Node.js built-in, no dependencies)
+- Credentials scoped to projects
+- 6 built-in credential types (api-key, bearer-token, basic-auth, google-oauth2, github-token, smtp)
+- Secrets NEVER returned in API responses
+- `resolveCredential(id)` in node execution context
+- Framework-independent credential system in workflow-core
+
+**Verification**:
+- `pnpm test` — 162 tests passing (100 in workflow-core, 62 in API)
+- `pnpm typecheck` — passes
+- `pnpm lint` — passes
+
+---
+
 ## 2026-08-29 — Monorepo Migration Implemented
 
 **What**: Converted single-package repository to pnpm workspaces + Turborepo monorepo. Extracted framework-independent workflow/node logic into `@devflow/workflow-core`. Scaffolded React frontend with Vite.

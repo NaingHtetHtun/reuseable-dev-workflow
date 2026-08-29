@@ -263,7 +263,9 @@
 
 ## Phase 5 — Credentials / Integrations
 
-**Status**: NOT STARTED
+**Status**: ✅ COMPLETED
+
+**Feature plan**: `docs/features/006-credentials-integrations.md`
 
 **Goal**: Secure storage and management of credentials for external service integrations.
 
@@ -296,12 +298,12 @@
 - Test credential reference in nodes
 
 **Completion criteria**:
-- [ ] Credentials are encrypted at rest
-- [ ] Secret values are never returned in API responses
-- [ ] Credential validation works per integration type
-- [ ] Credentials can be referenced by workflow nodes
-- [ ] Integration registry defines required credentials
-- [ ] All tests pass
+- [x] Credentials are encrypted at rest
+- [x] Secret values are never returned in API responses
+- [x] Credential validation works per integration type
+- [x] Credentials can be referenced by workflow nodes
+- [x] Integration registry defines required credentials
+- [x] All tests pass (162 total)
 
 **Intentionally out of scope**:
 - OAuth2 flow implementation (specific integrations)
@@ -356,52 +358,62 @@
 
 ---
 
-## Phase 7 — Google Login Component
+## Phase 7 — OAuth / Authentication Integrations
 
-**Status**: NOT STARTED
+**Status**: PLAN CREATED — Awaiting approval.
 
-**Goal**: First complete reusable component — Google OAuth2 login.
+**Feature plan**: `docs/features/007-oauth-integrations.md`
 
-**Why it exists**: Validates the reusable component architecture with a real-world example. Google Login is commonly needed and well-documented.
+**Goal**: Establish a reusable, framework-independent OAuth integration architecture supporting multiple providers.
+
+**Why it exists**: The platform needs to support OAuth2 authorization flows for external services. This phase creates the abstraction that Google, Apple, GitHub, and Microsoft providers will implement.
 
 **Major features**:
-- Google Login component definition
-- Google OAuth2 configuration schema
-- Google credential requirements
-- Runtime implementation (OAuth2 flow)
-- Preview behavior (test login flow)
-- Tests (unit and integration)
-- Laravel generator (stub)
-- NestJS generator (stub)
+- OAuth provider abstraction (framework-independent interface)
+- OAuth provider registry
+- Google OAuth provider (authorization code flow)
+- Authorization URL generation
+- Callback handling and code exchange
+- State parameter / CSRF protection
+- Token lifecycle (exchange, refresh, expiration)
+- Credential integration (stores tokens via Phase 5)
+- OAuth scopes and provider metadata
+- API endpoints for OAuth flows
+- Node integration for OAuth-aware nodes
 
-**Dependencies**: Phase 6.
+**Dependencies**: Phase 5 (credentials), Phase 4 (nodes).
 
 **Expected deliverables**:
-- Google Login component definition
-- OAuth2 flow implementation
-- Component tests
-- Generator stubs for Laravel and NestJS
+- `packages/workflow-core/src/oauth-system/` — Framework-independent OAuth system
+- `apps/api/src/modules/oauth/` — NestJS OAuth module
+- Google OAuth provider implementation
+- API endpoints for authorization and callback
 - Feature documentation
 
 **Testing requirements**:
-- Unit tests for OAuth2 flow logic
-- Integration tests with mock Google API
-- Test component configuration validation
-- Test credential requirements
+- Unit tests for OAuth provider logic
+- Unit tests for state management
+- Unit tests for token manager
+- Integration tests for API OAuth flow
+- Test CSRF protection
 
 **Completion criteria**:
-- [ ] Component definition exists and validates
-- [ ] OAuth2 flow works with mock provider
-- [ ] Configuration schema is complete
-- [ ] Credential requirements are defined
-- [ ] Tests pass
-- [ ] Generator stubs exist
+- [ ] OAuthProvider interface defined
+- [ ] GoogleOAuthProvider implemented
+- [ ] State parameter CSRF protection works
+- [ ] Token exchange works with mock provider
+- [ ] Token refresh works correctly
+- [ ] Credentials stored after OAuth flow
+- [ ] API endpoints work
+- [ ] All tests pass
 
 **Intentionally out of scope**:
-- Real Google API integration (requires real credentials)
-- Apple Login (future component)
-- Email Login (future component)
-- Complete generators (Phase 10-11)
+- Complete Google Login feature (UI, session management)
+- Apple/GitHub/Microsoft OAuth implementations
+- Laravel/NestJS generators
+- Visual workflow builder
+- OpenID Connect
+- PKCE flow
 
 ---
 

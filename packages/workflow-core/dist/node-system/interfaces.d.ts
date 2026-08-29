@@ -56,6 +56,8 @@ export interface NodeExecutionContext {
     nodeId: string;
     nodeResults: Map<string, unknown>;
     startedAt: Date;
+    /** Resolve a credential by ID (Phase 5). Returns decrypted credential data. */
+    resolveCredential?(id: string): Promise<Record<string, unknown>>;
 }
 /** Result of node execution */
 export interface NodeExecutionResult {

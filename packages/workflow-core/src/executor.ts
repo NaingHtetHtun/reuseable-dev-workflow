@@ -23,12 +23,17 @@ export interface ExecutionResult {
   nodeResults: Record<string, unknown>;
 }
 
+/** Function that resolves a credential ID to its decrypted data */
+export type CredentialResolver = (id: string) => Promise<Record<string, unknown>>;
+
 export class WorkflowExecutor {
   private readonly logger: Logger;
   private readonly registry: NodeRegistry;
+  private readonly credentialResolver?: CredentialResolver;
 
-  constructor(logger?: Logger) {
+  constructor(logger?: Logger, credentialResolver?: CredentialResolver) {
     this.logger = logger ?? noopLogger;
+    this.credentialResolver = credentialResolver;
     this.registry = this.createDefaultRegistry();
   }
 
@@ -132,6 +137,9 @@ export class WorkflowExecutor {
       nodeId: node.id,
       nodeResults: context.nodeResults,
       startedAt: context.startedAt,
+      resolveCredential: this.credentialResolver
+        ? (id: string) => this.credentialResolver!(id)
+        : undefined,
     };
 
     const result = await handler.execute(input, node.parameters, nodeContext);

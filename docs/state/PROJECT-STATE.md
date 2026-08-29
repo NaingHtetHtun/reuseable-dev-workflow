@@ -1,6 +1,6 @@
 # Project State
 
-> **Last updated**: 2026-08-29 (monorepo migration implemented)
+> **Last updated**: 2026-08-29 (credentials module implemented)
 
 ## Completed
 
@@ -10,6 +10,7 @@
 - [x] Phase 3 — Workflow Engine (definition format, validation, execution, history)
 - [x] Phase 4 — Node System (registry, validator, 5 built-in nodes)
 - [x] Monorepo Migration (pnpm workspaces, Turborepo, workflow-core extraction, React scaffold)
+- [x] Phase 5 — Credentials / Integrations (encrypted storage, credential types, node integration)
 
 ## In Progress
 
@@ -19,26 +20,26 @@ None.
 
 | Priority | Task | Phase |
 |----------|------|-------|
-| Next | Credentials module | Phase 5 |
-| After | Reusable component system | Phase 6 |
+| Next | Reusable component system | Phase 6 |
+| After | Google Login component | Phase 7 |
 | Later | Preview system | Phase 9 |
 | Later | Code generation engine | Phase 10 |
 
 ## Key Metrics
 
-- **Test suites**: 18 (11 in workflow-core, 7 in API)
-- **Total tests**: 113 (65 in workflow-core, 48 in API)
+- **Test suites**: 23 (14 in workflow-core, 9 in API)
+- **Total tests**: 162 (100 in workflow-core, 62 in API)
 - **Packages**: 3 (api, web, workflow-core)
 
 ## Monorepo Structure
 
 ```
 apps/
-├── api/        # NestJS backend (48 tests)
+├── api/        # NestJS backend (62 tests)
 └── web/        # React frontend (scaffold)
 
 packages/
-└── workflow-core/  # Framework-independent workflow/node logic (65 tests)
+└── workflow-core/  # Framework-independent workflow/node/credential logic (100 tests)
 ```
 
 ## Source of Truth

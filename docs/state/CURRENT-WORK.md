@@ -1,23 +1,22 @@
 # Current Work
 
-> **Last updated**: 2026-08-29 (monorepo migration implemented)
+> **Last updated**: 2026-08-29 (credentials module implemented)
 
 ## Active Task
 
-**None** — Monorepo migration is complete. No feature work is currently in progress.
+**007-oauth-integrations** — Plan created, awaiting human approval.
+
+Phase 7 — OAuth / Authentication Integrations: Reusable OAuth provider abstraction with Google as first implementation.
 
 ## Session Context
 
 If you are an AI agent starting a new session, this is what you need to know:
 
-1. Phases 0-4 are complete (Dev System, Foundation, Projects, Workflow Engine, Node System).
-2. Monorepo migration is complete (pnpm workspaces + Turborepo).
-3. The repository now has 3 packages:
-   - `apps/api/` — NestJS backend
-   - `apps/web/` — React frontend (scaffold)
-   - `packages/workflow-core/` — Framework-independent workflow/node logic
-4. All 113 tests pass (65 in workflow-core, 48 in API).
-5. The next step is to implement the Credentials module (Phase 5).
+1. Phases 0-5 are complete (Dev System, Foundation, Projects, Workflow Engine, Node System, Credentials).
+2. The credentials module provides secure AES-256-GCM encryption for credential storage.
+3. 6 built-in credential types: api-key, bearer-token, basic-auth, google-oauth2, github-token, smtp.
+4. Node execution context now has `resolveCredential(id)` for nodes to access credentials.
+5. The next step is to implement the Reusable Component System (Phase 6).
 
 ## How to Resume Work
 

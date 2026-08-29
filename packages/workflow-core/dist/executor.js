@@ -5,8 +5,10 @@ import { logDefinition, LogNodeHandler, setVariableDefinition, SetVariableNodeHa
 export class WorkflowExecutor {
     logger;
     registry;
-    constructor(logger) {
+    credentialResolver;
+    constructor(logger, credentialResolver) {
         this.logger = logger ?? noopLogger;
+        this.credentialResolver = credentialResolver;
         this.registry = this.createDefaultRegistry();
     }
     getRegistry() {
@@ -85,6 +87,9 @@ export class WorkflowExecutor {
             nodeId: node.id,
             nodeResults: context.nodeResults,
             startedAt: context.startedAt,
+            resolveCredential: this.credentialResolver
+                ? (id) => this.credentialResolver(id)
+                : undefined,
         };
         const result = await handler.execute(input, node.parameters, nodeContext);
         return result.output;

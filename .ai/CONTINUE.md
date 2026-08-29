@@ -12,10 +12,9 @@
 
 | Field | Value |
 |-------|-------|
-| **Current phase** | Monorepo Migration ✅ COMPLETED |
-| **Next phase** | Phase 5 — Credentials / Integrations |
-| **Current feature** | None (between features) |
-| **Current status** | Monorepo migration complete. Awaiting next task from human. |
+| **Current phase** | Phase 7 — OAuth / Authentication Integrations |
+| **Current feature** | 007-oauth-integrations.md (PLAN CREATED) |
+| **Current status** | OAuth plan created. Awaiting human approval. |
 
 ---
 
@@ -27,12 +26,18 @@
 - [x] Phase 3 — Workflow Engine (definition format, validation, execution, history)
 - [x] Phase 4 — Node System (registry, validator, 5 built-in nodes)
 - [x] Monorepo Migration (pnpm workspaces, Turborepo, workflow-core extraction, React scaffold)
+- [x] Phase 5 — Credentials / Integrations (encrypted storage, credential types, node integration)
 
 ---
 
 ## Work In Progress
 
-None. Waiting for human instruction.
+- **007-oauth-integrations.md** — Plan created, awaiting approval.
+  - OAuth provider abstraction (framework-independent)
+  - Google OAuth provider implementation
+  - State parameter CSRF protection
+  - Token exchange and refresh
+  - Credential integration with Phase 5
 
 ---
 
@@ -40,8 +45,8 @@ None. Waiting for human instruction.
 
 | Priority | Task | Phase |
 |----------|------|-------|
-| Next | Credentials module | Phase 5 |
-| After | Reusable component system | Phase 6 |
+| Next | Reusable component system | Phase 6 |
+| After | Google Login component | Phase 7 |
 | Later | Preview system | Phase 9 |
 | Later | Code generation engine | Phase 10 |
 
@@ -57,12 +62,12 @@ None.
 
 | Decision | Rationale |
 |----------|-----------|
-| Turborepo over Nx | Lightweight, standard in 2026, no vendor lock-in |
-| Vite over Next.js | No SSR needed, faster dev, standard for React |
-| Vitest for workflow-core | Native ESM, fast, compatible with Vite |
-| Jest for API | NestJS ecosystem uses Jest |
-| workflow-core has zero runtime deps | Pure TypeScript, reusable everywhere |
-| Abstract Logger interface | Executor becomes framework-independent |
+| AES-256-GCM encryption | Authenticated encryption, no dependencies, standard |
+| Credentials scoped to projects | Same as workflows, consistent architecture |
+| 6 built-in credential types | Minimal set for testing + Google OAuth2 for Phase 7 |
+| Secrets never in API responses | Security-first design |
+| resolveCredential in context | Lazy credential resolution, executor handles it |
+| Framework-independent credential system | Reusable by code generator |
 
 ---
 
@@ -70,11 +75,11 @@ None.
 
 ```
 apps/
-├── api/        # NestJS backend (48 tests)
+├── api/        # NestJS backend (62 tests)
 └── web/        # React frontend (scaffold)
 
 packages/
-└── workflow-core/  # Framework-independent workflow/node logic (65 tests)
+└── workflow-core/  # Framework-independent workflow/node/credential logic (100 tests)
 ```
 
 ---
@@ -83,24 +88,24 @@ packages/
 
 ```bash
 # From root
-pnpm test      # 113 tests passing ✅
+pnpm test      # 162 tests passing ✅
 pnpm typecheck # passes ✅
 pnpm lint      # passes ✅
 
 # From apps/api
-pnpm test      # 48 tests passing ✅
+pnpm test      # 62 tests passing ✅
 
 # From packages/workflow-core
-pnpm test      # 65 tests passing ✅
+pnpm test      # 100 tests passing ✅
 ```
 
 ---
 
 ## Exact Next Steps
 
-1. If starting Phase 5 (Credentials), create feature plan in `docs/features/006-credentials.md`.
+1. If starting Phase 6 (Reusable Component System), create feature plan in `docs/features/007-reusable-components.md`.
 2. Follow the development lifecycle: PLAN → APPROVE → IMPLEMENT → TEST.
-3. The credentials module will enable nodes to use authenticated API calls.
+3. The component system will define how reusable development components are stored and managed.
 
 ---
 
@@ -112,3 +117,4 @@ pnpm test      # 65 tests passing ✅
 - **Trust the repository**, not this file, if there's a conflict.
 - **Update this file** when meaningful work is completed or interrupted.
 - **Run from the correct directory** — tests are in `apps/api` and `packages/workflow-core`.
+- **Set ENCRYPTION_KEY** when running API tests directly.
