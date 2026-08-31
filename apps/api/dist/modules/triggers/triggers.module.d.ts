@@ -1,1 +1,2 @@
-export declare class TriggersModule {}
+export declare class TriggersModule {
+}

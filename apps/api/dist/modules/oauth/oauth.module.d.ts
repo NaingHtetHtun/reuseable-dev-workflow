@@ -1,1 +1,2 @@
-export declare class OAuthModule {}
+export declare class OAuthModule {
+}

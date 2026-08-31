@@ -1,1 +1,2 @@
-export declare class PreviewModule {}
+export declare class PreviewModule {
+}

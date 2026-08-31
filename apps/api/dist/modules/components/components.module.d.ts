@@ -1,1 +1,2 @@
-export declare class ComponentsModule {}
+export declare class ComponentsModule {
+}

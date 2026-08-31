@@ -1,1 +1,2 @@
-export declare class CodegenModule {}
+export declare class CodegenModule {
+}

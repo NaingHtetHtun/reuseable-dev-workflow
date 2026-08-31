@@ -1,1 +1,2 @@
-export declare class ResourcesModule {}
+export declare class ResourcesModule {
+}
