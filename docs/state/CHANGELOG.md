@@ -2,6 +2,35 @@
 
 > Chronological record of completed work. Most recent entry first.
 
+## 2026-08-31 — Preview System Implemented
+
+**What**: Implemented the preview system — Swagger/OpenAPI integration, workflow preview with sandboxed execution, mock HTTP/delay handlers, and preview API endpoints.
+
+**Files created/modified**:
+- `packages/workflow-core/src/preview-system/` — PreviewExecutor, PreviewTypes, NodeMockRegistry
+- `apps/api/src/modules/preview/` — NestJS PreviewModule, service, controller, DTOs
+- `apps/api/src/main.ts` — Swagger/OpenAPI setup
+- `apps/api/jest.config.ts` — Updated transformIgnorePatterns for @nestjs/swagger
+- Added `@nestjs/swagger@^7.4.2` dependency
+
+**Key design decisions**:
+- Framework-independent preview logic in workflow-core
+- Mock HTTP requests by default in preview (opt-in for real requests)
+- Mock delays by default in preview (opt-in for real execution)
+- Swagger UI at `/api/docs`
+- Validation, dry-run, execute, and step-through preview modes
+- @nestjs/swagger v7 (CJS compatible with Jest)
+
+**Verification**:
+- `pnpm typecheck` — passes
+- `pnpm lint` — passes
+- `pnpm format` — passes
+- Workflow-core: 278 tests passing
+- API: 114 tests passing
+- Total: 392 tests
+
+---
+
 ## 2026-08-31 — Workflow Triggers Implemented
 
 **What**: Implemented the trigger system — framework-independent trigger abstraction with manual, webhook, and scheduled trigger types. Added HMAC webhook validation, idempotency, and API endpoints.

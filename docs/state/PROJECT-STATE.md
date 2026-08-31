@@ -13,6 +13,7 @@
 - [x] Phase 5 — Credentials / Integrations (encrypted storage, credential types, node integration)
 - [x] Phase 7 — OAuth / Authentication Integrations (provider abstraction, PKCE, Google OAuth)
 - [x] Phase 7b — Workflow Triggers (trigger abstraction, manual/webhook/scheduled, HMAC, idempotency)
+- [x] Phase 9 — Preview System (Swagger/OpenAPI, workflow preview, mock registry, sandboxed execution)
 
 ## In Progress
 
@@ -29,19 +30,19 @@ None.
 
 ## Key Metrics
 
-- **Test suites**: 24 (23 in workflow-core, 15 in API)
-- **Total tests**: 354 (256 in workflow-core, 97 in API)
+- **Test suites**: 25 in workflow-core, 17 in API
+- **Total tests**: 392 (278 in workflow-core, 114 in API)
 - **Packages**: 3 (api, web, workflow-core)
 
 ## Monorepo Structure
 
 ```
 apps/
-├── api/        # NestJS backend (97 tests)
+├── api/        # NestJS backend (114 tests)
 └── web/        # React frontend (scaffold)
 
 packages/
-└── workflow-core/  # Framework-independent workflow/node/credential/oauth/trigger logic (256 tests)
+└── workflow-core/  # Framework-independent workflow/node/credential/oauth/trigger/preview logic (278 tests)
 ```
 
 ## Source of Truth

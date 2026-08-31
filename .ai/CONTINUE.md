@@ -13,12 +13,10 @@
 | Field               | Value                                           |
 | ------------------- | ----------------------------------------------- |
 | **Current phase**   | Phase 6 — Reusable Component System             |
-| **Current feature** | 008-workflow-triggers.md (IMPLEMENTED)          |
-| **Current status**  | Triggers implemented and verified. Next: Phase 6. |
+| **Current feature** | 009-preview-system.md (IMPLEMENTED)             |
+| **Current status**  | Preview System implemented and verified. Next: Phase 6. |
 
----
-
-## Completed Work
+---## Completed Work
 
 - [x] Phase 0 — Development System (AGENTS.md, skills, prompts, docs)
 - [x] Phase 1 — Platform Foundation (Prisma, config, logging, error handling, health)
@@ -28,8 +26,8 @@
 - [x] Monorepo Migration (pnpm workspaces, Turborepo, workflow-core extraction, React scaffold)
 - [x] Phase 5 — Credentials / Integrations (encrypted storage, credential types, node integration)
 - [x] Phase 7 — OAuth / Authentication Integrations (provider abstraction, PKCE, Google OAuth)
-
 - [x] Phase 7b — Workflow Triggers (trigger abstraction, manual/webhook/scheduled, HMAC, idempotency)
+- [x] Phase 9 — Preview System (Swagger/OpenAPI, workflow preview, mock registry, sandboxed execution)
 
 ---
 
@@ -86,16 +84,17 @@ packages/
 
 ```bash
 # From root
-pnpm test      # 354 tests passing ✅
 pnpm typecheck # passes ✅
 pnpm lint      # passes ✅
 pnpm format    # passes ✅
 
-# From apps/api
-pnpm test      # 97 tests passing ✅
+# From apps/api (run directly with jest)
+ENCRYPTION_KEY=... npx jest  # 114 tests passing ✅
 
 # From packages/workflow-core
-pnpm test      # 256 tests passing ✅
+npx vitest run  # 278 tests passing ✅
+
+# Total: 392 tests
 ```
 
 ---

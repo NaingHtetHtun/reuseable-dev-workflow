@@ -116,3 +116,14 @@ export {
   scheduledTriggerDefinition,
   ScheduledTriggerHandler,
 } from './trigger-system/triggers';
+
+// Preview System
+export type {
+  PreviewMode,
+  WorkflowPreviewRequest,
+  PreviewOptions,
+  WorkflowPreviewResult,
+  PreviewNodeResult,
+} from './preview-system/preview-types';
+export { PreviewExecutor } from './preview-system/preview-executor';
+export { createPreviewRegistry } from './preview-system/node-mock-registry';

@@ -4,21 +4,22 @@
 
 ## Active Task
 
-**008-workflow-triggers** — IMPLEMENTED and verified.
+**009-preview-system** — IMPLEMENTED and verified.
 
-Phase 7b — Workflow Triggers complete. Next: Phase 6 (Reusable Component System).
+Phase 9 — Preview System complete. Next: Phase 6 (Reusable Component System).
 
 ## Session Context
 
 If you are an AI agent starting a new session, this is what you need to know:
 
-1. Phases 0-5, 7, and 7b are complete (Dev System, Foundation, Projects, Workflow Engine, Node System, Credentials, OAuth, Triggers).
+1. Phases 0-5, 7, 7b, and 9 are complete (Dev System, Foundation, Projects, Workflow Engine, Node System, Credentials, OAuth, Triggers, Preview).
 2. The OAuth module provides a framework-independent provider abstraction with Google as first implementation.
 3. PKCE is supported for providers that implement it (Google does).
 4. State parameter with HMAC-SHA256 provides CSRF protection.
 5. OAuth tokens are stored via the existing credential system (Phase 5).
 6. The trigger system provides manual, webhook, and scheduled trigger types with HMAC validation and idempotency.
-7. The next step is to implement the Reusable Component System (Phase 6).
+7. The preview system provides Swagger/OpenAPI docs, workflow preview with mock HTTP/delay handlers, and sandboxed execution.
+8. The next step is to implement the Reusable Component System (Phase 6).
 
 ## How to Resume Work
 

@@ -8,6 +8,7 @@ import { CredentialsModule } from './modules/credentials/credentials.module';
 import { OAuthModule } from './modules/oauth/oauth.module';
 import { TriggersModule } from './modules/triggers/triggers.module';
 import { WebhooksModule } from './modules/webhooks/webhooks.module';
+import { PreviewModule } from './modules/preview/preview.module';
 import appConfig from './config/app.config';
 import databaseConfig from './config/database.config';
 
@@ -26,6 +27,7 @@ import databaseConfig from './config/database.config';
     OAuthModule,
     TriggersModule,
     WebhooksModule,
+    PreviewModule,
   ],
 })
 export class AppModule {}

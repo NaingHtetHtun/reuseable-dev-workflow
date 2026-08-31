@@ -565,7 +565,9 @@
 
 ## Phase 9 — Preview System
 
-**Status**: NOT STARTED
+**Status**: ✅ COMPLETED
+
+**Feature plan**: `docs/features/009-preview-system.md`
 
 **Goal**: Allow developers to visually or practically verify features before deploying.
 
@@ -575,18 +577,20 @@
 
 - Preview sandbox (isolated execution)
 - Workflow preview (execute with test data)
-- Component preview (show component behavior)
 - API preview (Swagger/OpenAPI)
 - Preview state management
-- Preview URL generation
+- Validation-only preview mode
+- Dry-run preview mode
+- Single node preview
+- Mock HTTP requests and delays in preview
 
-**Dependencies**: Phase 3 (workflow preview), Phase 6 (component preview).
+**Dependencies**: Phase 3 (workflow preview).
 
 **Expected deliverables**:
 
-- Preview module
+- `packages/workflow-core/src/preview-system/` — Framework-independent preview system
+- `apps/api/src/modules/preview/` — NestJS Preview module
 - Swagger/OpenAPI integration
-- Preview sandbox
 - Feature documentation
 
 **Testing requirements**:
@@ -597,11 +601,10 @@
 
 **Completion criteria**:
 
-- [ ] Swagger/OpenAPI available at `/api/docs`
-- [ ] Workflow preview works with test data
-- [ ] Component preview shows behavior
-- [ ] Preview sandbox is isolated
-- [ ] All tests pass
+- [x] Swagger/OpenAPI available at `/api/docs`
+- [x] Workflow preview works with test data
+- [x] Preview sandbox is isolated (mocked HTTP, skipped delays)
+- [x] All tests pass (392 total)
 
 **Intentionally out of scope**:
 

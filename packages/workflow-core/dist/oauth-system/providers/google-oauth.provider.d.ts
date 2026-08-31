@@ -1,12 +1,4 @@
-import {
-  OAuthProvider,
-  OAuthProviderMetadata,
-  OAuthAuthorizationParams,
-  OAuthAuthorizationUrl,
-  OAuthTokenExchangeParams,
-  OAuthTokenResult,
-  OAuthRefreshParams,
-} from '../oauth-provider.interface';
+import { OAuthProvider, OAuthProviderMetadata, OAuthAuthorizationParams, OAuthAuthorizationUrl, OAuthTokenExchangeParams, OAuthTokenResult, OAuthRefreshParams } from '../oauth-provider.interface';
 /**
  * Google OAuth 2.0 provider implementation.
  *
@@ -22,11 +14,11 @@ import {
  * - UserInfo: https://www.googleapis.com/oauth2/v3/userinfo
  */
 export declare class GoogleOAuthProvider implements OAuthProvider {
-  readonly metadata: OAuthProviderMetadata;
-  buildAuthorizationUrl(params: OAuthAuthorizationParams): OAuthAuthorizationUrl;
-  validateState(state: string, expectedState: string): boolean;
-  exchangeCode(params: OAuthTokenExchangeParams): Promise<OAuthTokenResult>;
-  refreshToken(params: OAuthRefreshParams): Promise<OAuthTokenResult>;
-  validateTokenResponse(response: unknown): response is OAuthTokenResult;
+    readonly metadata: OAuthProviderMetadata;
+    buildAuthorizationUrl(params: OAuthAuthorizationParams): OAuthAuthorizationUrl;
+    validateState(state: string, expectedState: string): boolean;
+    exchangeCode(params: OAuthTokenExchangeParams): Promise<OAuthTokenResult>;
+    refreshToken(params: OAuthRefreshParams): Promise<OAuthTokenResult>;
+    validateTokenResponse(response: unknown): response is OAuthTokenResult;
 }
 //# sourceMappingURL=google-oauth.provider.d.ts.map

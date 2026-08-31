@@ -6,15 +6,15 @@
  */
 /** OAuth error response */
 export class OAuthError extends Error {
-  error;
-  errorDescription;
-  errorUri;
-  constructor(error, errorDescription, errorUri) {
-    super(errorDescription ?? error);
-    this.error = error;
-    this.errorDescription = errorDescription;
-    this.errorUri = errorUri;
-    this.name = 'OAuthError';
-  }
+    error;
+    errorDescription;
+    errorUri;
+    constructor(error, errorDescription, errorUri) {
+        super(errorDescription ?? error);
+        this.error = error;
+        this.errorDescription = errorDescription;
+        this.errorUri = errorUri;
+        this.name = 'OAuthError';
+    }
 }
 //# sourceMappingURL=oauth-provider.interface.js.map
