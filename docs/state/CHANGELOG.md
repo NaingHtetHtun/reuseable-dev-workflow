@@ -2,11 +2,71 @@
 
 > Chronological record of completed work. Most recent entry first.
 
+## 2026-09-01 — Resource / CRUD Builder Implemented
+
+**What**: Implemented the resource definition system — framework-independent resource definitions with 9 field types, Prisma schema generator, validation rule generator, and full NestJS CRUD API with versioning and generation preview endpoints.
+
+**Files created/modified**:
+- `packages/workflow-core/src/resource-system/` — ResourceTypes, ResourceValidator, PrismaGenerator, ValidationGenerator, tests
+- `apps/api/src/modules/resources/` — NestJS ResourcesModule, service, controller, DTOs, tests
+- `apps/api/prisma/schema.prisma` — Added Resource and ResourceVersion models
+- `apps/api/src/app.module.ts` — Registered ResourcesModule
+- `docs/features/011-resource-crud-builder.md` — Feature documentation
+
+**Key design decisions**:
+- PascalCase resource names, snake_case field names
+- 9 built-in field types (string, text, boolean, integer, float, timestamp, json, enum, relation)
+- Framework-independent generators in workflow-core
+- Generation preview endpoints (Prisma model + validation DTO)
+- Version snapshots following ComponentVersion pattern
+
+**Verification**:
+- `pnpm typecheck` — passes
+- `pnpm lint` — passes
+- `pnpm format` — passes
+- Workflow-core: 375 tests passing
+- API: 181 tests passing
+- Total: 557 tests
+
+---
+
+## 2026-09-01 — Reusable Component System Implemented
+
+**What**: Implemented the reusable component system — framework-independent component definition format, registry, validator, and full NestJS CRUD API with versioning, cloning, search, and filtering.
+
+**Files created/modified**:
+
+- `packages/workflow-core/src/component-system/` — ComponentTypes, ComponentRegistry, ComponentValidator, tests
+- `apps/api/src/modules/components/` — NestJS ComponentsModule, service, controller, DTOs, tests
+- `apps/api/prisma/schema.prisma` — Added Component and ComponentVersion models
+- `docs/features/010-reusable-components.md` — Feature documentation
+
+**Key design decisions**:
+
+- Framework-independent component types in workflow-core
+- Project-scoped components (can be made global later)
+- Semantic versioning with version history snapshots
+- Component cloning with name uniqueness per project
+- Search/filter by name, category, status, tags
+- Config schema, credential schema, input/output schema, and implementation schema per component
+
+**Verification**:
+
+- `pnpm typecheck` — passes
+- `pnpm lint` — passes
+- `pnpm format` — passes
+- Workflow-core: 320 tests passing
+- API: 145 tests passing
+- Total: 465 tests
+
+---
+
 ## 2026-08-31 — Preview System Implemented
 
 **What**: Implemented the preview system — Swagger/OpenAPI integration, workflow preview with sandboxed execution, mock HTTP/delay handlers, and preview API endpoints.
 
 **Files created/modified**:
+
 - `packages/workflow-core/src/preview-system/` — PreviewExecutor, PreviewTypes, NodeMockRegistry
 - `apps/api/src/modules/preview/` — NestJS PreviewModule, service, controller, DTOs
 - `apps/api/src/main.ts` — Swagger/OpenAPI setup
@@ -14,6 +74,7 @@
 - Added `@nestjs/swagger@^7.4.2` dependency
 
 **Key design decisions**:
+
 - Framework-independent preview logic in workflow-core
 - Mock HTTP requests by default in preview (opt-in for real requests)
 - Mock delays by default in preview (opt-in for real execution)
@@ -22,6 +83,7 @@
 - @nestjs/swagger v7 (CJS compatible with Jest)
 
 **Verification**:
+
 - `pnpm typecheck` — passes
 - `pnpm lint` — passes
 - `pnpm format` — passes
@@ -36,6 +98,7 @@
 **What**: Implemented the trigger system — framework-independent trigger abstraction with manual, webhook, and scheduled trigger types. Added HMAC webhook validation, idempotency, and API endpoints.
 
 **Files created/modified**:
+
 - `packages/workflow-core/src/trigger-system/` — TriggerTypeDefinition, TriggerHandler interfaces, TriggerTypeRegistry, TriggerExecutor
 - `packages/workflow-core/src/trigger-system/triggers/` — ManualTriggerHandler, WebhookTriggerHandler, ScheduledTriggerHandler
 - `apps/api/src/modules/triggers/` — NestJS TriggersModule, service, controller
@@ -44,6 +107,7 @@
 - Fixed lint errors (unused imports) in trigger-test and webhook files
 
 **Key design decisions**:
+
 - Framework-independent trigger interface (reusable by code generator)
 - Registry-based (new trigger types without modifying core)
 - HMAC-SHA256 webhook signature validation
@@ -52,6 +116,7 @@
 - External scheduler for cron (not built into platform)
 
 **Verification**:
+
 - `pnpm test` — 354 tests passing (256 in workflow-core, 97 in API)
 - `pnpm typecheck` — passes
 - `pnpm lint` — passes

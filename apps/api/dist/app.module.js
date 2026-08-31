@@ -35,6 +35,9 @@ const credentials_module_1 = require('./modules/credentials/credentials.module')
 const oauth_module_1 = require('./modules/oauth/oauth.module');
 const triggers_module_1 = require('./modules/triggers/triggers.module');
 const webhooks_module_1 = require('./modules/webhooks/webhooks.module');
+const preview_module_1 = require('./modules/preview/preview.module');
+const components_module_1 = require('./modules/components/components.module');
+const resources_module_1 = require('./modules/resources/resources.module');
 const app_config_1 = __importDefault(require('./config/app.config'));
 const database_config_1 = __importDefault(require('./config/database.config'));
 let AppModule = class AppModule {};
@@ -56,6 +59,9 @@ exports.AppModule = AppModule = __decorate(
         oauth_module_1.OAuthModule,
         triggers_module_1.TriggersModule,
         webhooks_module_1.WebhooksModule,
+        preview_module_1.PreviewModule,
+        components_module_1.ComponentsModule,
+        resources_module_1.ResourcesModule,
       ],
     }),
   ],

@@ -1,5 +1,9 @@
 import { NodeRegistry } from '../node-system/registry';
-import type { NodeHandler, NodeExecutionContext, NodeExecutionResult } from '../node-system/interfaces';
+import type {
+  NodeHandler,
+  NodeExecutionContext,
+  NodeExecutionResult,
+} from '../node-system/interfaces';
 import {
   logDefinition,
   LogNodeHandler,
@@ -44,7 +48,10 @@ class MockHttpRequestHandler implements NodeHandler {
     };
   }
 
-  validateConfiguration(_parameters: Record<string, unknown>): { valid: boolean; errors: string[] } {
+  validateConfiguration(_parameters: Record<string, unknown>): {
+    valid: boolean;
+    errors: string[];
+  } {
     return { valid: true, errors: [] };
   }
 }
@@ -72,7 +79,10 @@ class MockDelayHandler implements NodeHandler {
     };
   }
 
-  validateConfiguration(_parameters: Record<string, unknown>): { valid: boolean; errors: string[] } {
+  validateConfiguration(_parameters: Record<string, unknown>): {
+    valid: boolean;
+    errors: string[];
+  } {
     return { valid: true, errors: [] };
   }
 }

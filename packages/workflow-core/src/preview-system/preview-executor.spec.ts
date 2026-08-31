@@ -201,11 +201,7 @@ describe('PreviewExecutor', () => {
 
   describe('previewNode', () => {
     it('should preview a single log node', async () => {
-      const result = await executor.previewNode(
-        simpleWorkflow,
-        'log-1',
-        { message: 'Test input' },
-      );
+      const result = await executor.previewNode(simpleWorkflow, 'log-1', { message: 'Test input' });
 
       expect(result.success).toBe(true);
       expect(result.nodeId).toBe('log-1');
@@ -215,11 +211,7 @@ describe('PreviewExecutor', () => {
     });
 
     it('should return error for non-existent node', async () => {
-      const result = await executor.previewNode(
-        simpleWorkflow,
-        'nonexistent',
-        {},
-      );
+      const result = await executor.previewNode(simpleWorkflow, 'nonexistent', {});
 
       expect(result.success).toBe(false);
       expect(result.error).toContain('Node not found');
@@ -238,22 +230,14 @@ describe('PreviewExecutor', () => {
         edges: [],
       };
 
-      const result = await executor.previewNode(
-        workflowWithUnknown,
-        'unknown-1',
-        {},
-      );
+      const result = await executor.previewNode(workflowWithUnknown, 'unknown-1', {});
 
       expect(result.success).toBe(false);
       expect(result.error).toContain('Unknown node type');
     });
 
     it('should mock HTTP node in preview', async () => {
-      const result = await executor.previewNode(
-        httpWorkflow,
-        'http-1',
-        {},
-      );
+      const result = await executor.previewNode(httpWorkflow, 'http-1', {});
 
       expect(result.success).toBe(true);
       expect(result.output).toBeDefined();
@@ -262,11 +246,7 @@ describe('PreviewExecutor', () => {
     });
 
     it('should mock delay node in preview', async () => {
-      const result = await executor.previewNode(
-        delayWorkflow,
-        'delay-1',
-        {},
-      );
+      const result = await executor.previewNode(delayWorkflow, 'delay-1', {});
 
       expect(result.success).toBe(true);
       expect(result.output).toBeDefined();

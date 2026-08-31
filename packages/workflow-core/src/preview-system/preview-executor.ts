@@ -155,10 +155,7 @@ export class PreviewExecutor {
     }
   }
 
-  private validateOnly(
-    request: WorkflowPreviewRequest,
-    startTime: number,
-  ): WorkflowPreviewResult {
+  private validateOnly(request: WorkflowPreviewRequest, startTime: number): WorkflowPreviewResult {
     const validation = validateWorkflowDefinition(request.definition);
     return {
       success: validation.valid,
@@ -247,9 +244,7 @@ export class PreviewExecutor {
     const sortedNodes = this.topologicalSort(request.definition);
 
     // Apply maxNodes limit
-    const nodesToExecute = options.maxNodes
-      ? sortedNodes.slice(0, options.maxNodes)
-      : sortedNodes;
+    const nodesToExecute = options.maxNodes ? sortedNodes.slice(0, options.maxNodes) : sortedNodes;
 
     if (options.maxNodes && sortedNodes.length > options.maxNodes) {
       warnings.push(

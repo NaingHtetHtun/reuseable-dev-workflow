@@ -10,6 +10,7 @@ import { TriggersModule } from './modules/triggers/triggers.module';
 import { WebhooksModule } from './modules/webhooks/webhooks.module';
 import { PreviewModule } from './modules/preview/preview.module';
 import { ComponentsModule } from './modules/components/components.module';
+import { ResourcesModule } from './modules/resources/resources.module';
 import appConfig from './config/app.config';
 import databaseConfig from './config/database.config';
 
@@ -30,6 +31,7 @@ import databaseConfig from './config/database.config';
     WebhooksModule,
     PreviewModule,
     ComponentsModule,
+    ResourcesModule,
   ],
 })
 export class AppModule {}

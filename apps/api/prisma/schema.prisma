@@ -25,6 +25,7 @@ model Project {
   workflows    Workflow[]
   credentials  Credential[]
   components   Component[]
+  resources    Resource[]
 
   @@map("projects")
 }
@@ -125,4 +126,41 @@ model ComponentVersion {
   @@unique([componentId, version])
   @@index([componentId])
   @@map("component_versions")
+}
+
+model Resource {
+  id          String   @id @default(uuid())
+  projectId   String   @map("project_id")
+  name        String
+  displayName String   @map("display_name")
+  description String?
+  tableName   String?  @map("table_name")
+  version     String   @default("1.0.0")
+  status      String   @default("draft")
+  fields      Json     // ResourceField[] as JSON
+  metadata    Json?
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  project  Project           @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  versions ResourceVersion[]
+
+  @@unique([projectId, name])
+  @@index([projectId])
+  @@map("resources")
+}
+
+model ResourceVersion {
+  id          String   @id @default(uuid())
+  resourceId  String   @map("resource_id")
+  version     String
+  definition  Json     // Snapshot of resource at this version
+  changelog   String?
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  resource Resource @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+
+  @@unique([resourceId, version])
+  @@index([resourceId])
+  @@map("resource_versions")
 }

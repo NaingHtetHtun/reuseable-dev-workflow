@@ -134,10 +134,7 @@ export class ComponentValidator {
   /**
    * Validate an input/output schema.
    */
-  validateIoSchema(
-    schema: ComponentIoSchema,
-    type: 'input' | 'output',
-  ): ValidationResult {
+  validateIoSchema(schema: ComponentIoSchema, type: 'input' | 'output'): ValidationResult {
     const errors: string[] = [];
 
     if (schema.type !== 'object') {
@@ -154,9 +151,7 @@ export class ComponentValidator {
   /**
    * Validate an implementation.
    */
-  validateImplementation(
-    implementation: ComponentDefinition['implementation'],
-  ): ValidationResult {
+  validateImplementation(implementation: ComponentDefinition['implementation']): ValidationResult {
     const errors: string[] = [];
 
     if (!implementation.type) {
@@ -190,10 +185,7 @@ export class ComponentValidator {
   /**
    * Increment a version string based on the type of change.
    */
-  incrementVersion(
-    currentVersion: string,
-    type: 'major' | 'minor' | 'patch',
-  ): string {
+  incrementVersion(currentVersion: string, type: 'major' | 'minor' | 'patch'): string {
     const [major, minor, patch] = currentVersion.split('.').map(Number);
 
     switch (type) {

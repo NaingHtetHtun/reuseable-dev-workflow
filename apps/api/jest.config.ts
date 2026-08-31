@@ -8,9 +8,7 @@ const config: Config = {
   transform: {
     '^.+\\.(t|j)s$': 'ts-jest',
   },
-  transformIgnorePatterns: [
-    '/node_modules/(?!(@nestjs/swagger|@nestjs/common|@nestjs/core)/)',
-  ],
+  transformIgnorePatterns: ['/node_modules/(?!(@nestjs/swagger|@nestjs/common|@nestjs/core)/)'],
   collectCoverageFrom: ['**/*.(t|j)s'],
   coverageDirectory: '../coverage',
   testEnvironment: 'node',

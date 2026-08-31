@@ -11,6 +11,7 @@ Allow developers to visually or practically verify features before deploying. Pr
 ## Problem
 
 Currently, there is no way to:
+
 - View API documentation interactively (no Swagger/OpenAPI)
 - Test workflows with sample data without executing them in production
 - Inspect workflow behavior step-by-step before deployment
@@ -140,9 +141,7 @@ export class PreviewExecutor {
   /**
    * Execute a workflow preview.
    */
-  async preview(
-    request: WorkflowPreviewRequest,
-  ): Promise<WorkflowPreviewResult> {
+  async preview(request: WorkflowPreviewRequest): Promise<WorkflowPreviewResult> {
     const startTime = Date.now();
 
     // Step 1: Validate definition
@@ -192,7 +191,7 @@ export class PreviewExecutor {
     options?: PreviewOptions,
   ): Promise<PreviewNodeResult> {
     // Find the node
-    const node = definition.nodes.find(n => n.id === nodeId);
+    const node = definition.nodes.find((n) => n.id === nodeId);
     if (!node) {
       return {
         nodeId,
@@ -256,10 +255,7 @@ export class PreviewExecutor {
     }
   }
 
-  private validateOnly(
-    request: WorkflowPreviewRequest,
-    startTime: number,
-  ): WorkflowPreviewResult {
+  private validateOnly(request: WorkflowPreviewRequest, startTime: number): WorkflowPreviewResult {
     const validation = validateWorkflowDefinition(request.definition);
     return {
       success: validation.valid,
@@ -325,7 +321,7 @@ export class PreviewExecutor {
 
     const nodeResults: PreviewNodeResult[] = Object.entries(result.nodeResults).map(
       ([nodeId, output]) => {
-        const node = request.definition.nodes.find(n => n.id === nodeId);
+        const node = request.definition.nodes.find((n) => n.id === nodeId);
         return {
           nodeId,
           nodeType: node?.type ?? 'unknown',
@@ -362,12 +358,12 @@ export class PreviewExecutor {
 
 ### API Endpoints
 
-| Method | Path | Description |
-|--------|------|-------------|
-| GET | `/api/v1/preview/docs` | Redirect to Swagger UI |
-| POST | `/api/v1/preview/workflow` | Preview a workflow definition |
-| POST | `/api/v1/preview/workflow/validate` | Validate a workflow definition |
-| POST | `/api/v1/preview/node` | Preview a single node |
+| Method | Path                                | Description                    |
+| ------ | ----------------------------------- | ------------------------------ |
+| GET    | `/api/v1/preview/docs`              | Redirect to Swagger UI         |
+| POST   | `/api/v1/preview/workflow`          | Preview a workflow definition  |
+| POST   | `/api/v1/preview/workflow/validate` | Validate a workflow definition |
+| POST   | `/api/v1/preview/node`              | Preview a single node          |
 
 ### Swagger/OpenAPI Integration
 
@@ -441,8 +437,8 @@ apps/api/src/
 
 ### New Dependencies
 
-| Package | Version | Why |
-|---------|---------|-----|
+| Package           | Version  | Why                                    |
+| ----------------- | -------- | -------------------------------------- |
 | `@nestjs/swagger` | `^7.0.0` | OpenAPI/Swagger integration for NestJS |
 
 **Rationale**: `@nestjs/swagger` is the official NestJS Swagger module. It generates OpenAPI documentation from decorators and provides interactive Swagger UI. It's maintained by the NestJS team and is the standard approach.
@@ -453,20 +449,20 @@ None.
 
 ## Environment Variables
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `SWAGGER_ENABLED` | No | Enable Swagger UI (default: `true` in development) |
-| `PREVIEW_TIMEOUT_MS` | No | Default preview timeout (default: `30000`) |
+| Variable             | Required | Description                                        |
+| -------------------- | -------- | -------------------------------------------------- |
+| `SWAGGER_ENABLED`    | No       | Enable Swagger UI (default: `true` in development) |
+| `PREVIEW_TIMEOUT_MS` | No       | Default preview timeout (default: `30000`)         |
 
 ## Security Considerations
 
-| Concern | Mitigation |
-|---------|------------|
+| Concern                              | Mitigation                                                |
+| ------------------------------------ | --------------------------------------------------------- |
 | Preview executes arbitrary workflows | Sandboxed — no database writes, no production credentials |
-| HTTP requests in preview | Mocked by default, explicit opt-in for real requests |
-| Resource exhaustion | Timeout limits, max node count |
-| Swagger exposes API structure | Only enabled in development, configurable |
-| Preview data leaks | Preview results are ephemeral, not stored permanently |
+| HTTP requests in preview             | Mocked by default, explicit opt-in for real requests      |
+| Resource exhaustion                  | Timeout limits, max node count                            |
+| Swagger exposes API structure        | Only enabled in development, configurable                 |
+| Preview data leaks                   | Preview results are ephemeral, not stored permanently     |
 
 ## Testing Strategy
 
@@ -528,13 +524,13 @@ pnpm lint
 
 ## Risks
 
-| Risk | Likelihood | Impact | Mitigation |
-|------|-----------|--------|------------|
-| Swagger dependency adds bundle size | Low | Low | @nestjs/swagger is lightweight |
-| Preview execution is slow | Medium | Low | Timeout limits, node count limits |
-| Mock responses are unrealistic | Medium | Low | Allow opt-in for real requests |
-| Preview differs from production | Medium | Medium | Document preview limitations |
-| Resource exhaustion via preview | Low | Medium | Rate limiting (future), timeouts |
+| Risk                                | Likelihood | Impact | Mitigation                        |
+| ----------------------------------- | ---------- | ------ | --------------------------------- |
+| Swagger dependency adds bundle size | Low        | Low    | @nestjs/swagger is lightweight    |
+| Preview execution is slow           | Medium     | Low    | Timeout limits, node count limits |
+| Mock responses are unrealistic      | Medium     | Low    | Allow opt-in for real requests    |
+| Preview differs from production     | Medium     | Medium | Document preview limitations      |
+| Resource exhaustion via preview     | Low        | Medium | Rate limiting (future), timeouts  |
 
 ## How Future Previews Are Added
 

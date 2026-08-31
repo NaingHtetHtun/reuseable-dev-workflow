@@ -98,9 +98,7 @@ export class ComponentRegistry {
     }
 
     if (query.tags && query.tags.length > 0) {
-      results = results.filter((c) =>
-        query.tags!.some((t) => c.tags.includes(t)),
-      );
+      results = results.filter((c) => query.tags!.some((t) => c.tags.includes(t)));
     }
 
     // Pagination

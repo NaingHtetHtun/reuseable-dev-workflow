@@ -147,3 +147,21 @@ export type {
 } from './component-system/component-types';
 export { ComponentRegistry } from './component-system/component-registry';
 export { ComponentValidator } from './component-system/component-validator';
+
+// Resource System
+export type {
+  FieldType,
+  ResourceField,
+  ResourceDefinition,
+  ResourceStatus,
+  ResourceMetadata,
+  ResourceVersion,
+  CreateResourceInput,
+  UpdateResourceInput,
+  ResourceQuery,
+  ResourceListResult,
+  ResourceValidationResult,
+} from './resource-system/resource-types';
+export { ResourceValidator } from './resource-system/resource-validator';
+export { PrismaGenerator } from './resource-system/prisma-generator';
+export { ValidationGenerator } from './resource-system/validation-generator';

@@ -141,22 +141,26 @@ describe('ComponentRegistry', () => {
     });
 
     it('should search by displayName', () => {
-      registry.register(createComponent({
-        id: 'c1',
-        name: 'comp-1',
-        displayName: 'Google Authentication',
-      }));
+      registry.register(
+        createComponent({
+          id: 'c1',
+          name: 'comp-1',
+          displayName: 'Google Authentication',
+        }),
+      );
 
       const result = registry.search('authentication');
       expect(result).toHaveLength(1);
     });
 
     it('should search by tags', () => {
-      registry.register(createComponent({
-        id: 'c1',
-        name: 'comp-1',
-        tags: ['google', 'oauth'],
-      }));
+      registry.register(
+        createComponent({
+          id: 'c1',
+          name: 'comp-1',
+          tags: ['google', 'oauth'],
+        }),
+      );
 
       const result = registry.search('oauth');
       expect(result).toHaveLength(1);
