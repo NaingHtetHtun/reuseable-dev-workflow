@@ -1,5 +1,4 @@
 import { validateWorkflowDefinition } from '../validator';
-import { WorkflowExecutor } from '../executor';
 import { noopLogger } from '../logger.interface';
 import { createPreviewRegistry } from './node-mock-registry';
 const DEFAULT_TIMEOUT_MS = 30_000;
@@ -184,9 +183,6 @@ export class PreviewExecutor {
         const warnings = [];
         // Create preview-specific executor with mock registry
         const previewRegistry = createPreviewRegistry(options);
-        const executor = new WorkflowExecutor(this.logger);
-        // Override the registry by creating a new executor with preview registry
-        // We need to execute using the preview registry
         const executionId = `preview-${Date.now()}`;
         // Build execution context
         const context = {

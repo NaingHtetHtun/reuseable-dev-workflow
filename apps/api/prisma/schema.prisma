@@ -24,6 +24,7 @@ model Project {
 
   workflows    Workflow[]
   credentials  Credential[]
+  components   Component[]
 
   @@map("projects")
 }
@@ -79,4 +80,49 @@ model Credential {
   @@index([projectId])
   @@index([type])
   @@map("credentials")
+}
+
+model Component {
+  id              String   @id @default(uuid())
+  projectId       String   @map("project_id")
+  name            String
+  displayName     String   @map("display_name")
+  description     String?
+  version         String   @default("1.0.0")
+  status          String   @default("draft")
+  category        String?
+  tags            String[] // PostgreSQL array
+  author          String?
+  configSchema    Json     @map("config_schema")
+  credentialSchema Json    @map("credential_schema")
+  inputSchema     Json     @map("input_schema")
+  outputSchema    Json     @map("output_schema")
+  implementation  Json
+  metadata        Json?
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  project  Project            @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  versions ComponentVersion[]
+
+  @@unique([projectId, name])
+  @@index([projectId])
+  @@index([category])
+  @@index([status])
+  @@map("components")
+}
+
+model ComponentVersion {
+  id          String   @id @default(uuid())
+  componentId String   @map("component_id")
+  version     String
+  definition  Json     // Snapshot of component at this version
+  changelog   String?
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  component Component @relation(fields: [componentId], references: [id], onDelete: Cascade)
+
+  @@unique([componentId, version])
+  @@index([componentId])
+  @@map("component_versions")
 }

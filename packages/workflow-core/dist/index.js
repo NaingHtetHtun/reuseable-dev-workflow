@@ -23,4 +23,6 @@ export { TriggerExecutor } from './trigger-system/trigger-executor';
 export { manualTriggerDefinition, ManualTriggerHandler, webhookTriggerDefinition, WebhookTriggerHandler, scheduledTriggerDefinition, ScheduledTriggerHandler, } from './trigger-system/triggers';
 export { PreviewExecutor } from './preview-system/preview-executor';
 export { createPreviewRegistry } from './preview-system/node-mock-registry';
+export { ComponentRegistry } from './component-system/component-registry';
+export { ComponentValidator } from './component-system/component-validator';
 //# sourceMappingURL=index.js.map

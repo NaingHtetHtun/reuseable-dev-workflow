@@ -30,4 +30,7 @@ export { manualTriggerDefinition, ManualTriggerHandler, webhookTriggerDefinition
 export type { PreviewMode, WorkflowPreviewRequest, PreviewOptions, WorkflowPreviewResult, PreviewNodeResult, } from './preview-system/preview-types';
 export { PreviewExecutor } from './preview-system/preview-executor';
 export { createPreviewRegistry } from './preview-system/node-mock-registry';
+export type { ComponentStatus, ComponentDefinition, ComponentConfigSchema, ComponentConfigProperty, ComponentCredentialSchema, ComponentIoSchema, ComponentImplementation, ComponentMetadata, ComponentVersion, CreateComponentInput, UpdateComponentInput, ComponentQuery, ComponentListResult, ValidationResult as ComponentValidationResult, } from './component-system/component-types';
+export { ComponentRegistry } from './component-system/component-registry';
+export { ComponentValidator } from './component-system/component-validator';
 //# sourceMappingURL=index.d.ts.map

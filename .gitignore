@@ -1,7 +1,15 @@
 # compiled output
 /dist
+*/dist
 /node_modules
 /src/generated
+
+# Turborepo
+.turbo/
+
+# Vite
+*.vite
+.vite/
 
 # Logs
 logs
