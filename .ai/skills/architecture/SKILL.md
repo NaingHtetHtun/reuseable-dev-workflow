@@ -1,9 +1,11 @@
 # Architecture Skill
 
 ## Purpose
+
 Guide architectural decisions, module boundaries, and system design.
 
 ## When to Use
+
 - Designing new modules or services
 - Deciding module boundaries
 - Evaluating circular dependency risks
@@ -11,6 +13,7 @@ Guide architectural decisions, module boundaries, and system design.
 - Reviewing architectural proposals
 
 ## Required Behavior
+
 1. Inspect existing module structure before proposing changes.
 2. Follow the 8 architecture principles in AGENTS.md.
 3. Ensure no circular dependencies between major modules.
@@ -19,6 +22,7 @@ Guide architectural decisions, module boundaries, and system design.
 6. Separate API, domain, infrastructure, and persistence concerns.
 
 ## Things to Inspect
+
 - Existing module boundaries
 - Import paths between modules
 - NestJS module declarations
@@ -26,6 +30,7 @@ Guide architectural decisions, module boundaries, and system design.
 - Controller responsibilities
 
 ## Things to Avoid
+
 - Giant modules with many services
 - Circular imports
 - Business logic in controllers
@@ -33,6 +38,7 @@ Guide architectural decisions, module boundaries, and system design.
 - Premature abstraction layers
 
 ## Verification Checklist
+
 - [ ] No circular dependencies
 - [ ] Single responsibility per module
 - [ ] Clear API boundaries

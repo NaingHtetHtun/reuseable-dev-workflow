@@ -22,6 +22,7 @@ Application Definition (framework-independent)
 ## Internal Representation
 
 The platform should maintain a framework-independent representation of:
+
 - Application structure
 - Resources/Models
 - API endpoints
@@ -33,11 +34,11 @@ This representation is the single source of truth that generators consume.
 
 ## Future Targets
 
-| Framework | Status | Versions |
-|-----------|--------|----------|
-| Laravel | PLANNED | v12, v13+ |
-| NestJS | PLANNED | v10+ |
-| Other | FUTURE | TBD |
+| Framework | Status  | Versions  |
+| --------- | ------- | --------- |
+| Laravel   | PLANNED | v12, v13+ |
+| NestJS    | PLANNED | v10+      |
+| Other     | FUTURE  | TBD       |
 
 ## Architecture
 

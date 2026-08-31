@@ -1,0 +1,1 @@
+{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../src/trigger-system/index.ts"],"names":[],"mappings":"AAAA;;GAEG;AAGH,cAAc,0BAA0B,CAAC;AAGzC,OAAO,EAAE,mBAAmB,EAAE,oBAAoB,EAAE,MAAM,yBAAyB,CAAC;AAGpF,OAAO,EAAE,eAAe,EAAE,mBAAmB,EAAE,MAAM,oBAAoB,CAAC;AAG1E,OAAO,EACL,uBAAuB,EACvB,oBAAoB,EACpB,wBAAwB,EACxB,qBAAqB,EACrB,0BAA0B,EAC1B,uBAAuB,GACxB,MAAM,YAAY,CAAC"}

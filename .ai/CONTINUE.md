@@ -10,12 +10,11 @@
 
 ## Current State
 
-| Field | Value |
-|-------|-------|
-| **Current phase** | Phase 7 — OAuth / Authentication Integrations ✅ COMPLETED |
-| **Next phase** | Phase 6 — Reusable Component System |
-| **Current feature** | None (between features) |
-| **Current status** | OAuth module complete. Awaiting next task from human. |
+| Field               | Value                                           |
+| ------------------- | ----------------------------------------------- |
+| **Current phase**   | Phase 6 — Reusable Component System             |
+| **Current feature** | 008-workflow-triggers.md (IMPLEMENTED)          |
+| **Current status**  | Triggers implemented and verified. Next: Phase 6. |
 
 ---
 
@@ -30,22 +29,24 @@
 - [x] Phase 5 — Credentials / Integrations (encrypted storage, credential types, node integration)
 - [x] Phase 7 — OAuth / Authentication Integrations (provider abstraction, PKCE, Google OAuth)
 
+- [x] Phase 7b — Workflow Triggers (trigger abstraction, manual/webhook/scheduled, HMAC, idempotency)
+
 ---
 
 ## Work In Progress
 
-None. Waiting for human instruction.
+None.
 
 ---
 
 ## Pending Work
 
-| Priority | Task | Phase |
-|----------|------|-------|
-| Next | Reusable component system | Phase 6 |
-| After | Resource / CRUD Builder | Phase 8 |
-| Later | Preview system | Phase 9 |
-| Later | Code generation engine | Phase 10 |
+| Priority | Task                      | Phase    |
+| -------- | ------------------------- | -------- |
+| Next     | Reusable component system | Phase 6  |
+| After    | Resource / CRUD Builder   | Phase 8  |
+| Later    | Preview system            | Phase 9  |
+| Later    | Code generation engine    | Phase 10 |
 
 ---
 
@@ -57,14 +58,14 @@ None.
 
 ## Important Decisions
 
-| Decision | Rationale |
-|----------|-----------|
-| PKCE implemented now | OAuth 2.1 requires it for all auth code flows |
-| OpenID Connect deferred | Architecture supports it, not needed for Phase 7 |
-| HMAC-signed state tokens | CSRF protection without external dependencies |
-| On-demand token refresh | No background jobs, nodes refresh when needed |
-| Framework-independent OAuth | Reusable by code generator |
-| Google as first provider | Well-documented, validates the abstraction |
+| Decision                    | Rationale                                        |
+| --------------------------- | ------------------------------------------------ |
+| PKCE implemented now        | OAuth 2.1 requires it for all auth code flows    |
+| OpenID Connect deferred     | Architecture supports it, not needed for Phase 7 |
+| HMAC-signed state tokens    | CSRF protection without external dependencies    |
+| On-demand token refresh     | No background jobs, nodes refresh when needed    |
+| Framework-independent OAuth | Reusable by code generator                       |
+| Google as first provider    | Well-documented, validates the abstraction       |
 
 ---
 
@@ -85,22 +86,23 @@ packages/
 
 ```bash
 # From root
-pnpm test      # 221 tests passing ✅
+pnpm test      # 354 tests passing ✅
 pnpm typecheck # passes ✅
 pnpm lint      # passes ✅
+pnpm format    # passes ✅
 
 # From apps/api
-pnpm test      # 71 tests passing ✅
+pnpm test      # 97 tests passing ✅
 
 # From packages/workflow-core
-pnpm test      # 150 tests passing ✅
+pnpm test      # 256 tests passing ✅
 ```
 
 ---
 
 ## Exact Next Steps
 
-1. If starting Phase 6 (Reusable Component System), create feature plan in `docs/features/008-reusable-components.md`.
+1. Start Phase 6 (Reusable Component System) — create feature plan in `docs/features/009-reusable-components.md`.
 2. Follow the development lifecycle: PLAN → APPROVE → IMPLEMENT → TEST.
 3. The component system will define how reusable development components are stored and managed.
 

@@ -21,9 +21,7 @@ describe('IntegrationRegistry', () => {
 
     it('should reject duplicate registration', () => {
       registry.register(apiKeyCredentialType);
-      expect(() => registry.register(apiKeyCredentialType)).toThrow(
-        'already registered',
-      );
+      expect(() => registry.register(apiKeyCredentialType)).toThrow('already registered');
     });
   });
 

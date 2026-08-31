@@ -69,9 +69,7 @@ describe('Credential Types', () => {
     });
 
     it('should include google-oauth2 type', () => {
-      expect(
-        builtInCredentialTypes.some((t) => t.type === 'google-oauth2'),
-      ).toBe(true);
+      expect(builtInCredentialTypes.some((t) => t.type === 'google-oauth2')).toBe(true);
     });
 
     it('each type should have displayName and description', () => {

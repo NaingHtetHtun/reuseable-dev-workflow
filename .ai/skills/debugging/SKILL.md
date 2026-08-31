@@ -1,15 +1,18 @@
 # Debugging Skill
 
 ## Purpose
+
 Debug issues systematically rather than guessing.
 
 ## When to Use
+
 - Investigating failing tests
 - Debugging runtime errors
 - Investigating unexpected behavior
 - Fixing type errors
 
 ## Required Behavior
+
 1. Reproduce the issue first.
 2. Read the error message carefully.
 3. Check the stack trace.
@@ -19,12 +22,14 @@ Debug issues systematically rather than guessing.
 7. Verify the fix with tests.
 
 ## Things to Inspect
+
 - Error messages and stack traces
 - Recent code changes
 - Configuration files
 - Dependency versions
 
 ## Things to Avoid
+
 - Guessing without reading errors
 - Adding random fixes without understanding
 - Hiding errors with try/catch
@@ -32,6 +37,7 @@ Debug issues systematically rather than guessing.
 - Claiming a fix without verification
 
 ## Verification Checklist
+
 - [ ] Issue reproduced
 - [ ] Root cause identified
 - [ ] Fix addresses root cause

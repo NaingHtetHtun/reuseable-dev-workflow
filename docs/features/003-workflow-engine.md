@@ -16,29 +16,33 @@ The platform has no concept of "workflows" yet. The core product value is visual
 
 ### Patterns Evaluated
 
-| System | Model | Format | Key Insight |
-|--------|-------|--------|-------------|
-| **AWS Step Functions** | State machine | JSON (ASL) | States with types, `Next`/`End` transitions, data passes between states as JSON |
-| **n8n** | Node graph | JSON | Nodes with types + parameters, connections define data flow, visual position stored |
-| **Temporal** | Code-based | TypeScript/Go | Workflows are code, not JSON. Activities are units of work. Signals/Queries for interaction. |
-| **Camunda** | BPMN | XML | Tasks, gateways, events, sequence flows. Formal standard but complex. |
+| System                 | Model         | Format        | Key Insight                                                                                  |
+| ---------------------- | ------------- | ------------- | -------------------------------------------------------------------------------------------- |
+| **AWS Step Functions** | State machine | JSON (ASL)    | States with types, `Next`/`End` transitions, data passes between states as JSON              |
+| **n8n**                | Node graph    | JSON          | Nodes with types + parameters, connections define data flow, visual position stored          |
+| **Temporal**           | Code-based    | TypeScript/Go | Workflows are code, not JSON. Activities are units of work. Signals/Queries for interaction. |
+| **Camunda**            | BPMN          | XML           | Tasks, gateways, events, sequence flows. Formal standard but complex.                        |
 
 ### Design Decision: Node-Edge Graph (n8n-style)
 
 **Why not state machine (AWS ASL)?**
+
 - State machines are powerful but add complexity (Choice, Parallel, Map states).
 - For Phase 3, sequential execution is sufficient.
 - State machine semantics can be added later as node types.
 
 **Why not code-based (Temporal)?**
+
 - Temporal workflows are code, not data. Our platform needs definitions as data for visual builder and code generation.
 - Code-based workflows can't be visually edited or exported to frameworks.
 
 **Why not BPMN (Camunda)?**
+
 - BPMN is XML-based, verbose, and complex.
 - Overkill for our use case. JSON is simpler and more developer-friendly.
 
 **Selected: Node-Edge Graph**
+
 - Simple, intuitive, JSON-based.
 - Compatible with visual builder (nodes have positions).
 - Compatible with code generation (definitions are data).
@@ -80,10 +84,10 @@ Based on research of n8n, AWS ASL, and common workflow patterns:
 interface WorkflowDefinition {
   /** Nodes in the workflow graph */
   nodes: WorkflowNode[];
-  
+
   /** Edges connecting nodes (directed) */
   edges: WorkflowEdge[];
-  
+
   /** Optional metadata for visual builder */
   viewport?: { x: number; y: number; zoom: number };
 }
@@ -92,19 +96,19 @@ interface WorkflowDefinition {
 interface WorkflowNode {
   /** Unique identifier within the workflow */
   id: string;
-  
+
   /** Node type identifier (e.g., 'log', 'http-request', 'set-variable') */
   type: string;
-  
+
   /** Human-readable name for display */
   name: string;
-  
+
   /** Type-specific configuration */
   parameters: Record<string, unknown>;
-  
+
   /** Position in visual builder (optional) */
   position?: { x: number; y: number };
-  
+
   /** Credentials required by this node (reference IDs) */
   credentialIds?: string[];
 }
@@ -113,22 +117,23 @@ interface WorkflowNode {
 interface WorkflowEdge {
   /** Unique identifier for this edge */
   id: string;
-  
+
   /** Source node ID */
   source: string;
-  
+
   /** Target node ID */
   target: string;
-  
+
   /** Source output index (for nodes with multiple outputs, default: 0) */
   sourceOutput?: number;
-  
+
   /** Optional condition for conditional edges (future) */
   condition?: Record<string, unknown>;
 }
 ```
 
 **Design rationale:**
+
 - `id` on edges allows future reference (e.g., for visual builder selection).
 - `sourceOutput` supports future multi-output nodes (e.g., Choice/If nodes).
 - `condition` on edges is a placeholder for future conditional branching.
@@ -176,6 +181,7 @@ model WorkflowExecution {
 ```
 
 **Key decisions:**
+
 - `definition` is `Json` — framework-independent, stored as-is.
 - `version` is an integer — incremented on each update (simple, explicit).
 - `status` is a string enum — DRAFT → ACTIVE → ARCHIVED.
@@ -185,6 +191,7 @@ model WorkflowExecution {
 ### Versioning Strategy
 
 Simple integer versioning:
+
 - Version starts at 1 on creation.
 - Incremented on each `update` call.
 - No draft/published version separation (too complex for Phase 3).
@@ -198,25 +205,26 @@ During execution, a context object flows through nodes:
 interface ExecutionContext {
   /** The workflow being executed */
   workflowId: string;
-  
+
   /** The execution ID */
   executionId: string;
-  
+
   /** Initial input to the workflow */
   input: unknown;
-  
+
   /** Results from previously executed nodes */
   nodeResults: Map<string, unknown>;
-  
+
   /** Current node being executed */
   currentNodeId: string;
-  
+
   /** Timestamp of execution start */
   startedAt: Date;
 }
 ```
 
 **Data flow between nodes:**
+
 1. Workflow receives `input` (JSON).
 2. First node receives `input` as its input.
 3. Each node produces `output`.
@@ -249,11 +257,13 @@ Basic sequential executor for Phase 3:
 7. Record execution status and result.
 
 **Node execution:**
+
 - For Phase 3, only `log` type is implemented (prints to console).
 - Phase 4 adds built-in node types (HTTP, delay, set-variable, etc.).
 - Unknown node types throw an error during execution.
 
 **Error handling:**
+
 - If a node throws, execution stops.
 - Execution status set to `failed`.
 - Error message recorded in `error` field.
@@ -286,21 +296,22 @@ src/modules/workflows/
 
 ### Endpoints
 
-| Method | Path | Description | Status |
-|--------|------|-------------|--------|
-| POST | `/api/v1/projects/:projectId/workflows` | Create workflow | 201 |
-| GET | `/api/v1/projects/:projectId/workflows` | List workflows | 200 |
-| GET | `/api/v1/projects/:projectId/workflows/:id` | Get workflow | 200 |
-| PATCH | `/api/v1/projects/:projectId/workflows/:id` | Update workflow | 200 |
-| DELETE | `/api/v1/projects/:projectId/workflows/:id` | Delete workflow | 204 |
-| POST | `/api/v1/projects/:projectId/workflows/:id/execute` | Execute workflow | 201 |
-| GET | `/api/v1/projects/:projectId/workflows/:id/executions` | List executions | 200 |
+| Method | Path                                                   | Description      | Status |
+| ------ | ------------------------------------------------------ | ---------------- | ------ |
+| POST   | `/api/v1/projects/:projectId/workflows`                | Create workflow  | 201    |
+| GET    | `/api/v1/projects/:projectId/workflows`                | List workflows   | 200    |
+| GET    | `/api/v1/projects/:projectId/workflows/:id`            | Get workflow     | 200    |
+| PATCH  | `/api/v1/projects/:projectId/workflows/:id`            | Update workflow  | 200    |
+| DELETE | `/api/v1/projects/:projectId/workflows/:id`            | Delete workflow  | 204    |
+| POST   | `/api/v1/projects/:projectId/workflows/:id/execute`    | Execute workflow | 201    |
+| GET    | `/api/v1/projects/:projectId/workflows/:id/executions` | List executions  | 200    |
 
 ### Request/Response Formats
 
 #### POST /api/v1/projects/:projectId/workflows
 
 Request:
+
 ```json
 {
   "name": "My Workflow",
@@ -320,6 +331,7 @@ Request:
 ```
 
 Response 201:
+
 ```json
 {
   "id": "uuid",
@@ -347,6 +359,7 @@ Response 201:
 #### POST /api/v1/projects/:projectId/workflows/:id/execute
 
 Request:
+
 ```json
 {
   "input": { "key": "value" }
@@ -354,6 +367,7 @@ Request:
 ```
 
 Response 201:
+
 ```json
 {
   "id": "execution-uuid",
@@ -373,6 +387,7 @@ Response 201:
 #### GET /api/v1/projects/:projectId/workflows/:id/executions
 
 Response 200:
+
 ```json
 {
   "data": [...],
@@ -468,17 +483,18 @@ pnpm test && pnpm typecheck && pnpm lint
 ## Documentation
 
 After implementation, update:
+
 - `docs/architecture/overview.md` — Add workflows module
 - `docs/state/PROJECT-STATE.md` — Update completed items
 - `docs/state/CHANGELOG.md` — Add completion entry
 
 ## Risks
 
-| Risk | Likelihood | Impact | Mitigation |
-|------|-----------|--------|------------|
-| JSON definition bloat | Low | Low | Future: paginate or compress |
-| Execution engine scope creep | Medium | Medium | Keep minimal — sequential only |
-| Node type registration complexity | Low | Low | Phase 3 allows any type; Phase 4 registers built-in types |
+| Risk                              | Likelihood | Impact | Mitigation                                                |
+| --------------------------------- | ---------- | ------ | --------------------------------------------------------- |
+| JSON definition bloat             | Low        | Low    | Future: paginate or compress                              |
+| Execution engine scope creep      | Medium     | Medium | Keep minimal — sequential only                            |
+| Node type registration complexity | Low        | Low    | Phase 3 allows any type; Phase 4 registers built-in types |
 
 ## Known Limitations
 
@@ -491,40 +507,40 @@ After implementation, update:
 
 ## Future Extensibility
 
-| Feature | How Definition Supports It |
-|---------|---------------------------|
-| **Built-in nodes (Phase 4)** | New `type` values registered in node registry |
-| **Credentials (Phase 5)** | `credentialIds` field on nodes references credential IDs |
-| **Triggers (future)** | Add `triggers` array to definition (webhook, schedule) |
-| **Conditional edges (future)** | `condition` field on edges evaluated at runtime |
-| **Visual builder (Phase 9)** | `position` field on nodes stores canvas coordinates |
-| **Code generation (Phase 10-12)** | Definition is data — generators read nodes/edges/types |
-| **Multi-output nodes (future)** | `sourceOutput` field on edges selects which output |
+| Feature                           | How Definition Supports It                               |
+| --------------------------------- | -------------------------------------------------------- |
+| **Built-in nodes (Phase 4)**      | New `type` values registered in node registry            |
+| **Credentials (Phase 5)**         | `credentialIds` field on nodes references credential IDs |
+| **Triggers (future)**             | Add `triggers` array to definition (webhook, schedule)   |
+| **Conditional edges (future)**    | `condition` field on edges evaluated at runtime          |
+| **Visual builder (Phase 9)**      | `position` field on nodes stores canvas coordinates      |
+| **Code generation (Phase 10-12)** | Definition is data — generators read nodes/edges/types   |
+| **Multi-output nodes (future)**   | `sourceOutput` field on edges selects which output       |
 
 ## Files Changed
 
-| File | Action |
-|------|--------|
-| `prisma/schema.prisma` | Modified (added Workflow, WorkflowExecution) |
-| `src/modules/workflows/workflows.module.ts` | Created |
-| `src/modules/workflows/workflows.controller.ts` | Created |
-| `src/modules/workflows/workflows.service.ts` | Created |
-| `src/modules/workflows/engine/types.ts` | Created |
-| `src/modules/workflows/engine/workflow-validator.ts` | Created |
-| `src/modules/workflows/engine/workflow-executor.ts` | Created |
-| `src/modules/workflows/dto/create-workflow.dto.ts` | Created |
-| `src/modules/workflows/dto/update-workflow.dto.ts` | Created |
-| `src/modules/workflows/dto/execute-workflow.dto.ts` | Created |
-| `src/modules/workflows/dto/workflow-response.dto.ts` | Created |
-| `src/modules/workflows/dto/workflow-query.dto.ts` | Created |
-| `src/modules/workflows/dto/execution-response.dto.ts` | Created |
-| `src/modules/workflows/dto/index.ts` | Created |
-| `src/modules/workflows/engine/workflow-validator.spec.ts` | Created |
-| `src/modules/workflows/engine/workflow-executor.spec.ts` | Created |
-| `src/modules/workflows/workflows.service.spec.ts` | Created |
-| `src/modules/workflows/workflows.controller.spec.ts` | Created |
-| `src/app.module.ts` | Modified (added WorkflowsModule) |
-| `src/modules/projects/projects.module.ts` | Modified (exported ProjectsService) |
+| File                                                      | Action                                       |
+| --------------------------------------------------------- | -------------------------------------------- |
+| `prisma/schema.prisma`                                    | Modified (added Workflow, WorkflowExecution) |
+| `src/modules/workflows/workflows.module.ts`               | Created                                      |
+| `src/modules/workflows/workflows.controller.ts`           | Created                                      |
+| `src/modules/workflows/workflows.service.ts`              | Created                                      |
+| `src/modules/workflows/engine/types.ts`                   | Created                                      |
+| `src/modules/workflows/engine/workflow-validator.ts`      | Created                                      |
+| `src/modules/workflows/engine/workflow-executor.ts`       | Created                                      |
+| `src/modules/workflows/dto/create-workflow.dto.ts`        | Created                                      |
+| `src/modules/workflows/dto/update-workflow.dto.ts`        | Created                                      |
+| `src/modules/workflows/dto/execute-workflow.dto.ts`       | Created                                      |
+| `src/modules/workflows/dto/workflow-response.dto.ts`      | Created                                      |
+| `src/modules/workflows/dto/workflow-query.dto.ts`         | Created                                      |
+| `src/modules/workflows/dto/execution-response.dto.ts`     | Created                                      |
+| `src/modules/workflows/dto/index.ts`                      | Created                                      |
+| `src/modules/workflows/engine/workflow-validator.spec.ts` | Created                                      |
+| `src/modules/workflows/engine/workflow-executor.spec.ts`  | Created                                      |
+| `src/modules/workflows/workflows.service.spec.ts`         | Created                                      |
+| `src/modules/workflows/workflows.controller.spec.ts`      | Created                                      |
+| `src/app.module.ts`                                       | Modified (added WorkflowsModule)             |
+| `src/modules/projects/projects.module.ts`                 | Modified (exported ProjectsService)          |
 
 ## Completion Checklist
 

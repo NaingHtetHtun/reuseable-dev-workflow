@@ -11,16 +11,19 @@ Ensure that every new AI coding session can recover full project context without
 The system uses three state files as persistent memory:
 
 ### 1. `docs/state/PROJECT-STATE.md`
+
 - **What it is**: Snapshot of the entire project's current state.
 - **When updated**: When features are completed or project phase changes.
 - **Contains**: Completed work, pending work, blockers, next task, architecture decisions.
 
 ### 2. `docs/state/CURRENT-WORK.md`
+
 - **What it is**: Active work tracking for the current/last session.
 - **When updated**: At start and end of each work session.
 - **Contains**: Active task, session context, how to resume, blockers.
 
 ### 3. `docs/state/CHANGELOG.md`
+
 - **What it is**: Chronological history of completed work.
 - **When updated**: With each completed piece of work.
 - **Contains**: Date, description, files changed, verification results.
@@ -60,6 +63,7 @@ Before ending a session, execute:
 **The repository is the source of truth.**
 
 If `docs/state/` files conflict with reality:
+
 - The repository wins.
 - Update the documentation to match reality.
 - Never claim work is completed when it has not been verified.

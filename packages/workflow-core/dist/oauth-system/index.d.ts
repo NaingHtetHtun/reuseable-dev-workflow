@@ -1,4 +1,14 @@
-export type { OAuthProviderMetadata, OAuthFlow, PkceChallengeMethod, OAuthAuthorizationParams, OAuthAuthorizationUrl, OAuthTokenExchangeParams, OAuthTokenResult, OAuthRefreshParams, OAuthProvider, } from './oauth-provider.interface';
+export type {
+  OAuthProviderMetadata,
+  OAuthFlow,
+  PkceChallengeMethod,
+  OAuthAuthorizationParams,
+  OAuthAuthorizationUrl,
+  OAuthTokenExchangeParams,
+  OAuthTokenResult,
+  OAuthRefreshParams,
+  OAuthProvider,
+} from './oauth-provider.interface';
 export { OAuthError } from './oauth-provider.interface';
 export { PkceHelper } from './pkce-helper';
 export type { PkceChallenge } from './pkce-helper';

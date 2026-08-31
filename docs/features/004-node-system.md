@@ -46,6 +46,7 @@ The current `WorkflowExecutor` has hardcoded node types (`log`, `set-variable`, 
 ### Framework Independence
 
 The node system is defined as plain TypeScript interfaces and classes with no NestJS decorators, no Prisma imports, and no HTTP dependencies. This allows:
+
 - The workflow executor (NestJS module) to consume it.
 - The code-generation system (future) to read node definitions.
 - The visual builder (future) to display node metadata.
@@ -206,6 +207,7 @@ export class NodeRegistry {
 ### Node Validator
 
 Validates a `WorkflowNode` against the registry:
+
 1. Node type must be registered.
 2. Required parameters must be present.
 3. Parameter types must match schema.
@@ -214,18 +216,22 @@ Validates a `WorkflowNode` against the registry:
 ### Built-in Node Types
 
 #### 1. `log` (core)
+
 Logs a message. Already exists, formalized.
 
 **Parameters:**
+
 - `message` (string, required): Message to log
 
 **Input:** Any  
 **Output:** `{ logged: true, message: string, input: unknown }`
 
 #### 2. `set-variable` (core)
+
 Sets a named variable in the execution context. Already exists, formalized.
 
 **Parameters:**
+
 - `name` (string, required): Variable name
 - `value` (any, required): Variable value
 
@@ -233,6 +239,7 @@ Sets a named variable in the execution context. Already exists, formalized.
 **Output:** `{ ...input, [name]: value }`
 
 #### 3. `no-op` (core)
+
 Passes input through unchanged. Already exists, formalized.
 
 **Parameters:** None  
@@ -240,9 +247,11 @@ Passes input through unchanged. Already exists, formalized.
 **Output:** Same as input
 
 #### 4. `http-request` (integration)
+
 Makes an HTTP request. Genuinely useful for testing integrations.
 
 **Parameters:**
+
 - `url` (string, required): Request URL
 - `method` (string, optional, default: 'GET'): HTTP method
 - `headers` (object, optional): Request headers
@@ -252,9 +261,11 @@ Makes an HTTP request. Genuinely useful for testing integrations.
 **Output:** `{ status: number, headers: object, body: any }`
 
 #### 5. `delay` (core)
+
 Waits for a specified duration. Useful for testing async workflows.
 
 **Parameters:**
+
 - `duration` (number, required): Milliseconds to wait
 
 **Input:** Any  
@@ -263,12 +274,14 @@ Waits for a specified duration. Useful for testing async workflows.
 ### Executor Refactor
 
 The `WorkflowExecutor` will be refactored to:
+
 1. Accept a `NodeRegistry` instance.
 2. Look up handlers from the registry instead of using a switch statement.
 3. Pass `NodeExecutionContext` to handlers.
 4. Use `NodeExecutionResult` from handlers.
 
 **Before:**
+
 ```typescript
 private executeNode(node: WorkflowNode, input: unknown): unknown {
   switch (node.type) {
@@ -281,6 +294,7 @@ private executeNode(node: WorkflowNode, input: unknown): unknown {
 ```
 
 **After:**
+
 ```typescript
 private async executeNode(
   node: WorkflowNode,
@@ -304,6 +318,7 @@ private async executeNode(
 4. Register with the `NodeRegistry`.
 
 **Example: Future `google-login` node (Phase 7)**
+
 ```typescript
 const googleLoginDefinition: NodeTypeDefinition = {
   type: 'google-login',
@@ -328,6 +343,7 @@ registry.register(googleLoginDefinition, new GoogleLoginHandler());
 ### Credential Integration (Phase 5 Placeholder)
 
 The `NodeExecutionContext` will later include a credential resolver:
+
 ```typescript
 interface NodeExecutionContext {
   // ... existing fields
@@ -341,6 +357,7 @@ Nodes that need credentials will declare them in `requiredCredentials` and use t
 ### Workflow JSON Definition
 
 Nodes are represented in the workflow definition as before:
+
 ```json
 {
   "id": "node-1",
@@ -433,17 +450,18 @@ curl -X POST http://localhost:3000/api/v1/projects/{projectId}/workflows/{id}/ex
 ## Documentation
 
 After implementation, update:
+
 - `docs/architecture/overview.md` — Add node system description
 - `docs/state/PROJECT-STATE.md` — Update completed items
 - `docs/state/CHANGELOG.md` — Add completion entry
 
 ## Risks
 
-| Risk | Likelihood | Impact | Mitigation |
-|------|-----------|--------|------------|
-| Executor refactor breaks existing tests | Medium | Medium | Run tests after each refactor step |
-| HTTP request node needs fetch (Node 18+) | Low | Low | Node 20+ has native fetch |
-| Schema validation too complex | Low | Low | Keep schemas simple, JSON Schema subset |
+| Risk                                     | Likelihood | Impact | Mitigation                              |
+| ---------------------------------------- | ---------- | ------ | --------------------------------------- |
+| Executor refactor breaks existing tests  | Medium     | Medium | Run tests after each refactor step      |
+| HTTP request node needs fetch (Node 18+) | Low        | Low    | Node 20+ has native fetch               |
+| Schema validation too complex            | Low        | Low    | Keep schemas simple, JSON Schema subset |
 
 ## Known Limitations
 
@@ -456,28 +474,28 @@ After implementation, update:
 
 ## Files Changed
 
-| File | Action |
-|------|--------|
-| `src/modules/workflows/engine/node-system/node-type.interface.ts` | Created |
-| `src/modules/workflows/engine/node-system/node-registry.ts` | Created |
-| `src/modules/workflows/engine/node-system/node-validator.ts` | Created |
-| `src/modules/workflows/engine/node-system/index.ts` | Created |
-| `src/modules/workflows/engine/node-system/builtin/log.node.ts` | Created |
-| `src/modules/workflows/engine/node-system/builtin/set-variable.node.ts` | Created |
-| `src/modules/workflows/engine/node-system/builtin/no-op.node.ts` | Created |
-| `src/modules/workflows/engine/node-system/builtin/http-request.node.ts` | Created |
-| `src/modules/workflows/engine/node-system/builtin/delay.node.ts` | Created |
-| `src/modules/workflows/engine/node-system/builtin/index.ts` | Created |
-| `src/modules/workflows/engine/node-system/node-registry.spec.ts` | Created |
-| `src/modules/workflows/engine/node-system/node-validator.spec.ts` | Created |
-| `src/modules/workflows/engine/node-system/builtin/log.node.spec.ts` | Created |
-| `src/modules/workflows/engine/node-system/builtin/set-variable.node.spec.ts` | Created |
-| `src/modules/workflows/engine/node-system/builtin/no-op.node.spec.ts` | Created |
-| `src/modules/workflows/engine/node-system/builtin/http-request.node.spec.ts` | Created |
-| `src/modules/workflows/engine/node-system/builtin/delay.node.spec.ts` | Created |
-| `src/modules/workflows/engine/workflow-executor.ts` | Modified (refactored to use registry) |
-| `src/modules/workflows/workflows.service.ts` | Modified (async executor call) |
-| `src/modules/workflows/engine/workflow-executor.spec.ts` | Modified (async tests) |
+| File                                                                         | Action                                |
+| ---------------------------------------------------------------------------- | ------------------------------------- |
+| `src/modules/workflows/engine/node-system/node-type.interface.ts`            | Created                               |
+| `src/modules/workflows/engine/node-system/node-registry.ts`                  | Created                               |
+| `src/modules/workflows/engine/node-system/node-validator.ts`                 | Created                               |
+| `src/modules/workflows/engine/node-system/index.ts`                          | Created                               |
+| `src/modules/workflows/engine/node-system/builtin/log.node.ts`               | Created                               |
+| `src/modules/workflows/engine/node-system/builtin/set-variable.node.ts`      | Created                               |
+| `src/modules/workflows/engine/node-system/builtin/no-op.node.ts`             | Created                               |
+| `src/modules/workflows/engine/node-system/builtin/http-request.node.ts`      | Created                               |
+| `src/modules/workflows/engine/node-system/builtin/delay.node.ts`             | Created                               |
+| `src/modules/workflows/engine/node-system/builtin/index.ts`                  | Created                               |
+| `src/modules/workflows/engine/node-system/node-registry.spec.ts`             | Created                               |
+| `src/modules/workflows/engine/node-system/node-validator.spec.ts`            | Created                               |
+| `src/modules/workflows/engine/node-system/builtin/log.node.spec.ts`          | Created                               |
+| `src/modules/workflows/engine/node-system/builtin/set-variable.node.spec.ts` | Created                               |
+| `src/modules/workflows/engine/node-system/builtin/no-op.node.spec.ts`        | Created                               |
+| `src/modules/workflows/engine/node-system/builtin/http-request.node.spec.ts` | Created                               |
+| `src/modules/workflows/engine/node-system/builtin/delay.node.spec.ts`        | Created                               |
+| `src/modules/workflows/engine/workflow-executor.ts`                          | Modified (refactored to use registry) |
+| `src/modules/workflows/workflows.service.ts`                                 | Modified (async executor call)        |
+| `src/modules/workflows/engine/workflow-executor.spec.ts`                     | Modified (async tests)                |
 
 ## Completion Checklist
 

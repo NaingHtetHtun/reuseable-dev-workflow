@@ -12,9 +12,7 @@ export class OAuthTokenManager {
 
   constructor(
     private readonly provider: OAuthProvider,
-    private readonly credentialResolver: (
-      id: string,
-    ) => Promise<Record<string, unknown>>,
+    private readonly credentialResolver: (id: string) => Promise<Record<string, unknown>>,
     private readonly credentialUpdater: (
       id: string,
       data: Record<string, unknown>,
@@ -45,9 +43,7 @@ export class OAuthTokenManager {
 
     // Check if token is expired or about to expire (5 min buffer)
     if (expiresAt && this.isTokenExpired(expiresAt)) {
-      this.logger.log(
-        `Access token expired for credential ${credentialId}, refreshing...`,
-      );
+      this.logger.log(`Access token expired for credential ${credentialId}, refreshing...`);
 
       try {
         const result = await this.provider.refreshToken({
@@ -59,9 +55,7 @@ export class OAuthTokenManager {
         // Update credential with new tokens
         const newMetadata: Record<string, unknown> = {
           ...credentialMetadata,
-          expiresAt: new Date(
-            Date.now() + (result.expiresIn ?? 3600) * 1000,
-          ).toISOString(),
+          expiresAt: new Date(Date.now() + (result.expiresIn ?? 3600) * 1000).toISOString(),
         };
 
         if (result.scope) {
@@ -79,9 +73,7 @@ export class OAuthTokenManager {
           newMetadata,
         );
 
-        this.logger.log(
-          `Access token refreshed successfully for credential ${credentialId}`,
-        );
+        this.logger.log(`Access token refreshed successfully for credential ${credentialId}`);
 
         return result.accessToken;
       } catch (error) {
@@ -98,10 +90,7 @@ export class OAuthTokenManager {
   /**
    * Check if a token is expired or about to expire.
    */
-  private isTokenExpired(
-    expiresAt: string,
-    bufferMs = 5 * 60 * 1000,
-  ): boolean {
+  private isTokenExpired(expiresAt: string, bufferMs = 5 * 60 * 1000): boolean {
     return new Date(expiresAt).getTime() - bufferMs < Date.now();
   }
 }

@@ -1,9 +1,11 @@
 # Security Skill
 
 ## Purpose
+
 Enforce security best practices across the codebase.
 
 ## When to Use
+
 - Handling secrets, credentials, or API keys
 - Implementing authentication or authorization
 - Processing user input
@@ -11,6 +13,7 @@ Enforce security best practices across the codebase.
 - Implementing API endpoints
 
 ## Required Behavior
+
 1. Never hard-code secrets in source code.
 2. Never commit real credentials (use `.env`).
 3. Never print secrets in logs.
@@ -21,6 +24,7 @@ Enforce security best practices across the codebase.
 8. Use HTTPS in production.
 
 ## Things to Inspect
+
 - `.env` and `.env.example` for secret management
 - `.gitignore` excludes `.env` files
 - Input validation on controllers
@@ -28,6 +32,7 @@ Enforce security best practices across the codebase.
 - No hardcoded API keys
 
 ## Things to Avoid
+
 - Hard-coded credentials
 - Logging sensitive data
 - Skipping input validation
@@ -35,6 +40,7 @@ Enforce security best practices across the codebase.
 - Exposing internal errors to clients
 
 ## Verification Checklist
+
 - [ ] No secrets in source code
 - [ ] `.env` excluded from git
 - [ ] Input validated at API boundaries

@@ -53,10 +53,7 @@ export class IntegrationRegistry {
   /**
    * Validate credential data against a registered credential type.
    */
-  validateCredential(
-    type: string,
-    data: Record<string, unknown>,
-  ): CredentialValidationResult {
+  validateCredential(type: string, data: Record<string, unknown>): CredentialValidationResult {
     const definition = this.types.get(type);
     if (!definition) {
       return { valid: false, errors: [`Unknown credential type: ${type}`] };

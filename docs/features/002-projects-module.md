@@ -137,6 +137,7 @@ model Project {
 ```
 
 **Changes from current schema:**
+
 - Added `description` field (optional string)
 
 ### Database Migration
@@ -147,19 +148,20 @@ A Prisma migration will be generated for the `description` field addition.
 
 ### Endpoints
 
-| Method | Path | Description | Status |
-|--------|------|-------------|--------|
-| POST | `/api/v1/projects` | Create a project | 201 |
-| GET | `/api/v1/projects` | List projects (paginated) | 200 |
-| GET | `/api/v1/projects/:id` | Get a project by ID | 200 |
-| PATCH | `/api/v1/projects/:id` | Update a project | 200 |
-| DELETE | `/api/v1/projects/:id` | Delete a project | 204 |
+| Method | Path                   | Description               | Status |
+| ------ | ---------------------- | ------------------------- | ------ |
+| POST   | `/api/v1/projects`     | Create a project          | 201    |
+| GET    | `/api/v1/projects`     | List projects (paginated) | 200    |
+| GET    | `/api/v1/projects/:id` | Get a project by ID       | 200    |
+| PATCH  | `/api/v1/projects/:id` | Update a project          | 200    |
+| DELETE | `/api/v1/projects/:id` | Delete a project          | 204    |
 
 ### Request/Response Formats
 
 #### POST /api/v1/projects
 
 Request:
+
 ```json
 {
   "name": "My Project",
@@ -168,6 +170,7 @@ Request:
 ```
 
 Response 201:
+
 ```json
 {
   "id": "uuid-here",
@@ -179,6 +182,7 @@ Response 201:
 ```
 
 Validation error 400:
+
 ```json
 {
   "statusCode": 400,
@@ -194,6 +198,7 @@ Validation error 400:
 Query params: `page`, `limit`, `search`
 
 Response 200:
+
 ```json
 {
   "data": [
@@ -217,6 +222,7 @@ Response 200:
 #### GET /api/v1/projects/:id
 
 Response 200:
+
 ```json
 {
   "id": "uuid",
@@ -228,6 +234,7 @@ Response 200:
 ```
 
 Response 404:
+
 ```json
 {
   "statusCode": 404,
@@ -241,6 +248,7 @@ Response 404:
 #### PATCH /api/v1/projects/:id
 
 Request:
+
 ```json
 {
   "name": "Updated Name",
@@ -275,6 +283,7 @@ Response 204: No body.
 ### New Dependencies
 
 None. All required packages are already installed:
+
 - `@prisma/client` — Database access
 - `class-validator` — Input validation
 - `class-transformer` — Data transformation
@@ -287,6 +296,7 @@ None. All required packages are already installed:
 ### Unit Tests — `projects.service.spec.ts`
 
 Test each service method in isolation (mock PrismaService):
+
 - `create` — creates project with valid data
 - `findAll` — returns paginated projects
 - `findAll` with search — filters by name
@@ -300,6 +310,7 @@ Test each service method in isolation (mock PrismaService):
 ### Integration Tests — `projects.controller.spec.ts`
 
 Test full HTTP flow (real controller, mocked service):
+
 - POST /projects — creates and returns project
 - POST /projects — validates missing name
 - GET /projects — returns paginated list
@@ -327,10 +338,7 @@ describe('ProjectsService', () => {
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
-      providers: [
-        ProjectsService,
-        { provide: PrismaService, useValue: mockPrismaService },
-      ],
+      providers: [ProjectsService, { provide: PrismaService, useValue: mockPrismaService }],
     }).compile();
 
     service = module.get<ProjectsService>(ProjectsService);
@@ -365,6 +373,7 @@ Not applicable for this feature. Project definitions will later be consumed by t
 ## Documentation
 
 After implementation, update:
+
 - `docs/architecture/overview.md` — Add projects module to module structure
 - `docs/state/PROJECT-STATE.md` — Update completed items
 - `docs/state/CURRENT-WORK.md` — Clear active task
@@ -373,11 +382,11 @@ After implementation, update:
 
 ## Risks
 
-| Risk | Likelihood | Impact | Mitigation |
-|------|-----------|--------|------------|
-| Migration fails on existing data | Low | Low | No existing data (fresh schema) |
-| Prisma client generation fails | Low | Low | Run `pnpm db:generate` after schema change |
-| Test isolation issues | Low | Low | Mock PrismaService in all unit tests |
+| Risk                             | Likelihood | Impact | Mitigation                                 |
+| -------------------------------- | ---------- | ------ | ------------------------------------------ |
+| Migration fails on existing data | Low        | Low    | No existing data (fresh schema)            |
+| Prisma client generation fails   | Low        | Low    | Run `pnpm db:generate` after schema change |
+| Test isolation issues            | Low        | Low    | Mock PrismaService in all unit tests       |
 
 ## Known Limitations
 
@@ -389,20 +398,20 @@ After implementation, update:
 
 ## Files Changed
 
-| File | Action |
-|------|--------|
-| `prisma/schema.prisma` | Modified (added `description` field) |
-| `src/modules/projects/projects.module.ts` | Created |
-| `src/modules/projects/projects.controller.ts` | Created |
-| `src/modules/projects/projects.service.ts` | Created |
-| `src/modules/projects/dto/create-project.dto.ts` | Created |
-| `src/modules/projects/dto/update-project.dto.ts` | Created |
-| `src/modules/projects/dto/project-response.dto.ts` | Created |
-| `src/modules/projects/dto/project-query.dto.ts` | Created |
-| `src/modules/projects/dto/index.ts` | Created |
-| `src/modules/projects/projects.service.spec.ts` | Created |
-| `src/modules/projects/projects.controller.spec.ts` | Created |
-| `src/app.module.ts` | Modified (added ProjectsModule import) |
+| File                                               | Action                                 |
+| -------------------------------------------------- | -------------------------------------- |
+| `prisma/schema.prisma`                             | Modified (added `description` field)   |
+| `src/modules/projects/projects.module.ts`          | Created                                |
+| `src/modules/projects/projects.controller.ts`      | Created                                |
+| `src/modules/projects/projects.service.ts`         | Created                                |
+| `src/modules/projects/dto/create-project.dto.ts`   | Created                                |
+| `src/modules/projects/dto/update-project.dto.ts`   | Created                                |
+| `src/modules/projects/dto/project-response.dto.ts` | Created                                |
+| `src/modules/projects/dto/project-query.dto.ts`    | Created                                |
+| `src/modules/projects/dto/index.ts`                | Created                                |
+| `src/modules/projects/projects.service.spec.ts`    | Created                                |
+| `src/modules/projects/projects.controller.spec.ts` | Created                                |
+| `src/app.module.ts`                                | Modified (added ProjectsModule import) |
 
 ## Completion Checklist
 

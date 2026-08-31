@@ -17,9 +17,7 @@ describe('OAuthProviderRegistry', () => {
 
     it('should reject duplicate registration', () => {
       registry.register(new GoogleOAuthProvider());
-      expect(() => registry.register(new GoogleOAuthProvider())).toThrow(
-        'already registered',
-      );
+      expect(() => registry.register(new GoogleOAuthProvider())).toThrow('already registered');
     });
   });
 

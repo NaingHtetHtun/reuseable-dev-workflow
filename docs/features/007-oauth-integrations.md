@@ -11,6 +11,7 @@ Establish a reusable, framework-independent OAuth integration architecture that 
 ## Problem
 
 The platform needs to support OAuth2 authorization flows for external services. Currently, credential storage exists (Phase 5) but there is no mechanism to:
+
 1. Initiate an OAuth2 authorization flow
 2. Handle callbacks and exchange authorization codes for tokens
 3. Manage token lifecycle (refresh, expiration)
@@ -75,6 +76,7 @@ The platform needs to support OAuth2 authorization flows for external services. 
 - PKCE is transparent to the caller — the provider handles it internally
 
 **What this means:**
+
 - Authorization URL automatically includes `code_challenge` when PKCE is supported
 - Token exchange automatically includes `code_verifier`
 - No separate PKCE flow — it's integrated into the standard authorization code flow
@@ -100,6 +102,7 @@ The platform needs to support OAuth2 authorization flows for external services. 
 5. Google provider returns ID token when `openid` scope is requested
 
 **For Phase 7, the Google provider:**
+
 - Uses OAuth 2.0 Authorization Code flow
 - Requests `email profile` scopes (not `openid` initially)
 - Stores access token and refresh token
@@ -107,6 +110,7 @@ The platform needs to support OAuth2 authorization flows for external services. 
 - The `userinfoEndpoint` is available for future use
 
 **This is correct for the platform's use case:**
+
 - Phase 7 enables API access to Google services (Drive, Calendar, etc.)
 - The Google Login feature (user authentication) will be built on top of this in a future phase
 - The architecture supports both OAuth-only and OIDC flows
@@ -307,26 +311,18 @@ export class PkceHelper {
    */
   static generateCodeVerifier(length = 64): string {
     const buffer = crypto.randomBytes(length);
-    return buffer
-      .toString('base64url')
-      .substring(0, length);
+    return buffer.toString('base64url').substring(0, length);
   }
 
   /**
    * Generate a PKCE code challenge from a code verifier.
    * Supports S256 (SHA-256) and plain methods.
    */
-  static generateCodeChallenge(
-    codeVerifier: string,
-    method: 'S256' | 'plain' = 'S256',
-  ): string {
+  static generateCodeChallenge(codeVerifier: string, method: 'S256' | 'plain' = 'S256'): string {
     if (method === 'plain') {
       return codeVerifier;
     }
-    return crypto
-      .createHash('sha256')
-      .update(codeVerifier)
-      .digest('base64url');
+    return crypto.createHash('sha256').update(codeVerifier).digest('base64url');
   }
 
   /**
@@ -377,7 +373,7 @@ export class GoogleOAuthProvider implements OAuthProvider {
     revocationEndpoint: 'https://oauth2.googleapis.com/revoke',
     userinfoEndpoint: 'https://www.googleapis.com/oauth2/v3/userinfo',
     supportedFlows: ['authorization-code'],
-    supportsPkce: true,  // Google supports PKCE
+    supportsPkce: true, // Google supports PKCE
     defaultScopes: ['email', 'profile'],
   };
 
@@ -408,10 +404,7 @@ export class GoogleOAuthProvider implements OAuthProvider {
   validateState(state, expectedState): boolean {
     // Constant-time comparison
     if (state.length !== expectedState.length) return false;
-    return crypto.timingSafeEqual(
-      Buffer.from(state),
-      Buffer.from(expectedState),
-    );
+    return crypto.timingSafeEqual(Buffer.from(state), Buffer.from(expectedState));
   }
 
   async exchangeCode(params): Promise<OAuthTokenResult> {
@@ -476,10 +469,12 @@ export class GoogleOAuthProvider implements OAuthProvider {
   }
 
   validateTokenResponse(response): response is OAuthTokenResult {
-    return typeof response === 'object'
-      && response !== null
-      && 'accessToken' in response
-      && typeof (response as OAuthTokenResult).accessToken === 'string';
+    return (
+      typeof response === 'object' &&
+      response !== null &&
+      'accessToken' in response &&
+      typeof (response as OAuthTokenResult).accessToken === 'string'
+    );
   }
 }
 ```
@@ -533,6 +528,7 @@ base64url(state_data) + "." + hmac-sha256(state_data, secret)
 ```
 
 **Security considerations:**
+
 - State tokens expire after 10 minutes (configurable)
 - HMAC signature prevents tampering
 - State is single-use (consumed on callback)
@@ -648,9 +644,7 @@ const googleUserInfoDefinition: NodeTypeDefinition = {
       name: { type: 'string' },
     },
   },
-  requiredCredentials: [
-    { type: 'google-oauth2', name: 'Google OAuth2', required: true },
-  ],
+  requiredCredentials: [{ type: 'google-oauth2', name: 'Google OAuth2', required: true }],
 };
 ```
 
@@ -660,14 +654,14 @@ The node handler uses `context.resolveCredential(id)` to get the OAuth tokens, t
 
 The platform needs endpoints to initiate and handle OAuth flows:
 
-| Method | Path | Description |
-|--------|------|-------------|
-| GET | `/api/v1/oauth/:provider/authorize` | Generate authorization URL and redirect |
-| POST | `/api/v1/oauth/:provider/authorize` | Generate authorization URL (return JSON) |
-| GET | `/api/v1/oauth/:provider/callback` | Handle OAuth callback (exchange code) |
-| POST | `/api/v1/oauth/:provider/token` | Exchange code for tokens (manual) |
-| POST | `/api/v1/oauth/:provider/refresh` | Refresh access token |
-| GET | `/api/v1/oauth/providers` | List available OAuth providers |
+| Method | Path                                | Description                              |
+| ------ | ----------------------------------- | ---------------------------------------- |
+| GET    | `/api/v1/oauth/:provider/authorize` | Generate authorization URL and redirect  |
+| POST   | `/api/v1/oauth/:provider/authorize` | Generate authorization URL (return JSON) |
+| GET    | `/api/v1/oauth/:provider/callback`  | Handle OAuth callback (exchange code)    |
+| POST   | `/api/v1/oauth/:provider/token`     | Exchange code for tokens (manual)        |
+| POST   | `/api/v1/oauth/:provider/refresh`   | Refresh access token                     |
+| GET    | `/api/v1/oauth/providers`           | List available OAuth providers           |
 
 **Flow:**
 
@@ -752,6 +746,7 @@ apps/api/src/
 ### New Dependencies
 
 None. The OAuth implementation uses:
+
 - Node.js built-in `crypto` for HMAC signatures and PKCE challenges
 - Node.js built-in `fetch` for token exchange requests (Node 18+)
 - Existing `@devflow/workflow-core` encryption service
@@ -762,26 +757,26 @@ None.
 
 ## Environment Variables
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `ENCRYPTION_KEY` | Yes | Already exists (Phase 5) |
-| `OAUTH_STATE_SECRET` | No | Secret for HMAC state signing (defaults to ENCRYPTION_KEY) |
+| Variable             | Required | Description                                                |
+| -------------------- | -------- | ---------------------------------------------------------- |
+| `ENCRYPTION_KEY`     | Yes      | Already exists (Phase 5)                                   |
+| `OAUTH_STATE_SECRET` | No       | Secret for HMAC state signing (defaults to ENCRYPTION_KEY) |
 
 ## Security Considerations
 
-| Concern | Mitigation |
-|---------|-----------|
-| CSRF attacks | State parameter with HMAC signature, single-use, 10-min expiry |
-| State tampering | HMAC-SHA256 signature verification |
-| Timing attacks | Constant-time comparison for state validation |
-| Authorization code interception | PKCE (S256) for all providers that support it |
-| Token storage | AES-256-GCM encryption at rest (Phase 5) |
-| Client secrets | Encrypted in credential storage, never logged |
-| Redirect URI validation | Strict URI matching, no open redirects |
-| Authorization code reuse | Single-use codes (provider enforces) |
-| Scope escalation | Request only necessary scopes |
-| Token expiry | Automatic refresh with 5-min buffer |
-| PKCE verifier storage | Stored in state token, not in database |
+| Concern                         | Mitigation                                                     |
+| ------------------------------- | -------------------------------------------------------------- |
+| CSRF attacks                    | State parameter with HMAC signature, single-use, 10-min expiry |
+| State tampering                 | HMAC-SHA256 signature verification                             |
+| Timing attacks                  | Constant-time comparison for state validation                  |
+| Authorization code interception | PKCE (S256) for all providers that support it                  |
+| Token storage                   | AES-256-GCM encryption at rest (Phase 5)                       |
+| Client secrets                  | Encrypted in credential storage, never logged                  |
+| Redirect URI validation         | Strict URI matching, no open redirects                         |
+| Authorization code reuse        | Single-use codes (provider enforces)                           |
+| Scope escalation                | Request only necessary scopes                                  |
+| Token expiry                    | Automatic refresh with 5-min buffer                            |
+| PKCE verifier storage           | Stored in state token, not in database                         |
 
 ## Testing Strategy
 
@@ -860,14 +855,14 @@ pnpm lint
 
 ## Risks
 
-| Risk | Likelihood | Impact | Mitigation |
-|------|-----------|--------|------------|
-| Google changes OAuth endpoints | Low | Medium | Metadata is configurable per provider |
-| State token storage needs persistence | Medium | Low | In-memory for now, database table for production |
-| Token refresh fails silently | Medium | High | Clear error handling, log failures |
-| Provider-specific response formats | High | Medium | Provider validates its own responses |
-| Redirect URI validation bypass | Low | High | Strict URI matching, no wildcards |
-| PKCE verifier exposure | Low | Medium | Verifier stored in state token, not persisted separately |
+| Risk                                  | Likelihood | Impact | Mitigation                                               |
+| ------------------------------------- | ---------- | ------ | -------------------------------------------------------- |
+| Google changes OAuth endpoints        | Low        | Medium | Metadata is configurable per provider                    |
+| State token storage needs persistence | Medium     | Low    | In-memory for now, database table for production         |
+| Token refresh fails silently          | Medium     | High   | Clear error handling, log failures                       |
+| Provider-specific response formats    | High       | Medium | Provider validates its own responses                     |
+| Redirect URI validation bypass        | Low        | High   | Strict URI matching, no wildcards                        |
+| PKCE verifier exposure                | Low        | Medium | Verifier stored in state token, not persisted separately |
 
 ## How Future Providers Are Added
 
@@ -890,7 +885,7 @@ export class GitHubOAuthProvider implements OAuthProvider {
     authorizationEndpoint: 'https://github.com/login/oauth/authorize',
     tokenEndpoint: 'https://github.com/login/oauth/access_token',
     supportedFlows: ['authorization-code'],
-    supportsPkce: false,  // GitHub does not support PKCE
+    supportsPkce: false, // GitHub does not support PKCE
     defaultScopes: ['read:user', 'user:email'],
   };
 
@@ -911,6 +906,7 @@ The architecture naturally supports OIDC as a future extension:
 5. **Google provider returns ID token** — When `openid` scope is requested
 
 **This is intentionally deferred because:**
+
 - Phase 7 focuses on OAuth infrastructure (authorization)
 - Google Login (authentication) is a separate feature
 - OIDC adds complexity (JWT validation, JWKS fetching)
@@ -949,24 +945,24 @@ The key insight: the OAuth provider metadata (endpoints, scopes, parameters) is 
 
 ## Files Changed
 
-| File | Action |
-|------|--------|
-| `packages/workflow-core/src/oauth-system/oauth-provider.interface.ts` | Created |
-| `packages/workflow-core/src/oauth-system/oauth-provider-registry.ts` | Created |
-| `packages/workflow-core/src/oauth-system/oauth-state.ts` | Created |
-| `packages/workflow-core/src/oauth-system/pkce-helper.ts` | Created |
-| `packages/workflow-core/src/oauth-system/token-manager.ts` | Created |
-| `packages/workflow-core/src/oauth-system/providers/google-oauth.provider.ts` | Created |
-| `packages/workflow-core/src/oauth-system/providers/index.ts` | Created |
-| `packages/workflow-core/src/oauth-system/index.ts` | Created |
-| `packages/workflow-core/src/oauth-system/*.spec.ts` | Created |
-| `packages/workflow-core/src/index.ts` | Modified (add exports) |
-| `apps/api/src/modules/oauth/oauth.module.ts` | Created |
-| `apps/api/src/modules/oauth/oauth.service.ts` | Created |
-| `apps/api/src/modules/oauth/oauth.controller.ts` | Created |
-| `apps/api/src/modules/oauth/dto/*.ts` | Created |
-| `apps/api/src/modules/oauth/*.spec.ts` | Created |
-| `apps/api/src/app.module.ts` | Modified (add OAuthModule) |
+| File                                                                         | Action                     |
+| ---------------------------------------------------------------------------- | -------------------------- |
+| `packages/workflow-core/src/oauth-system/oauth-provider.interface.ts`        | Created                    |
+| `packages/workflow-core/src/oauth-system/oauth-provider-registry.ts`         | Created                    |
+| `packages/workflow-core/src/oauth-system/oauth-state.ts`                     | Created                    |
+| `packages/workflow-core/src/oauth-system/pkce-helper.ts`                     | Created                    |
+| `packages/workflow-core/src/oauth-system/token-manager.ts`                   | Created                    |
+| `packages/workflow-core/src/oauth-system/providers/google-oauth.provider.ts` | Created                    |
+| `packages/workflow-core/src/oauth-system/providers/index.ts`                 | Created                    |
+| `packages/workflow-core/src/oauth-system/index.ts`                           | Created                    |
+| `packages/workflow-core/src/oauth-system/*.spec.ts`                          | Created                    |
+| `packages/workflow-core/src/index.ts`                                        | Modified (add exports)     |
+| `apps/api/src/modules/oauth/oauth.module.ts`                                 | Created                    |
+| `apps/api/src/modules/oauth/oauth.service.ts`                                | Created                    |
+| `apps/api/src/modules/oauth/oauth.controller.ts`                             | Created                    |
+| `apps/api/src/modules/oauth/dto/*.ts`                                        | Created                    |
+| `apps/api/src/modules/oauth/*.spec.ts`                                       | Created                    |
+| `apps/api/src/app.module.ts`                                                 | Modified (add OAuthModule) |
 
 ## Completion Checklist
 

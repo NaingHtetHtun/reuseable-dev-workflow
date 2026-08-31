@@ -5,12 +5,14 @@
 ## Development Relationship
 
 ### Human Role
+
 - Product owner
 - Architect
 - Reviewer
 - Approver
 
 ### AI Role
+
 - Researcher
 - Planner
 - Implementer
@@ -30,18 +32,21 @@
 ## AI Behavior Checklist
 
 Before any change, the AI must:
+
 - [ ] Read `AGENTS.md`
 - [ ] Read relevant skill files
 - [ ] Inspect existing code
 - [ ] Understand what already exists
 
 During implementation, the AI must:
+
 - [ ] Follow the approved plan only
 - [ ] Write tests
 - [ ] Fix failures before declaring completion
 - [ ] Keep documentation synchronized
 
 The AI must NOT:
+
 - [ ] Rewrite the entire project unnecessarily
 - [ ] Replace working architecture without approval
 - [ ] Add dependencies casually

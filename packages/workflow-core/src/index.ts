@@ -5,6 +5,8 @@ export type {
   WorkflowEdge,
   ExecutionContext,
   NodeExecutionResult,
+  WorkflowTrigger,
+  TriggerContext,
 } from './types';
 
 // Logger
@@ -87,3 +89,30 @@ export { OAuthStateManager } from './oauth-system/oauth-state';
 export type { OAuthStateData } from './oauth-system/oauth-state';
 export { OAuthTokenManager } from './oauth-system/token-manager';
 export { GoogleOAuthProvider } from './oauth-system/providers/google-oauth.provider';
+
+// Trigger System
+export type {
+  TriggerTypeDefinition,
+  TriggerConfigSchema,
+  TriggerConfigProperty,
+  IoSchema as TriggerIoSchema,
+  TriggerHandler,
+  ValidationResult as TriggerValidationResult,
+  TriggerEndpointInfo,
+  TriggerActivationResult,
+  TriggerContext as TriggerSystemContext,
+  WorkflowTrigger as WorkflowTriggerConfig,
+} from './trigger-system/trigger-type.interface';
+export { TriggerTypeRegistry } from './trigger-system/trigger-type-registry';
+export { TriggerExecutor } from './trigger-system/trigger-executor';
+export type { TriggerInputMapping } from './trigger-system/trigger-executor';
+
+// Built-in Triggers
+export {
+  manualTriggerDefinition,
+  ManualTriggerHandler,
+  webhookTriggerDefinition,
+  WebhookTriggerHandler,
+  scheduledTriggerDefinition,
+  ScheduledTriggerHandler,
+} from './trigger-system/triggers';

@@ -1,0 +1,1438 @@
+{
+  "files": {
+    "apps/api/dist/modules/projects/dto/project-query.dto.js": {
+      "size": 1331,
+      "mtime_nanos": 1788193518842762904,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/dto/index.d.ts": {
+      "size": 198,
+      "mtime_nanos": 1788193519047612207,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/health/health.controller.spec.js.map": {
+      "size": 1699,
+      "mtime_nanos": 1788193519298430584,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/health/health.service.spec.js.map": {
+      "size": 1448,
+      "mtime_nanos": 1788193519304426242,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/health": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/api/dist/modules/credentials/credentials.service.spec.js.map": {
+      "size": 5315,
+      "mtime_nanos": 1788193519292434926,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth/oauth.service.js.map": {
+      "size": 4907,
+      "mtime_nanos": 1788193519131551425,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/dto/update-project.dto.d.ts": {
+      "size": 87,
+      "mtime_nanos": 1788193518833769550,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/projects.module.js": {
+      "size": 1265,
+      "mtime_nanos": 1788193518931697176,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/credentials.controller.spec.d.ts": {
+      "size": 11,
+      "mtime_nanos": 1788193519279444332,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/triggers/triggers.module.js.map": {
+      "size": 444,
+      "mtime_nanos": 1788193519201500773,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/webhooks/webhooks.service.spec.d.ts": {
+      "size": 11,
+      "mtime_nanos": 1788193519368379932,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/dto/create-workflow.dto.d.ts": {
+      "size": 454,
+      "mtime_nanos": 1788193518938692007,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth/oauth.controller.spec.js.map": {
+      "size": 2045,
+      "mtime_nanos": 1788193519311421177,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth/oauth.module.js": {
+      "size": 1342,
+      "mtime_nanos": 1788193519175519587,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/projects.controller.d.ts": {
+      "size": 791,
+      "mtime_nanos": 1788193518928699392,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/dto/execute-workflow.dto.d.ts": {
+      "size": 81,
+      "mtime_nanos": 1788193518946686098,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/projects.service.js": {
+      "size": 3435,
+      "mtime_nanos": 1788193518899720808,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth/dto/callback.dto.d.ts": {
+      "size": 131,
+      "mtime_nanos": 1788193519139545637,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth/dto/index.d.ts": {
+      "size": 99,
+      "mtime_nanos": 1788193519140544913,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/projects.module.js.map": {
+      "size": 399,
+      "mtime_nanos": 1788193518931697176,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/credentials.service.spec.js": {
+      "size": 7305,
+      "mtime_nanos": 1788193519293434202,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/projects.service.spec.d.ts": {
+      "size": 11,
+      "mtime_nanos": 1788193519348394404,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/webhooks/webhooks.module.js": {
+      "size": 1434,
+      "mtime_nanos": 1788193519219487749,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/dto/create-workflow.dto.js.map": {
+      "size": 1388,
+      "mtime_nanos": 1788193518937692745,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/projects.module.d.ts": {
+      "size": 40,
+      "mtime_nanos": 1788193518931697176,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/dto/workflow-response.dto.js.map": {
+      "size": 344,
+      "mtime_nanos": 1788193518947685360,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/workflows.controller.js": {
+      "size": 5098,
+      "mtime_nanos": 1788193519028625956,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/dto/create-credential.dto.js.map": {
+      "size": 510,
+      "mtime_nanos": 1788193519041616549,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/shared/database/database.module.js": {
+      "size": 1152,
+      "mtime_nanos": 1788193518797796136,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/shared/database/prisma.service.js": {
+      "size": 1372,
+      "mtime_nanos": 1788193518782807214,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/shared/dto/pagination.dto.js.map": {
+      "size": 554,
+      "mtime_nanos": 1788193518840764381,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/shared/database/database.module.d.ts": {
+      "size": 40,
+      "mtime_nanos": 1788193518798795398,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/dto/index.d.ts": {
+      "size": 364,
+      "mtime_nanos": 1788193518952681668,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/shared/interceptors/logging.interceptor.d.ts": {
+      "size": 298,
+      "mtime_nanos": 1788193519255461699,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/workflows.controller.spec.d.ts": {
+      "size": 11,
+      "mtime_nanos": 1788193519378372696,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/shared/filters/http-exception.filter.js": {
+      "size": 2285,
+      "mtime_nanos": 1788193519245468935,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/dto/index.js": {
+      "size": 1040,
+      "mtime_nanos": 1788193518844761427,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/webhooks/webhooks.controller.js.map": {
+      "size": 725,
+      "mtime_nanos": 1788193519216489919,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/dto/execution-response.dto.d.ts": {
+      "size": 250,
+      "mtime_nanos": 1788193518950683144,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/dto/workflow-query.dto.js.map": {
+      "size": 423,
+      "mtime_nanos": 1788193518949683883,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/api/dist/modules/workflows/dto/update-workflow.dto.js": {
+      "size": 4015,
+      "mtime_nanos": 1788193518944687576,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/credentials.controller.spec.js": {
+      "size": 3946,
+      "mtime_nanos": 1788193519279444332,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/config/database.config.js": {
+      "size": 268,
+      "mtime_nanos": 1788193519228481236,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/health/health.service.d.ts": {
+      "size": 364,
+      "mtime_nanos": 1788193518814783582,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/credentials.controller.spec.js.map": {
+      "size": 3521,
+      "mtime_nanos": 1788193519279444332,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/health/health.service.spec.d.ts": {
+      "size": 11,
+      "mtime_nanos": 1788193519304426242,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/webhooks/webhooks.controller.spec.d.ts": {
+      "size": 11,
+      "mtime_nanos": 1788193519362384274,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/workflows.service.js": {
+      "size": 6823,
+      "mtime_nanos": 1788193519020631745,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/credentials.service.js.map": {
+      "size": 6025,
+      "mtime_nanos": 1788193519092579645,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/dto/update-project.dto.js": {
+      "size": 1553,
+      "mtime_nanos": 1788193518832770289,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/triggers/triggers.service.js.map": {
+      "size": 4122,
+      "mtime_nanos": 1788193519186511627,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/health/health.controller.spec.js": {
+      "size": 1879,
+      "mtime_nanos": 1788193519298430584,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/config/app.config.js": {
+      "size": 378,
+      "mtime_nanos": 1788193519223484854,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/credentials.controller.js": {
+      "size": 4408,
+      "mtime_nanos": 1788193519102572409,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth/dto/index.js": {
+      "size": 531,
+      "mtime_nanos": 1788193519140544913,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth/oauth.module.js.map": {
+      "size": 434,
+      "mtime_nanos": 1788193519175519587,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/credentials.controller.d.ts": {
+      "size": 909,
+      "mtime_nanos": 1788193519103571686,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/dto/update-workflow.dto.js.map": {
+      "size": 1545,
+      "mtime_nanos": 1788193518944687576,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/dto/workflow-response.dto.d.ts": {
+      "size": 242,
+      "mtime_nanos": 1788193518947685360,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/app.module.js.map": {
+      "size": 623,
+      "mtime_nanos": 1788193519233477618,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/credentials.controller.js.map": {
+      "size": 2155,
+      "mtime_nanos": 1788193519101573133,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/triggers/triggers.service.spec.js": {
+      "size": 3973,
+      "mtime_nanos": 1788193519359386444,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/workflows.service.d.ts": {
+      "size": 1531,
+      "mtime_nanos": 1788193519021631021,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/shared/dto/pagination.dto.d.ts": {
+      "size": 78,
+      "mtime_nanos": 1788193518840764381,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/health/health.service.js.map": {
+      "size": 887,
+      "mtime_nanos": 1788193518810786536,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/api/dist/modules/projects/dto/index.d.ts": {
+      "size": 230,
+      "mtime_nanos": 1788193518844761427,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/dto/project-response.dto.d.ts": {
+      "size": 152,
+      "mtime_nanos": 1788193518834768812,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/shared/filters/http-exception.filter.js.map": {
+      "size": 1310,
+      "mtime_nanos": 1788193519245468935,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/config/app.config.d.ts": {
+      "size": 239,
+      "mtime_nanos": 1788193519226482684,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth/dto/authorize.dto.d.ts": {
+      "size": 161,
+      "mtime_nanos": 1788193519138546360,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/dto/workflow-response.dto.js": {
+      "size": 366,
+      "mtime_nanos": 1788193518947685360,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/credentials.service.d.ts": {
+      "size": 1994,
+      "mtime_nanos": 1788193519094578199,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/shared/interceptors/logging.interceptor.js": {
+      "size": 1423,
+      "mtime_nanos": 1788193519255461699,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/projects.controller.spec.d.ts": {
+      "size": 11,
+      "mtime_nanos": 1788193519336403087,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/dto/create-credential.dto.d.ts": {
+      "size": 156,
+      "mtime_nanos": 1788193519042615825,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/dto/index.js.map": {
+      "size": 279,
+      "mtime_nanos": 1788193518844761427,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/dto/create-credential.dto.js": {
+      "size": 1824,
+      "mtime_nanos": 1788193519041616549,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth/oauth.module.d.ts": {
+      "size": 37,
+      "mtime_nanos": 1788193519175519587,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/dto": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/api/dist/modules/triggers/triggers.controller.d.ts": {
+      "size": 754,
+      "mtime_nanos": 1788193519199502220,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth/dto/callback.dto.js.map": {
+      "size": 482,
+      "mtime_nanos": 1788193519139545637,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth/dto": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/api/dist/modules/projects/dto/project-query.dto.js.map": {
+      "size": 307,
+      "mtime_nanos": 1788193518842762904,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/dto/project-response.dto.js.map": {
+      "size": 277,
+      "mtime_nanos": 1788193518834768812,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/triggers": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/api/dist/modules/webhooks/webhooks.controller.d.ts": {
+      "size": 331,
+      "mtime_nanos": 1788193519217489196,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/shared/filters": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/api/dist/config/app.config.js.map": {
+      "size": 392,
+      "mtime_nanos": 1788193519223484854,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/webhooks/webhooks.service.d.ts": {
+      "size": 771,
+      "mtime_nanos": 1788193519213492090,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/workflows.controller.spec.js": {
+      "size": 8537,
+      "mtime_nanos": 1788193519377373420,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/app.module.js": {
+      "size": 2432,
+      "mtime_nanos": 1788193519233477618,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/workflows.service.spec.js": {
+      "size": 7088,
+      "mtime_nanos": 1788193519386366907,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/shared": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/api/dist/modules/credentials/credential-types.controller.d.ts": {
+      "size": 789,
+      "mtime_nanos": 1788193519107568792,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/dto/index.js.map": {
+      "size": 356,
+      "mtime_nanos": 1788193518952681668,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/app.module.spec.js.map": {
+      "size": 812,
+      "mtime_nanos": 1788193519238474000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/workflows.module.js.map": {
+      "size": 449,
+      "mtime_nanos": 1788193519039617996,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/shared/interceptors": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/api/dist/main.d.ts": {
+      "size": 11,
+      "mtime_nanos": 1788193519263455910,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/dto": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/api/dist/shared/database/database.module.js.map": {
+      "size": 372,
+      "mtime_nanos": 1788193518797796136,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/shared/interceptors/logging.interceptor.js.map": {
+      "size": 781,
+      "mtime_nanos": 1788193519255461699,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/projects.controller.js": {
+      "size": 3520,
+      "mtime_nanos": 1788193518907714900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/triggers/triggers.controller.js.map": {
+      "size": 1615,
+      "mtime_nanos": 1788193519194505839,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/triggers/triggers.service.js": {
+      "size": 5991,
+      "mtime_nanos": 1788193519186511627,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/credential-types.controller.js": {
+      "size": 1830,
+      "mtime_nanos": 1788193519106569515,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/webhooks/webhooks.controller.js": {
+      "size": 2145,
+      "mtime_nanos": 1788193519216489919,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/dto/execute-workflow.dto.js.map": {
+      "size": 293,
+      "mtime_nanos": 1788193518946686098,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/api/dist/modules/health/health.module.js": {
+      "size": 1176,
+      "mtime_nanos": 1788193518824776197,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/dto/update-credential.dto.js.map": {
+      "size": 460,
+      "mtime_nanos": 1788193519044614379,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/config/database.config.js.map": {
+      "size": 265,
+      "mtime_nanos": 1788193519228481236,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/credentials.service.js": {
+      "size": 7593,
+      "mtime_nanos": 1788193519092579645,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/dto/create-project.dto.d.ts": {
+      "size": 86,
+      "mtime_nanos": 1788193518830771766,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/projects.service.spec.js.map": {
+      "size": 6018,
+      "mtime_nanos": 1788193519347395128,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/triggers/triggers.controller.spec.d.ts": {
+      "size": 11,
+      "mtime_nanos": 1788193519351392234,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/triggers/triggers.service.d.ts": {
+      "size": 1221,
+      "mtime_nanos": 1788193519187510904,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/triggers/triggers.service.spec.d.ts": {
+      "size": 11,
+      "mtime_nanos": 1788193519359386444,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/config": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/api/dist/modules/webhooks/webhooks.module.js.map": {
+      "size": 436,
+      "mtime_nanos": 1788193519219487749,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/health/health.service.spec.js": {
+      "size": 1556,
+      "mtime_nanos": 1788193519304426242,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/shared/database/prisma.service.js.map": {
+      "size": 587,
+      "mtime_nanos": 1788193518782807214,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/triggers/triggers.module.d.ts": {
+      "size": 40,
+      "mtime_nanos": 1788193519202500049,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/workflows.service.js.map": {
+      "size": 5581,
+      "mtime_nanos": 1788193519020631745,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/health/health.controller.d.ts": {
+      "size": 305,
+      "mtime_nanos": 1788193518821778412,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth/oauth.controller.d.ts": {
+      "size": 998,
+      "mtime_nanos": 1788193519172521757,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/dto/project-response.dto.js": {
+      "size": 305,
+      "mtime_nanos": 1788193518834768812,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/dto/update-workflow.dto.d.ts": {
+      "size": 477,
+      "mtime_nanos": 1788193518944687576,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/triggers/triggers.service.spec.js.map": {
+      "size": 4116,
+      "mtime_nanos": 1788193519359386444,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/dto/credential-response.dto.js.map": {
+      "size": 171,
+      "mtime_nanos": 1788193519045613655,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/credentials.module.js.map": {
+      "size": 490,
+      "mtime_nanos": 1788193519109567344,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/projects.service.spec.js": {
+      "size": 6682,
+      "mtime_nanos": 1788193519347395128,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/api/dist/app.module.spec.d.ts": {
+      "size": 11,
+      "mtime_nanos": 1788193519238474000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/workflows.service.spec.js.map": {
+      "size": 6210,
+      "mtime_nanos": 1788193519386366907,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/shared/filters/http-exception.filter.d.ts": {
+      "size": 224,
+      "mtime_nanos": 1788193519245468935,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/projects.service.js.map": {
+      "size": 2475,
+      "mtime_nanos": 1788193518899720808,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/credentials.module.js": {
+      "size": 1578,
+      "mtime_nanos": 1788193519109567344,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth/oauth.service.spec.js": {
+      "size": 6137,
+      "mtime_nanos": 1788193519321413941,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth/dto/authorize.dto.js.map": {
+      "size": 558,
+      "mtime_nanos": 1788193519137547084,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/dto/workflow-query.dto.d.ts": {
+      "size": 174,
+      "mtime_nanos": 1788193518949683883,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth/dto/index.js.map": {
+      "size": 202,
+      "mtime_nanos": 1788193519140544913,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/credential-types.controller.js.map": {
+      "size": 518,
+      "mtime_nanos": 1788193519106569515,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/.turbo/turbo-build.log": {
+      "size": 13,
+      "mtime_nanos": 1788193519968945049,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/health/health.module.d.ts": {
+      "size": 38,
+      "mtime_nanos": 1788193518824776197,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth/oauth.controller.js": {
+      "size": 6221,
+      "mtime_nanos": 1788193519153535506,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/dto/project-query.dto.d.ts": {
+      "size": 152,
+      "mtime_nanos": 1788193518842762904,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/dto/execution-response.dto.js": {
+      "size": 369,
+      "mtime_nanos": 1788193518950683144,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/webhooks/webhooks.service.js.map": {
+      "size": 3096,
+      "mtime_nanos": 1788193519212492814,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/workflows.service.spec.d.ts": {
+      "size": 11,
+      "mtime_nanos": 1788193519386366907,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/shared/database": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/api/dist/shared/database/prisma.service.d.ts": {
+      "size": 314,
+      "mtime_nanos": 1788193518788802783,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth/oauth.service.d.ts": {
+      "size": 1545,
+      "mtime_nanos": 1788193519135548531,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/triggers/triggers.controller.spec.js.map": {
+      "size": 1455,
+      "mtime_nanos": 1788193519351392234,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/dto/update-project.dto.js.map": {
+      "size": 438,
+      "mtime_nanos": 1788193518832770289,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/triggers/triggers.controller.js": {
+      "size": 3854,
+      "mtime_nanos": 1788193519194505839,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/projects.controller.spec.js": {
+      "size": 7835,
+      "mtime_nanos": 1788193519335403811,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/health/health.controller.js.map": {
+      "size": 495,
+      "mtime_nanos": 1788193518820779151,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth/dto/authorize.dto.js": {
+      "size": 1989,
+      "mtime_nanos": 1788193519137547084,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/webhooks": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/api/dist/modules/oauth/oauth.controller.js.map": {
+      "size": 3482,
+      "mtime_nanos": 1788193519153535506,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth/oauth.service.js": {
+      "size": 6997,
+      "mtime_nanos": 1788193519132550702,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/dto/create-project.dto.js.map": {
+      "size": 417,
+      "mtime_nanos": 1788193518829772504,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/webhooks/webhooks.controller.spec.js.map": {
+      "size": 1168,
+      "mtime_nanos": 1788193519362384274,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/webhooks/webhooks.module.d.ts": {
+      "size": 40,
+      "mtime_nanos": 1788193519219487749,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/dto/update-credential.dto.d.ts": {
+      "size": 140,
+      "mtime_nanos": 1788193519044614379,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth/oauth.controller.spec.d.ts": {
+      "size": 11,
+      "mtime_nanos": 1788193519311421177,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/webhooks/webhooks.service.spec.js": {
+      "size": 4566,
+      "mtime_nanos": 1788193519368379932,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/dto/index.js": {
+      "size": 612,
+      "mtime_nanos": 1788193519046612931,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/credentials.module.d.ts": {
+      "size": 43,
+      "mtime_nanos": 1788193519109567344,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/webhooks/webhooks.service.js": {
+      "size": 4557,
+      "mtime_nanos": 1788193519212492814,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/dto/execution-response.dto.js.map": {
+      "size": 347,
+      "mtime_nanos": 1788193518950683144,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/health/health.module.js.map": {
+      "size": 360,
+      "mtime_nanos": 1788193518824776197,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/triggers/triggers.controller.spec.js": {
+      "size": 1617,
+      "mtime_nanos": 1788193519351392234,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/workflows.controller.spec.js.map": {
+      "size": 6190,
+      "mtime_nanos": 1788193519377373420,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/main.js": {
+      "size": 1358,
+      "mtime_nanos": 1788193519263455910,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/workflows.module.d.ts": {
+      "size": 41,
+      "mtime_nanos": 1788193519039617996,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/workflows.module.js": {
+      "size": 1403,
+      "mtime_nanos": 1788193519039617996,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/shared/dto/pagination.dto.js": {
+      "size": 1657,
+      "mtime_nanos": 1788193518840764381,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/health/health.service.js": {
+      "size": 1985,
+      "mtime_nanos": 1788193518810786536,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/triggers/triggers.module.js": {
+      "size": 1389,
+      "mtime_nanos": 1788193519201500773,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/webhooks/webhooks.service.spec.js.map": {
+      "size": 3892,
+      "mtime_nanos": 1788193519368379932,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/dto/credential-response.dto.d.ts": {
+      "size": 206,
+      "mtime_nanos": 1788193519045613655,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/webhooks/webhooks.controller.spec.js": {
+      "size": 1643,
+      "mtime_nanos": 1788193519362384274,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth/dto/callback.dto.js": {
+      "size": 1813,
+      "mtime_nanos": 1788193519139545637,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/config/database.config.d.ts": {
+      "size": 173,
+      "mtime_nanos": 1788193519229480512,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/dto/credential-response.dto.js": {
+      "size": 128,
+      "mtime_nanos": 1788193519045613655,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/api/dist/modules/credentials/credentials.service.spec.d.ts": {
+      "size": 11,
+      "mtime_nanos": 1788193519293434202,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/projects.service.d.ts": {
+      "size": 837,
+      "mtime_nanos": 1788193518900720070,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/workflows.controller.d.ts": {
+      "size": 1392,
+      "mtime_nanos": 1788193519037619444,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth/oauth.controller.spec.js": {
+      "size": 2596,
+      "mtime_nanos": 1788193519311421177,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth/oauth.service.spec.js.map": {
+      "size": 3763,
+      "mtime_nanos": 1788193519321413941,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/dto/execute-workflow.dto.js": {
+      "size": 1236,
+      "mtime_nanos": 1788193518946686098,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/projects.controller.spec.js.map": {
+      "size": 5599,
+      "mtime_nanos": 1788193519335403811,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/app.module.spec.js": {
+      "size": 2137,
+      "mtime_nanos": 1788193519238474000,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/dto/create-project.dto.js": {
+      "size": 1512,
+      "mtime_nanos": 1788193518829772504,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/dto/index.js": {
+      "size": 1558,
+      "mtime_nanos": 1788193518952681668,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/workflows.controller.js.map": {
+      "size": 2414,
+      "mtime_nanos": 1788193519028625956,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/shared/dto": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/api/dist/tsconfig.tsbuildinfo": {
+      "size": 235411,
+      "mtime_nanos": 1788193519406352436,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/health/health.controller.js": {
+      "size": 1674,
+      "mtime_nanos": 1788193518820779151,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/main.js.map": {
+      "size": 1023,
+      "mtime_nanos": 1788193519262456634,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/credentials/dto/index.js.map": {
+      "size": 210,
+      "mtime_nanos": 1788193519046612931,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth/oauth.service.spec.d.ts": {
+      "size": 11,
+      "mtime_nanos": 1788193519321413941,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/projects/projects.controller.js.map": {
+      "size": 1452,
+      "mtime_nanos": 1788193518907714900,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/dto/workflow-query.dto.js": {
+      "size": 1557,
+      "mtime_nanos": 1788193518949683883,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/app.module.d.ts": {
+      "size": 35,
+      "mtime_nanos": 1788193519233477618,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/health/health.controller.spec.d.ts": {
+      "size": 11,
+      "mtime_nanos": 1788193519299429861,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/oauth": { "size": 0, "mtime_nanos": 0, "mode": 0, "is_dir": true },
+    "apps/api/dist/modules/workflows/dto": {
+      "size": 0,
+      "mtime_nanos": 0,
+      "mode": 0,
+      "is_dir": true
+    },
+    "apps/api/dist/modules/credentials/dto/update-credential.dto.js": {
+      "size": 1673,
+      "mtime_nanos": 1788193519044614379,
+      "mode": 420,
+      "is_dir": false
+    },
+    "apps/api/dist/modules/workflows/dto/create-workflow.dto.js": {
+      "size": 3712,
+      "mtime_nanos": 1788193518937692745,
+      "mode": 420,
+      "is_dir": false
+    }
+  },
+  "order": [
+    "apps/api/.turbo/turbo-build.log",
+    "apps/api/dist",
+    "apps/api/dist/app.module.d.ts",
+    "apps/api/dist/app.module.js",
+    "apps/api/dist/app.module.js.map",
+    "apps/api/dist/app.module.spec.d.ts",
+    "apps/api/dist/app.module.spec.js",
+    "apps/api/dist/app.module.spec.js.map",
+    "apps/api/dist/config",
+    "apps/api/dist/config/app.config.d.ts",
+    "apps/api/dist/config/app.config.js",
+    "apps/api/dist/config/app.config.js.map",
+    "apps/api/dist/config/database.config.d.ts",
+    "apps/api/dist/config/database.config.js",
+    "apps/api/dist/config/database.config.js.map",
+    "apps/api/dist/main.d.ts",
+    "apps/api/dist/main.js",
+    "apps/api/dist/main.js.map",
+    "apps/api/dist/modules",
+    "apps/api/dist/modules/credentials",
+    "apps/api/dist/modules/credentials/credential-types.controller.d.ts",
+    "apps/api/dist/modules/credentials/credential-types.controller.js",
+    "apps/api/dist/modules/credentials/credential-types.controller.js.map",
+    "apps/api/dist/modules/credentials/credentials.controller.d.ts",
+    "apps/api/dist/modules/credentials/credentials.controller.js",
+    "apps/api/dist/modules/credentials/credentials.controller.js.map",
+    "apps/api/dist/modules/credentials/credentials.controller.spec.d.ts",
+    "apps/api/dist/modules/credentials/credentials.controller.spec.js",
+    "apps/api/dist/modules/credentials/credentials.controller.spec.js.map",
+    "apps/api/dist/modules/credentials/credentials.module.d.ts",
+    "apps/api/dist/modules/credentials/credentials.module.js",
+    "apps/api/dist/modules/credentials/credentials.module.js.map",
+    "apps/api/dist/modules/credentials/credentials.service.d.ts",
+    "apps/api/dist/modules/credentials/credentials.service.js",
+    "apps/api/dist/modules/credentials/credentials.service.js.map",
+    "apps/api/dist/modules/credentials/credentials.service.spec.d.ts",
+    "apps/api/dist/modules/credentials/credentials.service.spec.js",
+    "apps/api/dist/modules/credentials/credentials.service.spec.js.map",
+    "apps/api/dist/modules/credentials/dto",
+    "apps/api/dist/modules/credentials/dto/create-credential.dto.d.ts",
+    "apps/api/dist/modules/credentials/dto/create-credential.dto.js",
+    "apps/api/dist/modules/credentials/dto/create-credential.dto.js.map",
+    "apps/api/dist/modules/credentials/dto/credential-response.dto.d.ts",
+    "apps/api/dist/modules/credentials/dto/credential-response.dto.js",
+    "apps/api/dist/modules/credentials/dto/credential-response.dto.js.map",
+    "apps/api/dist/modules/credentials/dto/index.d.ts",
+    "apps/api/dist/modules/credentials/dto/index.js",
+    "apps/api/dist/modules/credentials/dto/index.js.map",
+    "apps/api/dist/modules/credentials/dto/update-credential.dto.d.ts",
+    "apps/api/dist/modules/credentials/dto/update-credential.dto.js",
+    "apps/api/dist/modules/credentials/dto/update-credential.dto.js.map",
+    "apps/api/dist/modules/health",
+    "apps/api/dist/modules/health/health.controller.d.ts",
+    "apps/api/dist/modules/health/health.controller.js",
+    "apps/api/dist/modules/health/health.controller.js.map",
+    "apps/api/dist/modules/health/health.controller.spec.d.ts",
+    "apps/api/dist/modules/health/health.controller.spec.js",
+    "apps/api/dist/modules/health/health.controller.spec.js.map",
+    "apps/api/dist/modules/health/health.module.d.ts",
+    "apps/api/dist/modules/health/health.module.js",
+    "apps/api/dist/modules/health/health.module.js.map",
+    "apps/api/dist/modules/health/health.service.d.ts",
+    "apps/api/dist/modules/health/health.service.js",
+    "apps/api/dist/modules/health/health.service.js.map",
+    "apps/api/dist/modules/health/health.service.spec.d.ts",
+    "apps/api/dist/modules/health/health.service.spec.js",
+    "apps/api/dist/modules/health/health.service.spec.js.map",
+    "apps/api/dist/modules/oauth",
+    "apps/api/dist/modules/oauth/dto",
+    "apps/api/dist/modules/oauth/dto/authorize.dto.d.ts",
+    "apps/api/dist/modules/oauth/dto/authorize.dto.js",
+    "apps/api/dist/modules/oauth/dto/authorize.dto.js.map",
+    "apps/api/dist/modules/oauth/dto/callback.dto.d.ts",
+    "apps/api/dist/modules/oauth/dto/callback.dto.js",
+    "apps/api/dist/modules/oauth/dto/callback.dto.js.map",
+    "apps/api/dist/modules/oauth/dto/index.d.ts",
+    "apps/api/dist/modules/oauth/dto/index.js",
+    "apps/api/dist/modules/oauth/dto/index.js.map",
+    "apps/api/dist/modules/oauth/oauth.controller.d.ts",
+    "apps/api/dist/modules/oauth/oauth.controller.js",
+    "apps/api/dist/modules/oauth/oauth.controller.js.map",
+    "apps/api/dist/modules/oauth/oauth.controller.spec.d.ts",
+    "apps/api/dist/modules/oauth/oauth.controller.spec.js",
+    "apps/api/dist/modules/oauth/oauth.controller.spec.js.map",
+    "apps/api/dist/modules/oauth/oauth.module.d.ts",
+    "apps/api/dist/modules/oauth/oauth.module.js",
+    "apps/api/dist/modules/oauth/oauth.module.js.map",
+    "apps/api/dist/modules/oauth/oauth.service.d.ts",
+    "apps/api/dist/modules/oauth/oauth.service.js",
+    "apps/api/dist/modules/oauth/oauth.service.js.map",
+    "apps/api/dist/modules/oauth/oauth.service.spec.d.ts",
+    "apps/api/dist/modules/oauth/oauth.service.spec.js",
+    "apps/api/dist/modules/oauth/oauth.service.spec.js.map",
+    "apps/api/dist/modules/projects",
+    "apps/api/dist/modules/projects/dto",
+    "apps/api/dist/modules/projects/dto/create-project.dto.d.ts",
+    "apps/api/dist/modules/projects/dto/create-project.dto.js",
+    "apps/api/dist/modules/projects/dto/create-project.dto.js.map",
+    "apps/api/dist/modules/projects/dto/index.d.ts",
+    "apps/api/dist/modules/projects/dto/index.js",
+    "apps/api/dist/modules/projects/dto/index.js.map",
+    "apps/api/dist/modules/projects/dto/project-query.dto.d.ts",
+    "apps/api/dist/modules/projects/dto/project-query.dto.js",
+    "apps/api/dist/modules/projects/dto/project-query.dto.js.map",
+    "apps/api/dist/modules/projects/dto/project-response.dto.d.ts",
+    "apps/api/dist/modules/projects/dto/project-response.dto.js",
+    "apps/api/dist/modules/projects/dto/project-response.dto.js.map",
+    "apps/api/dist/modules/projects/dto/update-project.dto.d.ts",
+    "apps/api/dist/modules/projects/dto/update-project.dto.js",
+    "apps/api/dist/modules/projects/dto/update-project.dto.js.map",
+    "apps/api/dist/modules/projects/projects.controller.d.ts",
+    "apps/api/dist/modules/projects/projects.controller.js",
+    "apps/api/dist/modules/projects/projects.controller.js.map",
+    "apps/api/dist/modules/projects/projects.controller.spec.d.ts",
+    "apps/api/dist/modules/projects/projects.controller.spec.js",
+    "apps/api/dist/modules/projects/projects.controller.spec.js.map",
+    "apps/api/dist/modules/projects/projects.module.d.ts",
+    "apps/api/dist/modules/projects/projects.module.js",
+    "apps/api/dist/modules/projects/projects.module.js.map",
+    "apps/api/dist/modules/projects/projects.service.d.ts",
+    "apps/api/dist/modules/projects/projects.service.js",
+    "apps/api/dist/modules/projects/projects.service.js.map",
+    "apps/api/dist/modules/projects/projects.service.spec.d.ts",
+    "apps/api/dist/modules/projects/projects.service.spec.js",
+    "apps/api/dist/modules/projects/projects.service.spec.js.map",
+    "apps/api/dist/modules/triggers",
+    "apps/api/dist/modules/triggers/triggers.controller.d.ts",
+    "apps/api/dist/modules/triggers/triggers.controller.js",
+    "apps/api/dist/modules/triggers/triggers.controller.js.map",
+    "apps/api/dist/modules/triggers/triggers.controller.spec.d.ts",
+    "apps/api/dist/modules/triggers/triggers.controller.spec.js",
+    "apps/api/dist/modules/triggers/triggers.controller.spec.js.map",
+    "apps/api/dist/modules/triggers/triggers.module.d.ts",
+    "apps/api/dist/modules/triggers/triggers.module.js",
+    "apps/api/dist/modules/triggers/triggers.module.js.map",
+    "apps/api/dist/modules/triggers/triggers.service.d.ts",
+    "apps/api/dist/modules/triggers/triggers.service.js",
+    "apps/api/dist/modules/triggers/triggers.service.js.map",
+    "apps/api/dist/modules/triggers/triggers.service.spec.d.ts",
+    "apps/api/dist/modules/triggers/triggers.service.spec.js",
+    "apps/api/dist/modules/triggers/triggers.service.spec.js.map",
+    "apps/api/dist/modules/webhooks",
+    "apps/api/dist/modules/webhooks/webhooks.controller.d.ts",
+    "apps/api/dist/modules/webhooks/webhooks.controller.js",
+    "apps/api/dist/modules/webhooks/webhooks.controller.js.map",
+    "apps/api/dist/modules/webhooks/webhooks.controller.spec.d.ts",
+    "apps/api/dist/modules/webhooks/webhooks.controller.spec.js",
+    "apps/api/dist/modules/webhooks/webhooks.controller.spec.js.map",
+    "apps/api/dist/modules/webhooks/webhooks.module.d.ts",
+    "apps/api/dist/modules/webhooks/webhooks.module.js",
+    "apps/api/dist/modules/webhooks/webhooks.module.js.map",
+    "apps/api/dist/modules/webhooks/webhooks.service.d.ts",
+    "apps/api/dist/modules/webhooks/webhooks.service.js",
+    "apps/api/dist/modules/webhooks/webhooks.service.js.map",
+    "apps/api/dist/modules/webhooks/webhooks.service.spec.d.ts",
+    "apps/api/dist/modules/webhooks/webhooks.service.spec.js",
+    "apps/api/dist/modules/webhooks/webhooks.service.spec.js.map",
+    "apps/api/dist/modules/workflows",
+    "apps/api/dist/modules/workflows/dto",
+    "apps/api/dist/modules/workflows/dto/create-workflow.dto.d.ts",
+    "apps/api/dist/modules/workflows/dto/create-workflow.dto.js",
+    "apps/api/dist/modules/workflows/dto/create-workflow.dto.js.map",
+    "apps/api/dist/modules/workflows/dto/execute-workflow.dto.d.ts",
+    "apps/api/dist/modules/workflows/dto/execute-workflow.dto.js",
+    "apps/api/dist/modules/workflows/dto/execute-workflow.dto.js.map",
+    "apps/api/dist/modules/workflows/dto/execution-response.dto.d.ts",
+    "apps/api/dist/modules/workflows/dto/execution-response.dto.js",
+    "apps/api/dist/modules/workflows/dto/execution-response.dto.js.map",
+    "apps/api/dist/modules/workflows/dto/index.d.ts",
+    "apps/api/dist/modules/workflows/dto/index.js",
+    "apps/api/dist/modules/workflows/dto/index.js.map",
+    "apps/api/dist/modules/workflows/dto/update-workflow.dto.d.ts",
+    "apps/api/dist/modules/workflows/dto/update-workflow.dto.js",
+    "apps/api/dist/modules/workflows/dto/update-workflow.dto.js.map",
+    "apps/api/dist/modules/workflows/dto/workflow-query.dto.d.ts",
+    "apps/api/dist/modules/workflows/dto/workflow-query.dto.js",
+    "apps/api/dist/modules/workflows/dto/workflow-query.dto.js.map",
+    "apps/api/dist/modules/workflows/dto/workflow-response.dto.d.ts",
+    "apps/api/dist/modules/workflows/dto/workflow-response.dto.js",
+    "apps/api/dist/modules/workflows/dto/workflow-response.dto.js.map",
+    "apps/api/dist/modules/workflows/workflows.controller.d.ts",
+    "apps/api/dist/modules/workflows/workflows.controller.js",
+    "apps/api/dist/modules/workflows/workflows.controller.js.map",
+    "apps/api/dist/modules/workflows/workflows.controller.spec.d.ts",
+    "apps/api/dist/modules/workflows/workflows.controller.spec.js",
+    "apps/api/dist/modules/workflows/workflows.controller.spec.js.map",
+    "apps/api/dist/modules/workflows/workflows.module.d.ts",
+    "apps/api/dist/modules/workflows/workflows.module.js",
+    "apps/api/dist/modules/workflows/workflows.module.js.map",
+    "apps/api/dist/modules/workflows/workflows.service.d.ts",
+    "apps/api/dist/modules/workflows/workflows.service.js",
+    "apps/api/dist/modules/workflows/workflows.service.js.map",
+    "apps/api/dist/modules/workflows/workflows.service.spec.d.ts",
+    "apps/api/dist/modules/workflows/workflows.service.spec.js",
+    "apps/api/dist/modules/workflows/workflows.service.spec.js.map",
+    "apps/api/dist/shared",
+    "apps/api/dist/shared/database",
+    "apps/api/dist/shared/database/database.module.d.ts",
+    "apps/api/dist/shared/database/database.module.js",
+    "apps/api/dist/shared/database/database.module.js.map",
+    "apps/api/dist/shared/database/prisma.service.d.ts",
+    "apps/api/dist/shared/database/prisma.service.js",
+    "apps/api/dist/shared/database/prisma.service.js.map",
+    "apps/api/dist/shared/dto",
+    "apps/api/dist/shared/dto/pagination.dto.d.ts",
+    "apps/api/dist/shared/dto/pagination.dto.js",
+    "apps/api/dist/shared/dto/pagination.dto.js.map",
+    "apps/api/dist/shared/filters",
+    "apps/api/dist/shared/filters/http-exception.filter.d.ts",
+    "apps/api/dist/shared/filters/http-exception.filter.js",
+    "apps/api/dist/shared/filters/http-exception.filter.js.map",
+    "apps/api/dist/shared/interceptors",
+    "apps/api/dist/shared/interceptors/logging.interceptor.d.ts",
+    "apps/api/dist/shared/interceptors/logging.interceptor.js",
+    "apps/api/dist/shared/interceptors/logging.interceptor.js.map",
+    "apps/api/dist/tsconfig.tsbuildinfo"
+  ]
+}

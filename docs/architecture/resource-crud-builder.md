@@ -21,14 +21,14 @@ fields:
 
 ## Outputs from This Definition
 
-| Output | Description |
-|--------|-------------|
-| Database Schema | Migration with correct types, constraints, indexes |
-| Validation Rules | Input validation for create/update |
-| Model/Entity | ORM entity or model class |
-| CRUD API | REST endpoints for list, create, read, update, delete |
-| UI Preview | Form and list views |
-| Generated Code | Laravel, NestJS, or other framework code |
+| Output           | Description                                           |
+| ---------------- | ----------------------------------------------------- |
+| Database Schema  | Migration with correct types, constraints, indexes    |
+| Validation Rules | Input validation for create/update                    |
+| Model/Entity     | ORM entity or model class                             |
+| CRUD API         | REST endpoints for list, create, read, update, delete |
+| UI Preview       | Form and list views                                   |
+| Generated Code   | Laravel, NestJS, or other framework code              |
 
 ## Key Principle
 
@@ -37,6 +37,7 @@ The structured definition is the single source of truth. All outputs derive from
 ## Definition Format (Future)
 
 The resource definition should capture:
+
 - Resource name
 - Fields with types and constraints
 - Relationships to other resources

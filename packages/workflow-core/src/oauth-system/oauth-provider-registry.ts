@@ -13,9 +13,7 @@ export class OAuthProviderRegistry {
    */
   register(provider: OAuthProvider): void {
     if (this.providers.has(provider.metadata.type)) {
-      throw new Error(
-        `OAuth provider already registered: ${provider.metadata.type}`,
-      );
+      throw new Error(`OAuth provider already registered: ${provider.metadata.type}`);
     }
     this.providers.set(provider.metadata.type, provider);
   }

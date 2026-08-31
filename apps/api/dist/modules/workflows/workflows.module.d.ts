@@ -1,2 +1,1 @@
-export declare class WorkflowsModule {
-}
+export declare class WorkflowsModule {}

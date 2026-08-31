@@ -99,10 +99,7 @@ export class OAuthStateManager {
    * Sign a payload using HMAC-SHA256.
    */
   private sign(payload: string): string {
-    return crypto
-      .createHmac('sha256', this.secret)
-      .update(payload)
-      .digest('base64url');
+    return crypto.createHmac('sha256', this.secret).update(payload).digest('base64url');
   }
 
   /**

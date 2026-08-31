@@ -5,18 +5,21 @@
 ## Testing Layers
 
 ### Unit Tests
+
 - **Location**: Co-located with source files (`*.spec.ts`)
 - **Scope**: Service methods, utilities, pure functions
 - **Framework**: Jest
 - **Command**: `pnpm test`
 
 ### Integration Tests
+
 - **Location**: Co-located or in `test/` directory
 - **Scope**: Module interactions, API endpoints
 - **Framework**: Jest + NestJS TestingModule
 - **Command**: `pnpm test`
 
 ### E2E Tests
+
 - **Location**: `test/` directory (`*.e2e-spec.ts`)
 - **Scope**: Full application flows
 - **Framework**: Jest + Supertest

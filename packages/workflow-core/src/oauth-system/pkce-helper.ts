@@ -24,10 +24,7 @@ export class PkceHelper {
    * Generate a PKCE code challenge from a code verifier.
    * Supports S256 (SHA-256) and plain methods.
    */
-  static generateCodeChallenge(
-    codeVerifier: string,
-    method: 'S256' | 'plain' = 'S256',
-  ): string {
+  static generateCodeChallenge(codeVerifier: string, method: 'S256' | 'plain' = 'S256'): string {
     if (method === 'plain') {
       return codeVerifier;
     }

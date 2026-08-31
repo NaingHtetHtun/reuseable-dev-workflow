@@ -85,15 +85,10 @@ export class GoogleOAuthProvider implements OAuthProvider {
     if (state.length !== expectedState.length) {
       return false;
     }
-    return crypto.timingSafeEqual(
-      Buffer.from(state),
-      Buffer.from(expectedState),
-    );
+    return crypto.timingSafeEqual(Buffer.from(state), Buffer.from(expectedState));
   }
 
-  async exchangeCode(
-    params: OAuthTokenExchangeParams,
-  ): Promise<OAuthTokenResult> {
+  async exchangeCode(params: OAuthTokenExchangeParams): Promise<OAuthTokenResult> {
     const body = new URLSearchParams({
       grant_type: 'authorization_code',
       client_id: params.clientId,
@@ -117,10 +112,7 @@ export class GoogleOAuthProvider implements OAuthProvider {
     const data = (await response.json()) as Record<string, unknown>;
 
     if (!response.ok) {
-      throw new OAuthError(
-        data.error as string,
-        data.error_description as string | undefined,
-      );
+      throw new OAuthError(data.error as string, data.error_description as string | undefined);
     }
 
     return {
@@ -151,10 +143,7 @@ export class GoogleOAuthProvider implements OAuthProvider {
     const data = (await response.json()) as Record<string, unknown>;
 
     if (!response.ok) {
-      throw new OAuthError(
-        data.error as string,
-        data.error_description as string | undefined,
-      );
+      throw new OAuthError(data.error as string, data.error_description as string | undefined);
     }
 
     return {

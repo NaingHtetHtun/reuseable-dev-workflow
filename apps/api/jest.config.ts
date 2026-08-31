@@ -13,8 +13,7 @@ const config: Config = {
   testEnvironment: 'node',
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
-    '^@devflow/workflow-core$':
-      '<rootDir>/../../../packages/workflow-core/src/index.ts',
+    '^@devflow/workflow-core$': '<rootDir>/../../../packages/workflow-core/src/index.ts',
   },
 };
 

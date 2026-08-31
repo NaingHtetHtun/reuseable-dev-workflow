@@ -121,15 +121,15 @@ devflow-platform/
 
 **What moves here:**
 
-| Current Location | New Location | Rationale |
-|-----------------|--------------|-----------|
-| `src/modules/workflows/engine/types.ts` | `packages/workflow-core/src/types.ts` | Pure types, no imports |
-| `src/modules/workflows/engine/workflow-validator.ts` | `packages/workflow-core/src/validator.ts` | Pure function, no imports |
-| `src/modules/workflows/engine/workflow-executor.ts` | `packages/workflow-core/src/executor.ts` | Needs Logger abstraction |
-| `src/modules/workflows/engine/node-system/node-type.interface.ts` | `packages/workflow-core/src/node-system/interfaces.ts` | Pure types |
-| `src/modules/workflows/engine/node-system/node-registry.ts` | `packages/workflow-core/src/node-system/registry.ts` | Pure class |
-| `src/modules/workflows/engine/node-system/node-validator.ts` | `packages/workflow-core/src/node-system/validator.ts` | Pure functions |
-| `src/modules/workflows/engine/node-system/builtin/*.ts` | `packages/workflow-core/src/node-system/builtin/` | Pure implementations |
+| Current Location                                                  | New Location                                           | Rationale                 |
+| ----------------------------------------------------------------- | ------------------------------------------------------ | ------------------------- |
+| `src/modules/workflows/engine/types.ts`                           | `packages/workflow-core/src/types.ts`                  | Pure types, no imports    |
+| `src/modules/workflows/engine/workflow-validator.ts`              | `packages/workflow-core/src/validator.ts`              | Pure function, no imports |
+| `src/modules/workflows/engine/workflow-executor.ts`               | `packages/workflow-core/src/executor.ts`               | Needs Logger abstraction  |
+| `src/modules/workflows/engine/node-system/node-type.interface.ts` | `packages/workflow-core/src/node-system/interfaces.ts` | Pure types                |
+| `src/modules/workflows/engine/node-system/node-registry.ts`       | `packages/workflow-core/src/node-system/registry.ts`   | Pure class                |
+| `src/modules/workflows/engine/node-system/node-validator.ts`      | `packages/workflow-core/src/node-system/validator.ts`  | Pure functions            |
+| `src/modules/workflows/engine/node-system/builtin/*.ts`           | `packages/workflow-core/src/node-system/builtin/`      | Pure implementations      |
 
 **What does NOT move:**
 
@@ -171,21 +171,21 @@ const executor = new WorkflowExecutor({
 
 **What stays:**
 
-| Location | Rationale |
-|----------|-----------|
-| `src/modules/health/` | NestJS module |
-| `src/modules/projects/` | NestJS module, Prisma-dependent |
-| `src/modules/workflows/workflows.module.ts` | NestJS module registration |
-| `src/modules/workflows/workflows.controller.ts` | NestJS controller |
-| `src/modules/workflows/workflows.service.ts` | NestJS service, Prisma-dependent |
-| `src/shared/database/` | Prisma service, NestJS module |
-| `src/shared/filters/` | NestJS exception filter |
-| `src/shared/interceptors/` | NestJS interceptor |
-| `src/shared/dto/` | NestJS DTOs |
-| `src/config/` | NestJS ConfigModule |
-| `src/app.module.ts` | Root module |
-| `src/main.ts` | Bootstrap |
-| `prisma/` | Schema and migrations |
+| Location                                        | Rationale                        |
+| ----------------------------------------------- | -------------------------------- |
+| `src/modules/health/`                           | NestJS module                    |
+| `src/modules/projects/`                         | NestJS module, Prisma-dependent  |
+| `src/modules/workflows/workflows.module.ts`     | NestJS module registration       |
+| `src/modules/workflows/workflows.controller.ts` | NestJS controller                |
+| `src/modules/workflows/workflows.service.ts`    | NestJS service, Prisma-dependent |
+| `src/shared/database/`                          | Prisma service, NestJS module    |
+| `src/shared/filters/`                           | NestJS exception filter          |
+| `src/shared/interceptors/`                      | NestJS interceptor               |
+| `src/shared/dto/`                               | NestJS DTOs                      |
+| `src/config/`                                   | NestJS ConfigModule              |
+| `src/app.module.ts`                             | Root module                      |
+| `src/main.ts`                                   | Bootstrap                        |
+| `prisma/`                                       | Schema and migrations            |
 
 **Import changes in API:**
 
@@ -222,6 +222,7 @@ import { WorkflowExecutor, NodeRegistry } from '@devflow/workflow-core';
 ### Build Orchestration: Turborepo
 
 **Why Turborepo:**
+
 - Lightweight, minimal configuration
 - Works natively with pnpm workspaces
 - Incremental builds and caching
@@ -233,6 +234,7 @@ import { WorkflowExecutor, NodeRegistry } from '@devflow/workflow-core';
 ### Frontend: Vite + React + TypeScript
 
 **Why Vite:**
+
 - Standard React build tool in 2026
 - Fast HMR
 - Native ESM development
@@ -243,6 +245,7 @@ import { WorkflowExecutor, NodeRegistry } from '@devflow/workflow-core';
 ### Frontend Testing: Vitest
 
 **Why Vitest:**
+
 - Native ESM support (no transform issues)
 - Compatible with Vite config
 - Jest-compatible API (easy migration if needed)
@@ -259,6 +262,7 @@ Already using pnpm. Adding workspace configuration is minimal.
 ### Step 1: Create root workspace configuration
 
 Create `pnpm-workspace.yaml`:
+
 ```yaml
 packages:
   - 'apps/*'
@@ -266,6 +270,7 @@ packages:
 ```
 
 Update root `package.json`:
+
 ```json
 {
   "name": "devflow-platform",
@@ -286,6 +291,7 @@ Update root `package.json`:
 ```
 
 Create `turbo.json`:
+
 ```json
 {
   "$schema": "https://turbo.build/schema.json",
@@ -328,6 +334,7 @@ apps/api/
 ```
 
 The API `package.json` moves all current dependencies:
+
 ```json
 {
   "name": "@devflow/api",
@@ -390,6 +397,7 @@ packages/workflow-core/
 ```
 
 **package.json:**
+
 ```json
 {
   "name": "@devflow/workflow-core",
@@ -445,6 +453,7 @@ pnpm create vite apps/web --template react-ts
 - `package.json` — React, Vite, Vitest dependencies
 
 **vite.config.ts:**
+
 ```typescript
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
@@ -470,6 +479,7 @@ export default defineConfig({
 ### Step 5: Create shared tooling
 
 **`tooling/base-tsconfig.json`:**
+
 ```json
 {
   "compilerOptions": {
@@ -507,11 +517,13 @@ import { WorkflowExecutor, NodeRegistry, WorkflowDefinition } from '@devflow/wor
 ### Step 7: Update tests
 
 **packages/workflow-core:**
+
 - Move validator tests, executor tests, registry tests, node tests
 - Use Vitest instead of Jest
 - Tests are pure unit tests (no NestJS mocking needed)
 
 **apps/api:**
+
 - Keep controller and service tests (NestJS integration tests)
 - Add integration test for workflow execution (calling through API)
 
@@ -524,23 +536,23 @@ import { WorkflowExecutor, NodeRegistry, WorkflowDefinition } from '@devflow/wor
 
 ## Dependency Ownership
 
-| Package | Owns Dependencies |
-|---------|-------------------|
-| Root | `turbo`, `prettier` |
-| `@devflow/api` | `@nestjs/*`, `@prisma/client`, `class-validator`, `class-transformer`, `rxjs` |
-| `@devflow/workflow-core` | None (zero runtime dependencies) |
-| `apps/web` | `react`, `react-dom`, `vite`, `@vitejs/plugin-react`, `vitest` |
+| Package                  | Owns Dependencies                                                             |
+| ------------------------ | ----------------------------------------------------------------------------- |
+| Root                     | `turbo`, `prettier`                                                           |
+| `@devflow/api`           | `@nestjs/*`, `@prisma/client`, `class-validator`, `class-transformer`, `rxjs` |
+| `@devflow/workflow-core` | None (zero runtime dependencies)                                              |
+| `apps/web`               | `react`, `react-dom`, `vite`, `@vitejs/plugin-react`, `vitest`                |
 
 **Rule:** `@devflow/workflow-core` must NEVER have runtime dependencies. It is pure TypeScript.
 
 ## Environment Variable Boundaries
 
-| Variable | `apps/api` | `apps/web` | `packages/workflow-core` |
-|----------|-----------|-----------|------------------------|
-| `DATABASE_URL` | ✅ | ❌ | ❌ |
-| `PORT` | ✅ | ❌ | ❌ |
-| `NODE_ENV` | ✅ | ✅ | ❌ |
-| `VITE_API_URL` | ❌ | ✅ | ❌ |
+| Variable       | `apps/api` | `apps/web` | `packages/workflow-core` |
+| -------------- | ---------- | ---------- | ------------------------ |
+| `DATABASE_URL` | ✅         | ❌         | ❌                       |
+| `PORT`         | ✅         | ❌         | ❌                       |
+| `NODE_ENV`     | ✅         | ✅         | ❌                       |
+| `VITE_API_URL` | ❌         | ✅         | ❌                       |
 
 ## API ↔ Frontend Communication
 
@@ -575,14 +587,14 @@ Document this as future work only.
 
 ## Migration Risks
 
-| Risk | Likelihood | Impact | Mitigation |
-|------|-----------|--------|------------|
-| Import path changes break tests | High | Medium | Update all imports, run tests after each step |
-| Prisma schema path changes | Medium | High | Update `prisma/schema.prisma` path in package.json |
-| TypeScript config conflicts | Medium | Medium | Use shared base config with per-package overrides |
-| NestJS build breaks with workspace deps | Low | High | Test build after migration |
-| Vitest vs Jest confusion | Low | Low | Clear documentation per package |
-| Circular dependency between packages | Low | High | workflow-core has zero NestJS/API imports |
+| Risk                                    | Likelihood | Impact | Mitigation                                         |
+| --------------------------------------- | ---------- | ------ | -------------------------------------------------- |
+| Import path changes break tests         | High       | Medium | Update all imports, run tests after each step      |
+| Prisma schema path changes              | Medium     | High   | Update `prisma/schema.prisma` path in package.json |
+| TypeScript config conflicts             | Medium     | Medium | Use shared base config with per-package overrides  |
+| NestJS build breaks with workspace deps | Low        | High   | Test build after migration                         |
+| Vitest vs Jest confusion                | Low        | Low    | Clear documentation per package                    |
+| Circular dependency between packages    | Low        | High   | workflow-core has zero NestJS/API imports          |
 
 ## Rollback Strategy
 
@@ -623,25 +635,25 @@ curl http://localhost:3000/api/v1/health
 
 ## Files Changed
 
-| File | Action |
-|------|--------|
-| `pnpm-workspace.yaml` | Created |
-| `turbo.json` | Created |
-| `package.json` | Modified (root workspace) |
-| `tooling/base-tsconfig.json` | Created |
-| `apps/api/package.json` | Created (from root) |
-| `apps/api/tsconfig.json` | Created (from root) |
-| `apps/api/jest.config.ts` | Created (from root) |
-| `apps/api/nest-cli.json` | Created (from root) |
-| `apps/api/src/**` | Moved from `src/` |
-| `apps/api/prisma/**` | Moved from `prisma/` |
-| `apps/web/package.json` | Created (scaffold) |
-| `apps/web/src/App.tsx` | Created (scaffold) |
-| `apps/web/vite.config.ts` | Created |
-| `packages/workflow-core/package.json` | Created |
-| `packages/workflow-core/src/**` | Moved from `src/modules/workflows/engine/` |
-| `packages/workflow-core/tsconfig.json` | Created |
-| Root `tsconfig.json` | Modified (project references) |
+| File                                   | Action                                     |
+| -------------------------------------- | ------------------------------------------ |
+| `pnpm-workspace.yaml`                  | Created                                    |
+| `turbo.json`                           | Created                                    |
+| `package.json`                         | Modified (root workspace)                  |
+| `tooling/base-tsconfig.json`           | Created                                    |
+| `apps/api/package.json`                | Created (from root)                        |
+| `apps/api/tsconfig.json`               | Created (from root)                        |
+| `apps/api/jest.config.ts`              | Created (from root)                        |
+| `apps/api/nest-cli.json`               | Created (from root)                        |
+| `apps/api/src/**`                      | Moved from `src/`                          |
+| `apps/api/prisma/**`                   | Moved from `prisma/`                       |
+| `apps/web/package.json`                | Created (scaffold)                         |
+| `apps/web/src/App.tsx`                 | Created (scaffold)                         |
+| `apps/web/vite.config.ts`              | Created                                    |
+| `packages/workflow-core/package.json`  | Created                                    |
+| `packages/workflow-core/src/**`        | Moved from `src/modules/workflows/engine/` |
+| `packages/workflow-core/tsconfig.json` | Created                                    |
+| Root `tsconfig.json`                   | Modified (project references)              |
 
 ## Completion Checklist
 

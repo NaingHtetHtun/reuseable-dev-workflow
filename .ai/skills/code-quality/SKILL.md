@@ -1,14 +1,17 @@
 # Code Quality Skill
 
 ## Purpose
+
 Maintain high code quality through consistent conventions.
 
 ## When to Use
+
 - Writing any code
 - Reviewing code
 - Refactoring existing code
 
 ## Required Behavior
+
 1. Small files, small classes, small functions.
 2. Clear, descriptive naming.
 3. Single responsibility per class/function/module.
@@ -22,6 +25,7 @@ Maintain high code quality through consistent conventions.
 11. No giant service classes — split responsibilities.
 
 ## Things to Inspect
+
 - File length (warn if >300 lines)
 - Class responsibilities
 - Function length
@@ -29,12 +33,14 @@ Maintain high code quality through consistent conventions.
 - Duplicated code patterns
 
 ## Things to Avoid
+
 - Artificial file splitting just to reduce line count
 - Over-abstraction
 - Premature optimization
 - Clever code that sacrifices readability
 
 ## Verification Checklist
+
 - [ ] Files are reasonably sized
 - [ ] Functions do one thing
 - [ ] No dead code

@@ -35,30 +35,39 @@ PLAN → REVIEW → APPROVE → IMPLEMENT → TEST → PREVIEW → REVIEW → DO
 ```
 
 ### Phase 1 — Understand
+
 Inspect existing architecture, documentation, skills, implementation, tests, and conventions.
 
 ### Phase 2 — Research
+
 Research official documentation for external libraries/APIs. Verify current versions.
 
 ### Phase 3 — Plan
+
 Create/update a feature plan covering: problem, goal, scope, non-goals, architecture, data model, API, security, dependencies, testing, preview, risks, alternatives.
 
 ### Phase 4 — Human Approval
+
 **STOP. Do not implement until the human explicitly approves the plan.**
 
 ### Phase 5 — Implementation
+
 Implement ONLY the approved scope. Do not add unrelated improvements.
 
 ### Phase 6 — Testing
+
 Write and execute tests during implementation.
 
 ### Phase 7 — Preview
+
 Provide a practical way for the human to inspect/test the feature.
 
 ### Phase 8 — Final Review
+
 Verify: tests pass, typecheck passes, lint passes, formatting passes, no dead code, no unnecessary deps, no duplicated logic, docs updated.
 
 ### Phase 9 — Documentation
+
 Create or update dedicated feature documentation.
 
 ## Session Continuity
@@ -100,6 +109,7 @@ When completing work in a session, execute these steps:
 ### Source of Truth Rule
 
 The repository (code + tests) is the source of truth. If `docs/state/` files conflict with reality:
+
 - The repository wins.
 - Update the documentation to match reality.
 - Never claim work is completed when it has not been verified.
@@ -114,13 +124,13 @@ The repository (code + tests) is the source of truth. If `docs/state/` files con
 
 ### Context File Relationships
 
-| File | Purpose |
-|------|---------|
-| `.ai/ROADMAP.md` | Long-term direction: where the entire project is going |
-| `docs/state/PROJECT-STATE.md` | Current overall state: what has actually been completed |
-| `docs/state/CURRENT-WORK.md` | Current active feature/task |
-| `.ai/CONTINUE.md` | Exact session handoff: where the previous AI stopped and what to do next |
-| `docs/state/CHANGELOG.md` | Historical record of meaningful completed changes |
+| File                          | Purpose                                                                  |
+| ----------------------------- | ------------------------------------------------------------------------ |
+| `.ai/ROADMAP.md`              | Long-term direction: where the entire project is going                   |
+| `docs/state/PROJECT-STATE.md` | Current overall state: what has actually been completed                  |
+| `docs/state/CURRENT-WORK.md`  | Current active feature/task                                              |
+| `.ai/CONTINUE.md`             | Exact session handoff: where the previous AI stopped and what to do next |
+| `docs/state/CHANGELOG.md`     | Historical record of meaningful completed changes                        |
 
 These files complement each other. The repository and tests are the ultimate source of truth if any file conflicts with reality.
 
@@ -141,6 +151,7 @@ These files complement each other. The repository and tests are the ultimate sou
 ## Dependency Requirements
 
 Before installing any package:
+
 1. Explain why it is needed.
 2. Search project for existing equivalent.
 3. Research official docs.
@@ -184,6 +195,7 @@ Before installing any package:
 ## AI Behavior Rules
 
 The AI **must**:
+
 - Read project instructions first.
 - Read relevant skills before implementing.
 - Inspect existing code before changing it.
@@ -198,6 +210,7 @@ The AI **must**:
 - Keep documentation synchronized.
 
 The AI **must NOT**:
+
 - Rewrite the entire project unnecessarily.
 - Replace working architecture without approval.
 - Add dependencies casually.
@@ -211,6 +224,7 @@ The AI **must NOT**:
 ## Definition of Done
 
 A feature is DONE when:
+
 - [ ] Plan was approved by human
 - [ ] Implementation matches approved scope
 - [ ] Unit tests written and passing

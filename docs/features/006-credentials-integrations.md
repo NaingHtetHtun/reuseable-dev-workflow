@@ -65,18 +65,21 @@ Credential
 **Algorithm:** AES-256-GCM (authenticated encryption)
 
 **Why AES-256-GCM:**
+
 - Authenticated encryption (confidentiality + integrity)
 - No external dependencies (Node.js `crypto` built-in)
 - Standard, well-tested, widely supported
 - Random IV per encryption operation
 
 **Key management:**
+
 - Encryption key stored in `ENCRYPTION_KEY` environment variable
 - 32-byte (256-bit) hex-encoded key
 - Key is loaded once at service initialization
 - Never logged, never returned in API responses
 
 **Format of encrypted data:**
+
 ```
 base64(iv + authTag + ciphertext)
 ```
@@ -91,10 +94,7 @@ export class EncryptionService {
   encrypt(plaintext: string): string {
     const iv = crypto.randomBytes(12);
     const cipher = crypto.createCipheriv('aes-256-gcm', this.key, iv);
-    const encrypted = Buffer.concat([
-      cipher.update(plaintext, 'utf8'),
-      cipher.final(),
-    ]);
+    const encrypted = Buffer.concat([cipher.update(plaintext, 'utf8'), cipher.final()]);
     const authTag = cipher.getAuthTag();
     return Buffer.concat([iv, authTag, encrypted]).toString('base64');
   }
@@ -144,14 +144,14 @@ export interface CredentialField {
 
 **Built-in credential types:**
 
-| Type | Secret Fields | Metadata Fields |
-|------|--------------|-----------------|
-| `api-key` | `apiKey` | `headerName` (default: Authorization) |
-| `bearer-token` | `token` | — |
-| `basic-auth` | `username`, `password` | — |
-| `google-oauth2` | `accessToken`, `refreshToken` | `clientId`, `clientSecret`, `expiresAt`, `scopes` |
-| `github-token` | `token` | — |
-| `smtp` | `host`, `port`, `username`, `password`, `fromEmail` | `secure` (boolean) |
+| Type            | Secret Fields                                       | Metadata Fields                                   |
+| --------------- | --------------------------------------------------- | ------------------------------------------------- |
+| `api-key`       | `apiKey`                                            | `headerName` (default: Authorization)             |
+| `bearer-token`  | `token`                                             | —                                                 |
+| `basic-auth`    | `username`, `password`                              | —                                                 |
+| `google-oauth2` | `accessToken`, `refreshToken`                       | `clientId`, `clientSecret`, `expiresAt`, `scopes` |
+| `github-token`  | `token`                                             | —                                                 |
+| `smtp`          | `host`, `port`, `username`, `password`, `fromEmail` | `secure` (boolean)                                |
 
 **Note:** Google OAuth2 credential type is defined here for storage purposes only. The actual OAuth2 authorization flow (redirect, callback, token exchange) is implemented in Phase 7.
 
@@ -220,9 +220,7 @@ The executor passes `resolveCredential` to the node context:
 ```typescript
 const nodeContext: NodeExecutionContext = {
   ...existingFields,
-  resolveCredential: this.credentialResolver
-    ? (id) => this.credentialResolver(id)
-    : undefined,
+  resolveCredential: this.credentialResolver ? (id) => this.credentialResolver(id) : undefined,
 };
 ```
 
@@ -245,16 +243,17 @@ credentials/
 
 **API Endpoints:**
 
-| Method | Path | Status | Description |
-|--------|------|--------|-------------|
-| POST | `/api/v1/projects/:projectId/credentials` | 201 | Create credential |
-| GET | `/api/v1/projects/:projectId/credentials` | 200 | List credentials (paginated) |
-| GET | `/api/v1/projects/:projectId/credentials/:id` | 200 | Get credential (no secrets) |
-| PATCH | `/api/v1/projects/:projectId/credentials/:id` | 200 | Update credential |
-| DELETE | `/api/v1/projects/:projectId/credentials/:id` | 204 | Delete credential |
-| GET | `/api/v1/credential-types` | 200 | List available credential types |
+| Method | Path                                          | Status | Description                     |
+| ------ | --------------------------------------------- | ------ | ------------------------------- |
+| POST   | `/api/v1/projects/:projectId/credentials`     | 201    | Create credential               |
+| GET    | `/api/v1/projects/:projectId/credentials`     | 200    | List credentials (paginated)    |
+| GET    | `/api/v1/projects/:projectId/credentials/:id` | 200    | Get credential (no secrets)     |
+| PATCH  | `/api/v1/projects/:projectId/credentials/:id` | 200    | Update credential               |
+| DELETE | `/api/v1/projects/:projectId/credentials/:id` | 204    | Delete credential               |
+| GET    | `/api/v1/credential-types`                    | 200    | List available credential types |
 
 **Security rules:**
+
 - Secret values are NEVER returned in API responses
 - `GET` response includes: id, name, type, metadata, createdAt, updatedAt
 - `data` field (secrets) is stripped from all responses
@@ -350,17 +349,18 @@ None. The encryption uses Node.js built-in `crypto` module.
 
 ### Updated Dependencies
 
-| Package | Change | Rationale |
-|---------|--------|-----------|
+| Package                  | Change                  | Rationale                                             |
+| ------------------------ | ----------------------- | ----------------------------------------------------- |
 | `@devflow/workflow-core` | Added credential-system | Framework-independent credential types and encryption |
 
 ## Environment Variables
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `ENCRYPTION_KEY` | Yes | 32-byte hex-encoded AES-256 key |
+| Variable         | Required | Description                     |
+| ---------------- | -------- | ------------------------------- |
+| `ENCRYPTION_KEY` | Yes      | 32-byte hex-encoded AES-256 key |
 
 **Example:**
+
 ```bash
 # Generate a key
 node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
@@ -427,12 +427,12 @@ pnpm lint
 
 ## Risks
 
-| Risk | Likelihood | Impact | Mitigation |
-|------|-----------|--------|------------|
-| Encryption key not set | Medium | High | Fail fast on startup if missing |
-| Key rotation needed | Low | High | Design for future key versioning |
-| Token expiry not handled | Medium | Medium | Store expiry in metadata, nodes check before use |
-| Credential data schema changes | Low | Medium | Version credential types, migrate old data |
+| Risk                           | Likelihood | Impact | Mitigation                                       |
+| ------------------------------ | ---------- | ------ | ------------------------------------------------ |
+| Encryption key not set         | Medium     | High   | Fail fast on startup if missing                  |
+| Key rotation needed            | Low        | High   | Design for future key versioning                 |
+| Token expiry not handled       | Medium     | Medium | Store expiry in metadata, nodes check before use |
+| Credential data schema changes | Low        | Medium | Version credential types, migrate old data       |
 
 ## Known Limitations
 
@@ -451,19 +451,19 @@ pnpm lint
 
 ## Files Changed
 
-| File | Action |
-|------|--------|
-| `packages/workflow-core/src/credential-system/encryption.ts` | Created |
-| `packages/workflow-core/src/credential-system/credential-types.ts` | Created |
-| `packages/workflow-core/src/credential-system/integration-registry.ts` | Created |
-| `packages/workflow-core/src/credential-system/index.ts` | Created |
-| `packages/workflow-core/src/credential-system/*.spec.ts` | Created |
-| `packages/workflow-core/src/node-system/interfaces.ts` | Modified (add resolveCredential) |
-| `packages/workflow-core/src/executor.ts` | Modified (add CredentialResolver) |
-| `packages/workflow-core/src/index.ts` | Modified (add exports) |
-| `apps/api/prisma/schema.prisma` | Modified (add Credential model) |
-| `apps/api/src/modules/credentials/` | Created (module, service, controller, DTOs) |
-| `apps/api/src/modules/workflows/workflows.service.ts` | Modified (pass credentialResolver) |
+| File                                                                   | Action                                      |
+| ---------------------------------------------------------------------- | ------------------------------------------- |
+| `packages/workflow-core/src/credential-system/encryption.ts`           | Created                                     |
+| `packages/workflow-core/src/credential-system/credential-types.ts`     | Created                                     |
+| `packages/workflow-core/src/credential-system/integration-registry.ts` | Created                                     |
+| `packages/workflow-core/src/credential-system/index.ts`                | Created                                     |
+| `packages/workflow-core/src/credential-system/*.spec.ts`               | Created                                     |
+| `packages/workflow-core/src/node-system/interfaces.ts`                 | Modified (add resolveCredential)            |
+| `packages/workflow-core/src/executor.ts`                               | Modified (add CredentialResolver)           |
+| `packages/workflow-core/src/index.ts`                                  | Modified (add exports)                      |
+| `apps/api/prisma/schema.prisma`                                        | Modified (add Credential model)             |
+| `apps/api/src/modules/credentials/`                                    | Created (module, service, controller, DTOs) |
+| `apps/api/src/modules/workflows/workflows.service.ts`                  | Modified (pass credentialResolver)          |
 
 ## Completion Checklist
 

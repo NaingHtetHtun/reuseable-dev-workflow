@@ -1,9 +1,4 @@
-import {
-  NodeTypeDefinition,
-  NodeHandler,
-  ParameterSchema,
-  ValidationResult,
-} from './interfaces';
+import { NodeTypeDefinition, NodeHandler, ParameterSchema, ValidationResult } from './interfaces';
 
 export class NodeRegistry {
   private definitions = new Map<string, NodeTypeDefinition>();

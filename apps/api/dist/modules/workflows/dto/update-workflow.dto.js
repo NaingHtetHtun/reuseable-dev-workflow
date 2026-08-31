@@ -1,106 +1,184 @@
-"use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
+'use strict';
+var __decorate =
+  (this && this.__decorate) ||
+  function (decorators, target, key, desc) {
+    var c = arguments.length,
+      r =
+        c < 3
+          ? target
+          : desc === null
+            ? (desc = Object.getOwnPropertyDescriptor(target, key))
+            : desc,
+      d;
+    if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
+      r = Reflect.decorate(decorators, target, key, desc);
+    else
+      for (var i = decorators.length - 1; i >= 0; i--)
+        if ((d = decorators[i]))
+          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return (c > 3 && r && Object.defineProperty(target, key, r), r);
+  };
+var __metadata =
+  (this && this.__metadata) ||
+  function (k, v) {
+    if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
+      return Reflect.metadata(k, v);
+  };
+Object.defineProperty(exports, '__esModule', { value: true });
 exports.UpdateWorkflowDto = void 0;
-const class_validator_1 = require("class-validator");
-const class_transformer_1 = require("class-transformer");
+const class_validator_1 = require('class-validator');
+const class_transformer_1 = require('class-transformer');
 class WorkflowNodeDto {
-    id;
-    type;
-    name;
-    parameters = {};
+  id;
+  type;
+  name;
+  parameters = {};
 }
-__decorate([
+__decorate(
+  [
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], WorkflowNodeDto.prototype, "id", void 0);
-__decorate([
+    __metadata('design:type', String),
+  ],
+  WorkflowNodeDto.prototype,
+  'id',
+  void 0,
+);
+__decorate(
+  [
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], WorkflowNodeDto.prototype, "type", void 0);
-__decorate([
+    __metadata('design:type', String),
+  ],
+  WorkflowNodeDto.prototype,
+  'type',
+  void 0,
+);
+__decorate(
+  [
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], WorkflowNodeDto.prototype, "name", void 0);
-__decorate([
-    (0, class_validator_1.IsObject)(),
-    __metadata("design:type", Object)
-], WorkflowNodeDto.prototype, "parameters", void 0);
+    __metadata('design:type', String),
+  ],
+  WorkflowNodeDto.prototype,
+  'name',
+  void 0,
+);
+__decorate(
+  [(0, class_validator_1.IsObject)(), __metadata('design:type', Object)],
+  WorkflowNodeDto.prototype,
+  'parameters',
+  void 0,
+);
 class WorkflowEdgeDto {
-    id;
-    source;
-    target;
+  id;
+  source;
+  target;
 }
-__decorate([
+__decorate(
+  [
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], WorkflowEdgeDto.prototype, "id", void 0);
-__decorate([
+    __metadata('design:type', String),
+  ],
+  WorkflowEdgeDto.prototype,
+  'id',
+  void 0,
+);
+__decorate(
+  [
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], WorkflowEdgeDto.prototype, "source", void 0);
-__decorate([
+    __metadata('design:type', String),
+  ],
+  WorkflowEdgeDto.prototype,
+  'source',
+  void 0,
+);
+__decorate(
+  [
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], WorkflowEdgeDto.prototype, "target", void 0);
+    __metadata('design:type', String),
+  ],
+  WorkflowEdgeDto.prototype,
+  'target',
+  void 0,
+);
 class WorkflowDefinitionDto {
-    nodes = [];
-    edges = [];
+  nodes = [];
+  edges = [];
 }
-__decorate([
+__decorate(
+  [
     (0, class_validator_1.ValidateNested)({ each: true }),
     (0, class_transformer_1.Type)(() => WorkflowNodeDto),
-    __metadata("design:type", Array)
-], WorkflowDefinitionDto.prototype, "nodes", void 0);
-__decorate([
+    __metadata('design:type', Array),
+  ],
+  WorkflowDefinitionDto.prototype,
+  'nodes',
+  void 0,
+);
+__decorate(
+  [
     (0, class_validator_1.ValidateNested)({ each: true }),
     (0, class_transformer_1.Type)(() => WorkflowEdgeDto),
-    __metadata("design:type", Array)
-], WorkflowDefinitionDto.prototype, "edges", void 0);
+    __metadata('design:type', Array),
+  ],
+  WorkflowDefinitionDto.prototype,
+  'edges',
+  void 0,
+);
 class UpdateWorkflowDto {
-    name;
-    description;
-    status;
-    definition;
+  name;
+  description;
+  status;
+  definition;
 }
 exports.UpdateWorkflowDto = UpdateWorkflowDto;
-__decorate([
+__decorate(
+  [
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.MaxLength)(255),
-    __metadata("design:type", String)
-], UpdateWorkflowDto.prototype, "name", void 0);
-__decorate([
+    __metadata('design:type', String),
+  ],
+  UpdateWorkflowDto.prototype,
+  'name',
+  void 0,
+);
+__decorate(
+  [
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MaxLength)(2000),
-    __metadata("design:type", String)
-], UpdateWorkflowDto.prototype, "description", void 0);
-__decorate([
+    __metadata('design:type', String),
+  ],
+  UpdateWorkflowDto.prototype,
+  'description',
+  void 0,
+);
+__decorate(
+  [
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsIn)(['draft', 'active', 'archived']),
-    __metadata("design:type", String)
-], UpdateWorkflowDto.prototype, "status", void 0);
-__decorate([
+    __metadata('design:type', String),
+  ],
+  UpdateWorkflowDto.prototype,
+  'status',
+  void 0,
+);
+__decorate(
+  [
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsObject)(),
     (0, class_validator_1.ValidateNested)(),
     (0, class_transformer_1.Type)(() => WorkflowDefinitionDto),
-    __metadata("design:type", WorkflowDefinitionDto)
-], UpdateWorkflowDto.prototype, "definition", void 0);
+    __metadata('design:type', WorkflowDefinitionDto),
+  ],
+  UpdateWorkflowDto.prototype,
+  'definition',
+  void 0,
+);
 //# sourceMappingURL=update-workflow.dto.js.map

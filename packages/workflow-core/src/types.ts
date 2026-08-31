@@ -1,7 +1,18 @@
 export interface WorkflowDefinition {
+  /** Trigger configuration (how this workflow starts) */
+  trigger?: WorkflowTrigger;
   nodes: WorkflowNode[];
   edges: WorkflowEdge[];
   viewport?: { x: number; y: number; zoom: number };
+}
+
+export interface WorkflowTrigger {
+  /** Trigger type identifier (e.g., 'manual', 'webhook', 'scheduled') */
+  type: string;
+  /** Trigger-specific configuration */
+  config: Record<string, unknown>;
+  /** Whether this trigger is enabled */
+  enabled: boolean;
 }
 
 export interface WorkflowNode {
@@ -28,6 +39,23 @@ export interface ExecutionContext {
   nodeResults: Map<string, unknown>;
   currentNodeId: string;
   startedAt: Date;
+  /** Trigger context (if workflow was started by a trigger) */
+  triggerContext?: TriggerContext;
+}
+
+export interface TriggerContext {
+  /** Workflow ID */
+  workflowId: string;
+  /** Trigger type */
+  triggerType: string;
+  /** Trigger-specific configuration */
+  triggerConfig: Record<string, unknown>;
+  /** Payload from the trigger (e.g., webhook body) */
+  payload: unknown;
+  /** Timestamp when trigger fired */
+  firedAt: Date;
+  /** Unique trigger event ID (for idempotency) */
+  eventId: string;
 }
 
 export interface NodeExecutionResult {

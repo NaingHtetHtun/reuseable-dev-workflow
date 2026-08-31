@@ -126,6 +126,7 @@ model Project {
 ```
 
 All models will share:
+
 - `id`: UUID string
 - `createdAt`: timestamp with default
 - `updatedAt`: auto-updated timestamp
@@ -210,19 +211,19 @@ Response 503:
 
 ### Options Evaluated
 
-| Criteria | Prisma | TypeORM | Drizzle |
-|----------|--------|---------|---------|
+| Criteria                    | Prisma                                                | TypeORM                                | Drizzle                                         |
+| --------------------------- | ----------------------------------------------------- | -------------------------------------- | ----------------------------------------------- |
 | **NestJS official support** | ✅ Official recipe (`docs.nestjs.com/recipes/prisma`) | ✅ Official module (`@nestjs/typeorm`) | ❌ No official recipe (GitHub issue #3038 open) |
-| **Current version** | Prisma 8 (latest, 2026) | TypeORM 1.0 (latest, 2026) | Drizzle ORM 0.44+ (latest, Aug 2025) |
-| **Schema approach** | Dedicated `.prisma` DSL + code generation | TypeScript decorators | TypeScript schema definitions |
-| **Type safety** | Generated client (must run `prisma generate`) | Inferred from entities | Inferred directly from schema (no codegen) |
-| **Migration tooling** | Best-in-class (`prisma migrate dev/deploy`) | Manual migration files | `drizzle-kit generate/migrate` |
-| **Query style** | Nested JS objects, auto-complete | Repository/QueryBuilder/Active Record | SQL-like query builder + relational API |
-| **Performance** | Rust query engine adds slight overhead | Moderate | Lightest (zero dependencies) |
-| **Edge runtime** | Limited (Data Proxy / Accelerate) | No | Yes (Cloudflare Workers, Deno) |
-| **Raw SQL** | `$queryRaw` escape hatch | `dataSource.query()` | First-class (query builder IS SQL-like) |
-| **Community/docs** | Largest community, best docs | Established, mature | Growing fast, good docs |
-| **License** | Apache 2.0 | MIT | Apache 2.0 |
+| **Current version**         | Prisma 8 (latest, 2026)                               | TypeORM 1.0 (latest, 2026)             | Drizzle ORM 0.44+ (latest, Aug 2025)            |
+| **Schema approach**         | Dedicated `.prisma` DSL + code generation             | TypeScript decorators                  | TypeScript schema definitions                   |
+| **Type safety**             | Generated client (must run `prisma generate`)         | Inferred from entities                 | Inferred directly from schema (no codegen)      |
+| **Migration tooling**       | Best-in-class (`prisma migrate dev/deploy`)           | Manual migration files                 | `drizzle-kit generate/migrate`                  |
+| **Query style**             | Nested JS objects, auto-complete                      | Repository/QueryBuilder/Active Record  | SQL-like query builder + relational API         |
+| **Performance**             | Rust query engine adds slight overhead                | Moderate                               | Lightest (zero dependencies)                    |
+| **Edge runtime**            | Limited (Data Proxy / Accelerate)                     | No                                     | Yes (Cloudflare Workers, Deno)                  |
+| **Raw SQL**                 | `$queryRaw` escape hatch                              | `dataSource.query()`                   | First-class (query builder IS SQL-like)         |
+| **Community/docs**          | Largest community, best docs                          | Established, mature                    | Growing fast, good docs                         |
+| **License**                 | Apache 2.0                                            | MIT                                    | Apache 2.0                                      |
 
 ### Recommendation: **Prisma**
 
@@ -247,6 +248,7 @@ Response 503:
 **Why not TypeORM?**
 
 TypeORM 1.0 is a solid choice and has official NestJS support. However:
+
 - Decorator-heavy approach adds visual noise to entity files.
 - Migration tooling is less polished than Prisma.
 - Three different query APIs (Active Record, Data Mapper, QueryBuilder) can lead to inconsistent code.
@@ -255,6 +257,7 @@ TypeORM 1.0 is a solid choice and has official NestJS support. However:
 **Why not Drizzle?**
 
 Drizzle is excellent (fastest, lightest, best edge support). However:
+
 - No official NestJS recipe or module.
 - Integration requires manual wiring (custom providers).
 - For a platform that will have many interconnected models, Prisma's schema DSL is cleaner than TypeScript schema definitions.
@@ -262,10 +265,10 @@ Drizzle is excellent (fastest, lightest, best edge support). However:
 
 ### Prisma Packages Required
 
-| Package | Purpose | Type |
-|---------|---------|------|
-| `prisma` | CLI and schema management | devDependency |
-| `@prisma/client` | Generated database client | dependency |
+| Package          | Purpose                   | Type          |
+| ---------------- | ------------------------- | ------------- |
+| `prisma`         | CLI and schema management | devDependency |
+| `@prisma/client` | Generated database client | dependency    |
 
 ### Prisma Commands (added to package.json)
 
@@ -284,16 +287,16 @@ Drizzle is excellent (fastest, lightest, best edge support). However:
 
 ### New Runtime Dependencies
 
-| Package | Version | Purpose | Justification |
-|---------|---------|---------|---------------|
-| `@prisma/client` | ^6.x | Database client | ORM for PostgreSQL access |
-| `@nestjs/config` | ^3.x | Configuration management | Environment variable handling with validation |
+| Package          | Version | Purpose                  | Justification                                 |
+| ---------------- | ------- | ------------------------ | --------------------------------------------- |
+| `@prisma/client` | ^6.x    | Database client          | ORM for PostgreSQL access                     |
+| `@nestjs/config` | ^3.x    | Configuration management | Environment variable handling with validation |
 
 ### New Dev Dependencies
 
-| Package | Version | Purpose | Justification |
-|---------|---------|---------|---------------|
-| `prisma` | ^6.x | CLI and migration tooling | Schema management and migrations |
+| Package  | Version | Purpose                   | Justification                    |
+| -------- | ------- | ------------------------- | -------------------------------- |
+| `prisma` | ^6.x    | CLI and migration tooling | Schema management and migrations |
 
 ### Why These Dependencies
 
@@ -362,6 +365,7 @@ Not applicable for this foundation feature. The database schema defined here wil
 ## Documentation
 
 After implementation, update:
+
 - `docs/architecture/overview.md` — Update module structure
 - `docs/dependencies/dependency-policy.md` — Add new dependencies
 - `docs/state/PROJECT-STATE.md` — Update completed items
@@ -369,12 +373,12 @@ After implementation, update:
 
 ## Risks
 
-| Risk | Likelihood | Impact | Mitigation |
-|------|-----------|--------|------------|
-| Prisma version compatibility with NestJS 10 | Low | Medium | Prisma 8 works with NestJS 10 (verified in official docs) |
-| Database setup complexity | Low | Low | Use Docker or local PostgreSQL; `.env` configuration |
-| Migration conflicts | Low | Low | Small, focused migrations; one team working |
-| Performance overhead from Prisma engine | Low | Low | Acceptable for this use case; can optimize later |
+| Risk                                        | Likelihood | Impact | Mitigation                                                |
+| ------------------------------------------- | ---------- | ------ | --------------------------------------------------------- |
+| Prisma version compatibility with NestJS 10 | Low        | Medium | Prisma 8 works with NestJS 10 (verified in official docs) |
+| Database setup complexity                   | Low        | Low    | Use Docker or local PostgreSQL; `.env` configuration      |
+| Migration conflicts                         | Low        | Low    | Small, focused migrations; one team working               |
+| Performance overhead from Prisma engine     | Low        | Low    | Acceptable for this use case; can optimize later          |
 
 ## Known Limitations
 
@@ -385,30 +389,30 @@ After implementation, update:
 
 ## Files Changed
 
-| File | Action |
-|------|--------|
-| `prisma/schema.prisma` | Created |
-| `prisma/seed.ts` | Created |
-| `src/config/app.config.ts` | Created |
-| `src/config/database.config.ts` | Created |
-| `src/shared/database/database.module.ts` | Created |
-| `src/shared/database/prisma.service.ts` | Created |
-| `src/shared/filters/http-exception.filter.ts` | Created |
-| `src/shared/interceptors/logging.interceptor.ts` | Created |
-| `src/shared/dto/pagination.dto.ts` | Created |
-| `src/modules/health/health.module.ts` | Created |
-| `src/modules/health/health.controller.ts` | Created |
-| `src/modules/health/health.service.ts` | Created |
-| `src/modules/health/health.controller.spec.ts` | Created |
-| `src/modules/health/health.service.spec.ts` | Created |
-| `src/app.module.ts` | Modified |
-| `src/app.module.spec.ts` | Created |
-| `src/main.ts` | Modified |
-| `.env.example` | Modified |
-| `package.json` | Modified |
-| `jest.config.ts` | Modified |
-| `src/app.controller.ts` | Removed (replaced by health module) |
-| `src/app.controller.spec.ts` | Removed (replaced by health module) |
+| File                                             | Action                              |
+| ------------------------------------------------ | ----------------------------------- |
+| `prisma/schema.prisma`                           | Created                             |
+| `prisma/seed.ts`                                 | Created                             |
+| `src/config/app.config.ts`                       | Created                             |
+| `src/config/database.config.ts`                  | Created                             |
+| `src/shared/database/database.module.ts`         | Created                             |
+| `src/shared/database/prisma.service.ts`          | Created                             |
+| `src/shared/filters/http-exception.filter.ts`    | Created                             |
+| `src/shared/interceptors/logging.interceptor.ts` | Created                             |
+| `src/shared/dto/pagination.dto.ts`               | Created                             |
+| `src/modules/health/health.module.ts`            | Created                             |
+| `src/modules/health/health.controller.ts`        | Created                             |
+| `src/modules/health/health.service.ts`           | Created                             |
+| `src/modules/health/health.controller.spec.ts`   | Created                             |
+| `src/modules/health/health.service.spec.ts`      | Created                             |
+| `src/app.module.ts`                              | Modified                            |
+| `src/app.module.spec.ts`                         | Created                             |
+| `src/main.ts`                                    | Modified                            |
+| `.env.example`                                   | Modified                            |
+| `package.json`                                   | Modified                            |
+| `jest.config.ts`                                 | Modified                            |
+| `src/app.controller.ts`                          | Removed (replaced by health module) |
+| `src/app.controller.spec.ts`                     | Removed (replaced by health module) |
 
 ## Completion Checklist
 

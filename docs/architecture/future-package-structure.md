@@ -57,6 +57,7 @@ devflow-platform/
 ## When to Migrate
 
 Migrate to this structure when:
+
 - There are multiple deployable applications
 - Packages need to be independently versioned
 - The codebase has grown beyond a single NestJS module

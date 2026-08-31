@@ -5,6 +5,7 @@
 ## Concept
 
 The platform will eventually support reusable development components that can:
+
 1. Run inside the platform
 2. Be previewed inside the platform
 3. Be tested inside the platform
@@ -39,21 +40,22 @@ component/
 
 ## Example Components (Future)
 
-| Component | Description | Status |
-|-----------|-------------|--------|
-| Google Login | Google OAuth2 authentication | PLANNED |
-| Apple Login | Apple Sign In | PLANNED |
-| Email Login | Email/password authentication | PLANNED |
-| User CRUD | User management with roles | PLANNED |
-| Category CRUD | Generic category management | PLANNED |
-| File Upload | File upload with storage | PLANNED |
-| Email Sending | Transactional email | PLANNED |
-| Notifications | Push/email/SMS notifications | PLANNED |
-| Roles & Permissions | RBAC system | PLANNED |
+| Component           | Description                   | Status  |
+| ------------------- | ----------------------------- | ------- |
+| Google Login        | Google OAuth2 authentication  | PLANNED |
+| Apple Login         | Apple Sign In                 | PLANNED |
+| Email Login         | Email/password authentication | PLANNED |
+| User CRUD           | User management with roles    | PLANNED |
+| Category CRUD       | Generic category management   | PLANNED |
+| File Upload         | File upload with storage      | PLANNED |
+| Email Sending       | Transactional email           | PLANNED |
+| Notifications       | Push/email/SMS notifications  | PLANNED |
+| Roles & Permissions | RBAC system                   | PLANNED |
 
 ## Key Principle
 
 The same logical component should be capable of:
+
 - Running as a workflow node in the platform
 - Being previewed with sample data
 - Being tested with unit and integration tests

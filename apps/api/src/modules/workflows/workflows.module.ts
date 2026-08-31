@@ -7,5 +7,6 @@ import { ProjectsModule } from '../projects/projects.module';
   imports: [ProjectsModule],
   controllers: [WorkflowsController],
   providers: [WorkflowsService],
+  exports: [WorkflowsService],
 })
 export class WorkflowsModule {}

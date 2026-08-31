@@ -1,1 +1,11 @@
-{"files":{"apps/web/.turbo/turbo-test.log":{"size":308,"mtime_nanos":1787977531503282037,"mode":420,"is_dir":false}},"order":["apps/web/.turbo/turbo-test.log"]}
+{
+  "files": {
+    "apps/web/.turbo/turbo-test.log": {
+      "size": 308,
+      "mtime_nanos": 1787977531503282037,
+      "mode": 420,
+      "is_dir": false
+    }
+  },
+  "order": ["apps/web/.turbo/turbo-test.log"]
+}

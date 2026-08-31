@@ -251,9 +251,7 @@ describe('GoogleOAuthProvider', () => {
 
   describe('validateTokenResponse', () => {
     it('should accept valid response', () => {
-      expect(
-        provider.validateTokenResponse({ accessToken: 'token' }),
-      ).toBe(true);
+      expect(provider.validateTokenResponse({ accessToken: 'token' })).toBe(true);
     });
 
     it('should reject response without accessToken', () => {

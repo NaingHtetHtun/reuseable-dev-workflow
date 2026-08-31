@@ -1,15 +1,18 @@
 # Feature Development Skill
 
 ## Purpose
+
 Implement features following the full development lifecycle with proper planning and approval.
 
 ## When to Use
+
 - Implementing any new feature
 - Adding new functionality to existing modules
 - Creating new API endpoints
 - Adding new services
 
 ## Required Behavior
+
 1. **Understand** — Read existing architecture, docs, skills, code, and tests.
 2. **Research** — Research external libraries/APIs from official docs.
 3. **Plan** — Create a feature plan in `docs/features/NNN-feature-name.md`.
@@ -21,12 +24,14 @@ Implement features following the full development lifecycle with proper planning
 9. **Document** — Update feature documentation.
 
 ## Things to Inspect
+
 - `docs/features/` for existing feature docs
 - Existing tests
 - Existing services in the same domain
 - Package.json for existing dependencies
 
 ## Things to Avoid
+
 - Skipping the plan phase
 - Implementing before approval
 - Expanding scope beyond approved plan
@@ -34,6 +39,7 @@ Implement features following the full development lifecycle with proper planning
 - Declaring completion without verification
 
 ## Verification Checklist
+
 - [ ] Plan created and approved
 - [ ] Implementation matches plan
 - [ ] Tests written and passing

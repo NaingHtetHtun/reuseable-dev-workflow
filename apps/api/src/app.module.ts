@@ -6,6 +6,8 @@ import { ProjectsModule } from './modules/projects/projects.module';
 import { WorkflowsModule } from './modules/workflows/workflows.module';
 import { CredentialsModule } from './modules/credentials/credentials.module';
 import { OAuthModule } from './modules/oauth/oauth.module';
+import { TriggersModule } from './modules/triggers/triggers.module';
+import { WebhooksModule } from './modules/webhooks/webhooks.module';
 import appConfig from './config/app.config';
 import databaseConfig from './config/database.config';
 
@@ -22,6 +24,8 @@ import databaseConfig from './config/database.config';
     WorkflowsModule,
     CredentialsModule,
     OAuthModule,
+    TriggersModule,
+    WebhooksModule,
   ],
 })
 export class AppModule {}
