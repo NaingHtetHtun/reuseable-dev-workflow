@@ -165,3 +165,20 @@ export type {
 export { ResourceValidator } from './resource-system/resource-validator';
 export { PrismaGenerator } from './resource-system/prisma-generator';
 export { ValidationGenerator } from './resource-system/validation-generator';
+
+// Code Generation System
+export type {
+  Framework,
+  GeneratedFile,
+  CompilationOptions,
+  CompilationResult,
+  CompilationMetadata,
+  ApplicationDefinition,
+  ResourceDefinitionForCodegen,
+  ResourceFieldForCodegen,
+  ComponentDefinitionForCodegen,
+} from './codegen-system/codegen-types';
+export type { FrameworkAdapter } from './codegen-system/framework-adapter';
+export { TemplateEngine } from './codegen-system/template-engine';
+export { Compiler } from './codegen-system/compiler';
+export { TypeScriptAdapter } from './codegen-system/adapters/typescript/typescript.adapter';

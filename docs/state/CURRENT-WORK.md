@@ -1,22 +1,23 @@
 # Current Work
 
-> **Last updated**: 2026-09-01 (Phase 8 Resource/CRUD Builder implemented)
+> **Last updated**: 2026-09-01 (Phase 10 Code Generation Engine implemented)
 
 ## Active Task
 
-**011-resource-crud-builder** — IMPLEMENTED and verified.
+**012-code-generation-engine** — IMPLEMENTED and verified.
 
-Phase 8 — Resource / CRUD Builder complete. Next: Phase 10 (Code Generation Engine).
+Phase 10 — Code Generation Engine complete. Next: Phase 11 (Laravel Generator).
 
 ## Session Context
 
-If you are an AI agent starting a new session, this is what you need to know:
+If you are an AI agent starting a session, this is what you need to know:
 
-1. Phases 0-9 are complete (Dev System, Foundation, Projects, Workflow Engine, Node System, Credentials, OAuth, Triggers, Components, Preview, Resource/CRUD Builder).
-2. The resource system provides a framework-independent definition format with 9 field types, a Prisma schema generator, and a validation rule generator.
-3. Resource definitions are stored in the database and versioned like components.
-4. Generation preview endpoints allow inspecting generated Prisma models and validation DTOs.
-5. The next step is to implement the Code Generation Engine (Phase 10) which will consume resource and component definitions to produce framework-specific code.
+1. Phases 0-10 are complete (Dev System, Foundation, Projects, Workflow Engine, Node System, Credentials, OAuth, Triggers, Components, Preview, Resource/CRUD Builder, Code Generation Engine).
+2. The code generation engine provides a compiler pipeline with pluggable framework adapters.
+3. A TypeScript reference adapter generates interfaces and types from resources.
+4. The template engine supports variable interpolation, conditionals, and loops with zero dependencies.
+5. API preview endpoints allow inspecting generated code before committing.
+6. The next step is to implement the Laravel Generator (Phase 11) which will implement a FrameworkAdapter for Laravel v12.
 
 ## How to Resume Work
 

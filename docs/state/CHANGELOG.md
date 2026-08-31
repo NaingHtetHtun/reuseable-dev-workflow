@@ -2,11 +2,43 @@
 
 > Chronological record of completed work. Most recent entry first.
 
+## 2026-09-01 — Code Generation Engine Implemented
+
+**What**: Implemented the code generation engine — compiler pipeline with pluggable framework adapters, custom template engine with variable interpolation/conditionals/loops, TypeScript reference adapter generating interfaces and types from resources, and API preview endpoints.
+
+**Files created/modified**:
+
+- `packages/workflow-core/src/codegen-system/` — CodegenTypes, FrameworkAdapter interface, TemplateEngine, Compiler, TypeScript adapter, tests
+- `apps/api/src/modules/codegen/` — NestJS CodegenModule, service, controller, DTOs, tests
+- `apps/api/src/app.module.ts` — Registered CodegenModule
+- `docs/features/012-code-generation-engine.md` — Feature documentation
+
+**Key design decisions**:
+
+- Zero external dependencies for template engine
+- Pluggable FrameworkAdapter interface (add frameworks by implementing)
+- TypeScript adapter as reference implementation (useful standalone)
+- ApplicationDefinition as unified compiler input
+- GeneratedFile abstraction (path + content + description)
+- API preview endpoints for inspecting generated code
+
+**Verification**:
+
+- `pnpm typecheck` — passes
+- `pnpm lint` — passes
+- `pnpm format` — passes
+- Workflow-core: 416 tests passing
+- API: 192 tests passing
+- Total: 609 tests
+
+---
+
 ## 2026-09-01 — Resource / CRUD Builder Implemented
 
 **What**: Implemented the resource definition system — framework-independent resource definitions with 9 field types, Prisma schema generator, validation rule generator, and full NestJS CRUD API with versioning and generation preview endpoints.
 
 **Files created/modified**:
+
 - `packages/workflow-core/src/resource-system/` — ResourceTypes, ResourceValidator, PrismaGenerator, ValidationGenerator, tests
 - `apps/api/src/modules/resources/` — NestJS ResourcesModule, service, controller, DTOs, tests
 - `apps/api/prisma/schema.prisma` — Added Resource and ResourceVersion models
@@ -14,6 +46,7 @@
 - `docs/features/011-resource-crud-builder.md` — Feature documentation
 
 **Key design decisions**:
+
 - PascalCase resource names, snake_case field names
 - 9 built-in field types (string, text, boolean, integer, float, timestamp, json, enum, relation)
 - Framework-independent generators in workflow-core
@@ -21,6 +54,7 @@
 - Version snapshots following ComponentVersion pattern
 
 **Verification**:
+
 - `pnpm typecheck` — passes
 - `pnpm lint` — passes
 - `pnpm format` — passes

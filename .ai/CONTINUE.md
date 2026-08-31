@@ -10,11 +10,11 @@
 
 ## Current State
 
-| Field               | Value                                           |
-| ------------------- | ----------------------------------------------- |
-| **Current phase**   | Phase 10 — Code Generation Engine               |
-| **Current feature** | 011-resource-crud-builder.md (IMPLEMENTED)      |
-| **Current status**  | Phase 8 Resource/CRUD Builder complete. Next: Phase 10. |
+| Field               | Value                                                     |
+| ------------------- | --------------------------------------------------------- |
+| **Current phase**   | Phase 11 — Laravel Generator                              |
+| **Current feature** | 012-code-generation-engine.md (IMPLEMENTED)               |
+| **Current status**  | Phase 10 Code Generation Engine complete. Next: Phase 11. |
 
 ---
 
@@ -32,6 +32,7 @@
 - [x] Phase 7b — Workflow Triggers (trigger abstraction, manual/webhook/scheduled, HMAC, idempotency)
 - [x] Phase 8 — Resource / CRUD Builder (resource definitions, field types, Prisma generator, validation generator, CRUD API, versioning)
 - [x] Phase 9 — Preview System (Swagger/OpenAPI, workflow preview, mock registry, sandboxed execution)
+- [x] Phase 10 — Code Generation Engine (compiler pipeline, template engine, TypeScript adapter, API preview)
 
 ---
 
@@ -43,11 +44,10 @@ None.
 
 ## Pending Work
 
-| Priority | Task                      | Phase    |
-| -------- | ------------------------- | -------- |
-| Next     | Code generation engine    | Phase 10 |
-| After    | Laravel Generator         | Phase 11 |
-| Later    | NestJS Generator          | Phase 12 |
+| Priority | Task              | Phase    |
+| -------- | ----------------- | -------- |
+| Next     | Laravel Generator | Phase 11 |
+| After    | NestJS Generator  | Phase 12 |
 
 ---
 
@@ -59,17 +59,16 @@ None.
 
 ## Important Decisions
 
-| Decision                    | Rationale                                        |
-| --------------------------- | ------------------------------------------------ |
-| PKCE implemented now        | OAuth 2.1 requires it for all auth code flows    |
-| OpenID Connect deferred     | Architecture supports it, not needed for Phase 7 |
-| HMAC-signed state tokens    | CSRF protection without external dependencies    |
-| On-demand token refresh     | No background jobs, nodes refresh when needed    |
-| Framework-independent OAuth | Reusable by code generator                       |
-| Google as first provider    | Well-documented, validates the abstraction       |
-| Components project-scoped   | Can be made global later                         |
-| Resources use PascalCase    | Distinguishes from field names (snake_case)      |
-| Resource generation preview | Inspect output before committing                 |
+| Decision                    | Rationale                                     |
+| --------------------------- | --------------------------------------------- |
+| PKCE implemented now        | OAuth 2.1 requires it for all auth code flows |
+| HMAC-signed state tokens    | CSRF protection without external dependencies |
+| Components project-scoped   | Can be made global later                      |
+| Resources use PascalCase    | Distinguishes from field names (snake_case)   |
+| Resource generation preview | Inspect output before committing              |
+| TypeScript adapter first    | Proves pipeline, useful standalone            |
+| Custom template engine      | Zero dependencies, simple syntax              |
+| Pluggable FrameworkAdapter  | Add frameworks by implementing interface      |
 
 ---
 
@@ -77,11 +76,11 @@ None.
 
 ```
 apps/
-├── api/        # NestJS backend (181 tests)
+├── api/        # NestJS backend (192 tests)
 └── web/        # React frontend (1 test)
 
 packages/
-└── workflow-core/  # Framework-independent workflow/node/credential/oauth/trigger/preview/component/resource logic (375 tests)
+└── workflow-core/  # Framework-independent workflow/node/credential/oauth/trigger/preview/component/resource/codegen logic (416 tests)
 ```
 
 ---
@@ -90,27 +89,27 @@ packages/
 
 ```bash
 # From root
-pnpm test       # 557 tests passing ✅
+pnpm test       # 609 tests passing ✅
 pnpm typecheck  # passes ✅
 pnpm lint       # passes ✅
 pnpm format     # passes ✅
 
 # From packages/workflow-core
-npx vitest run  # 375 tests passing ✅
+npx vitest run  # 416 tests passing ✅
 
 # From apps/api
-ENCRYPTION_KEY=<64-char-hex> npx jest  # 181 tests passing ✅
+ENCRYPTION_KEY=<64-char-hex> npx jest  # 192 tests passing ✅
 
-# Total: 557 tests
+# Total: 609 tests
 ```
 
 ---
 
 ## Exact Next Steps
 
-1. Start Phase 10 (Code Generation Engine) — create feature plan in `docs/features/012-code-generation-engine.md`.
+1. Start Phase 11 (Laravel Generator) — create feature plan in `docs/features/013-laravel-generator.md`.
 2. Follow the development lifecycle: PLAN → APPROVE → IMPLEMENT → TEST.
-3. The code generation engine will produce framework-specific code from resource/component definitions.
+3. The Laravel generator will implement a FrameworkAdapter for Laravel v12.
 
 ---
 
@@ -124,3 +123,4 @@ ENCRYPTION_KEY=<64-char-hex> npx jest  # 181 tests passing ✅
 - **Run from the correct directory** — tests are in `apps/api` and `packages/workflow-core`.
 - **Set ENCRYPTION_KEY** (64-char hex) when running API tests directly.
 - **Run `npx prisma generate`** after changing the Prisma schema.
+- **Rebuild workflow-core** (`pnpm build`) after changing exports.

@@ -1,6 +1,6 @@
 # Project State
 
-> **Last updated**: 2026-09-01 (Phase 8 Resource/CRUD Builder implemented)
+> **Last updated**: 2026-09-01 (Phase 10 Code Generation Engine implemented)
 
 ## Completed
 
@@ -16,6 +16,7 @@
 - [x] Phase 7b — Workflow Triggers (trigger abstraction, manual/webhook/scheduled, HMAC, idempotency)
 - [x] Phase 8 — Resource / CRUD Builder (resource definitions, field types, Prisma generator, validation generator, CRUD API, versioning)
 - [x] Phase 9 — Preview System (Swagger/OpenAPI, workflow preview, mock registry, sandboxed execution)
+- [x] Phase 10 — Code Generation Engine (compiler pipeline, template engine, TypeScript adapter, API preview)
 
 ## In Progress
 
@@ -23,27 +24,26 @@ None.
 
 ## Pending
 
-| Priority | Task                      | Phase    |
-| -------- | ------------------------- | -------- |
-| Next     | Code generation engine    | Phase 10 |
-| After    | Laravel Generator         | Phase 11 |
-| Later    | NestJS Generator          | Phase 12 |
+| Priority | Task              | Phase    |
+| -------- | ----------------- | -------- |
+| Next     | Laravel Generator | Phase 11 |
+| After    | NestJS Generator  | Phase 12 |
 
 ## Key Metrics
 
-- **Test suites**: 30 in workflow-core, 21 in API, 1 in web
-- **Total tests**: 557 (375 in workflow-core, 181 in API, 1 in web)
+- **Test suites**: 33 in workflow-core, 23 in API, 1 in web
+- **Total tests**: 609 (416 in workflow-core, 192 in API, 1 in web)
 - **Packages**: 3 (api, web, workflow-core)
 
 ## Monorepo Structure
 
 ```
 apps/
-├── api/        # NestJS backend (181 tests)
+├── api/        # NestJS backend (192 tests)
 └── web/        # React frontend (1 test)
 
 packages/
-└── workflow-core/  # Framework-independent workflow/node/credential/oauth/trigger/preview/component/resource logic (375 tests)
+└── workflow-core/  # Framework-independent workflow/node/credential/oauth/trigger/preview/component/resource/codegen logic (416 tests)
 ```
 
 ## Source of Truth
